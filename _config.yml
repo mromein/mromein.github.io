@@ -1,0 +1,27 @@
+# Site settings
+title: Matt Romein
+email: seth@channel.studio
+description: > 
+  Some copy about Matt Romein
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://matt-romein.com/" # the base hostname & protocol for your site, e.g. http://example.com
+github_username: polyrhythmatic
+
+logo: "/assets/logo.png"
+
+# Build settings
+markdown: kramdown
+
+include: 
+  - _pages
+  - _projects
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+plugins:
+  - jekyll-sitemap
