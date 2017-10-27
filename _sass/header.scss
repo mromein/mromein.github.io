@@ -1,0 +1,31 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-work, .nav-info {
+  display: inline-block;
+}
+
+.nav-work {
+  margin: 30px 0 0 23px;
+}
+
+.nav-info {
+  margin: 30px 23px 0 0;
+}
+
+.menu-wrapper {
+
+}
+
+.menu {
+  width: 250px;
+  text-align: center;
+  margin: auto;
+
+  li {
+    text-transform: uppercase;
+    margin: 50px 0;
+  }
+}

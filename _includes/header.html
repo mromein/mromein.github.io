@@ -1,0 +1,18 @@
+<header>
+  <nav class="header">
+    <div class="main-nav">
+      <a><h1 class="nav-work">work</h1></a>
+      <a href="{{ site.url }}/info" ><h1 class="nav-info">info</h1></a>
+      
+    </div>
+    <div class="menu-wrapper">
+      <ul class="menu">
+        <!-- <li class="menu-item"><h2 class="no-click">Projects</h2></li> -->
+        {% for project in site.projects reversed %}
+        <li class="menu-item"><a href="{{ site.url }}{{ project.permalink }}"><h2>{{ project.title }}</h2></a></li>
+        {% endfor %}
+        <!-- <li class="menu-item"><a href="{{ site.url }}/grandcentral.html">GRAND CENTRAL</a></li> -->
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,40 @@
+$favorit: 15px "Favorit", Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+$tablet-width: 650px;//changed from 768
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+// @mixin desktop_tablet {
+//   @media (min-width: #{$tablet-width}) {
+//     @content;
+//   }
+// }
+
+body {
+  font: $favorit;
+  color: white;
+  background-color: black;
+}
+
+h1, h2 {
+  font-size: 30px;
+
+  @include tablet {
+
+  }
+
+  @include desktop {
+
+  }
+}

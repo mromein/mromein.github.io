@@ -4,6 +4,65 @@
 {% include head.html %}
 <body>
 {% include header.html %}
-{% include footer.html %}
+<!--   <div class="home-title__container">
+    <h1 class="home-title">MATT ROMEIN</h1>
+  </div> -->
+  <canvas id="bg-canvas"></canvas>
 </body>
+<script type="text/javascript">
+  var canvas = document.getElementById("bg-canvas");
+  var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
+    antialias: true,
+    view: canvas
+  });
+  var stage = new PIXI.Container();
+  var texture = PIXI.Texture.fromVideo('assets/reel2014.mp4');
+
+  var bg = new PIXI.Sprite(texture);
+
+  bg.anchor.x = 0.5;
+  bg.anchor.y = 0.5;
+
+  bg.position.x = renderer.width / 2;
+  bg.position.y = renderer.height / 2;
+
+  stage.addChild(bg);
+
+  var bgFront = new PIXI.Sprite(texture);
+  bgFront.anchor.x = 0.5;
+  bgFront.anchor.y = 0.5;
+
+  var container = new PIXI.Container();
+  container.position.x = renderer.width / 2;
+  container.position.y = renderer.height / 2;
+
+  // add a bunch of sprites
+
+  bgFront.position.x = renderer.width / 2.2;
+  bgFront.position.y = renderer.height / 2.2;
+
+  container.addChild(bgFront);
+
+  stage.addChild(container);
+
+  var thing = PIXI.Sprite.fromImage('assets/mask.png');
+  thing.anchor.set(0.5);
+  thing.position.x = renderer.width/2;
+  thing.position.y = renderer.height/2;
+
+  container.mask = thing;
+  stage.addChild(thing)
+  var count = 0;
+
+  animate();
+
+  function animate(){
+      renderer.render(stage);
+      requestAnimationFrame(animate);
+  }
+
+  window.onresize = function(){
+
+  }
+</script>
 </html>
