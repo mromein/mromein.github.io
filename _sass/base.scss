@@ -1,10 +1,17 @@
 $favorit: 15px "Favorit", Arial, "Helvetica Neue", Helvetica, sans-serif;
 
 $tablet-width: 650px;//changed from 768
-$desktop-width: 1024px;
+$laptop-width: 1024px;
+$desktop-width: 1440px;
 
 @mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$laptop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: #{$laptop-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
   }
 }
@@ -15,26 +22,36 @@ $desktop-width: 1024px;
   }
 }
 
-// @mixin desktop_tablet {
-//   @media (min-width: #{$tablet-width}) {
-//     @content;
-//   }
-// }
-
 body {
   font: $favorit;
   color: white;
   background-color: black;
+
+  @include desktop {
+    font-size: 24px;
+  }
 }
 
 h1, h2 {
   font-size: 30px;
 
   @include tablet {
+    font-size: 50px;
+  }
 
+  @include laptop {
+    font-size: 50px;
   }
 
   @include desktop {
-
+    font-size: 75px;
   }
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+p:last-of-type {
+  margin-bottom: 0;
 }
