@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+{% capture style %}{% include cv.scss %}{% endcapture %}
+{% include head.html %}
+<body>
+  <article>
+    <header class="cv-header">
+      <a href="{{ site.url }}"><h1>Matt Romein</h1></a>
+      <a href="javascript:history.back()">{% include arrow.svg %}<h2>back</h2></a>
+    </header>
+    <div class="cv-header__dash">ㅡ</div>
+    <section class="cv-education">
+      <h3>Education</h3>
+      <div>
+        {% for school in page.education %}
+        <ul>
+          <li>{{ school.name }}</li>
+          <li>{{ school.year }}</li>
+        </ul>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="cv-performances">
+    <h3>Selected Shows & Performances</h3>
+    {% for performance in page.performances%}
+    <div class="cv-performances__description">
+      <h4>{{ performance.name }}</h4>
+      <p>{{ performance.description }}</p>
+    </div>
+    <div class="cv-performances__dates">
+      {% for date in performance.dates %}
+        <ul>
+          <li>{{ date.event }}</li>
+          <li>{{ date.date }}</li>
+          <li>{{ date.location }}</li>
+          {% if date.venue %}<li>{{ date.venue }}</li>{% endif %}
+        </ul>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    </section>
+    <section class="cv-awards">
+      <h3>Grants & Residencies</h3>
+      {% for award in page.awards %}
+        <div class="cv-awards__description">
+          <h4>{{ award.name }}</h4>
+          <p>{{ award.description }}</p>
+        </div>
+        <ul class="cv-awards__dates">
+          <li>{{ award.date }}</li>
+          <li>{{ award.place }}</li>
+          <li>{{ award.location }}</li>
+        </ul>
+      {% endfor %}
+    </section>
+    <section class="cv-talks">
+      <h3>Talks</h3>
+      {% for talk in page.talks %}
+        <div>
+          <div class="cv-talks__description">
+            <h4>{{ talk.name }}</h4>
+            <p>{{ talk.description }}</p>
+          </div>
+          <ul class="cv-talks__dates">
+            <li>{{ talk.date }}</li>
+            <li>{{ talk.place }}</li>
+            <li>{{ talk.location }}</li>
+          </ul>
+        </div>
+      {% endfor %}
+    </section>
+    <section class="cv-work">
+      <h3>Related Work Experience</h3>
+      {% for work in page.work %}
+      <div>
+        <div class="cv-work__description">
+          <h4>{{ work.role }}</h4>
+          <p>{{ work.description }}</p>
+        </div>
+        <ul class="cv-dates__description">
+          <li>{{ work.date }}</li>
+          <li>{{ work.location }}</li>
+        </ul>
+      </div>
+      {% endfor %}
+    </section>
+  </article>
+</body>
+</html>

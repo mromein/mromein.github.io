@@ -1,0 +1,89 @@
+article {
+  max-width: 212px;
+  margin: 50px auto 60px;
+}
+
+section {
+  h3 {
+    text-decoration: underline;
+  }
+
+  &:not(:first-of-type) {
+    margin: 60px 0 0;
+  }
+
+  h4, p, ul {
+    margin: 25px 0 0;
+  }
+}
+
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+
+  h1, h2 {
+    font-size: 15px;
+    display: inline
+  }
+
+  h2 {
+
+  }
+
+  svg {
+    margin-right: 14px;
+  }
+}
+
+.cv-header__dash {
+  margin: 40px 0 25px;
+}
+
+.cv-education {
+  ul, li {
+    margin-top: 25px;
+  }
+}
+
+.cv-performances {
+
+}
+
+.cv-performances__description {
+
+  &:not(:first-of-type) {
+    margin: 60px 0 0;
+  }
+}
+
+.cv-awards {
+
+}
+
+.cv-awards__description {
+
+  &:not(:first-of-type) {
+    margin: 60px 0 0;
+  }
+}
+
+.cv-talks {
+
+}
+
+.cv-talks__description {
+
+  &:not(:first-of-type) {
+    margin: 60px 0 0;
+  }
+}
+
+.cv-work {
+}
+
+.cv-work__description {
+
+  &:not(:first-of-type) {
+    margin: 60px 0 0;
+  }
+}

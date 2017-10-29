@@ -1,0 +1,17 @@
+<svg width="15px" height="9px" viewBox="0 0 15 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-202.000000, -55.000000)" fill="#FFFFFF">
+            <g transform="translate(210.000000, 60.000000) rotate(-180.000000) translate(-210.000000, -60.000000) translate(202.000000, 55.000000)">
+                <g transform="translate(7.750000, 4.750000) rotate(-180.000000) translate(-7.750000, -4.750000) translate(0.250000, 0.250000)">
+                    <polygon id="Fill-1" points="5.55111512e-15 4.947459 1.58251 4.947459 1.58251 3.298317 5.55111512e-15 3.298317"></polygon>
+                    <polygon id="Fill-2" points="1.58251 3.298317 3.16502 3.298317 3.16502 1.649142 1.58251 1.649142"></polygon>
+                    <polygon id="Fill-3" points="3.16505167 1.649142 4.74756167 1.649142 4.74756167 3.3e-05 3.16505167 3.3e-05"></polygon>
+                    <polygon id="Fill-4" points="1.58251 6.596634 3.16502 6.596634 3.16502 4.947459 1.58251 4.947459"></polygon>
+                    <polygon id="Fill-5" points="3.16505167 8.245776 4.74756167 8.245776 4.74756167 6.596634 3.16505167 6.596634"></polygon>
+                    <polygon id="Fill-6" points="3.16505167 4.947459 14.2427167 4.947459 14.2427167 3.298317 3.16505167 3.298317"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
