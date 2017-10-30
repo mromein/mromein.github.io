@@ -22,37 +22,39 @@
     </section>
     <section class="cv-performances">
       <h3>Selected Shows & Performances</h3>
-      <div class="cv-performances__wrapper">
+      <div class="cv-wrapper">
         {% for performance in page.performances%}
         <h4>{{ performance.name }}</h4>
-        <div class="cv-performances__performance">
-          <div class="cv-performances__description">
+        <div class="cv-item">
+          <div class="cv-description">
             <p>{{ performance.description }}</p>
           </div>
-          <div class="cv-performances__dates">
+          <ul class="cv-dates">
             {% for date in performance.dates %}
+            <li>
               <ul>
-                <li>{{ date.event }}</li>
                 <li>{{ date.date }}</li>
-                <li>{{ date.location }}</li>
+                <li>{{ date.event }}</li>
                 {% if date.venue %}<li>{{ date.venue }}</li>{% endif %}
+                <li>{{ date.location }}</li>
               </ul>
             {% endfor %}
-          </div>
+            </li>
+          </ul>
         </div>
         {% endfor %}
       </div>
     </section>
     <section class="cv-awards">
       <h3>Grants & Residencies</h3>
-      <div class="cv-awards__wrapper">
+      <div class="cv-wrapper">
         {% for award in page.awards %}
         <h4>{{ award.name }}</h4>
-        <div class="cv-awards__award">
-          <div class="cv-awards__description">
+        <div class="cv-item">
+          <div class="cv-description">
             <p>{{ award.description }}</p>
           </div>
-          <ul class="cv-awards__dates">
+          <ul class="cv-dates">
             <li>{{ award.date }}</li>
             <li>{{ award.place }}</li>
             <li>{{ award.location }}</li>
@@ -63,14 +65,14 @@
     </section>
     <section class="cv-talks">
       <h3>Talks</h3>
-        <div class="cv-talks__wrapper">
+        <div class="cv-wrapper">
         {% for talk in page.talks %}
           <h4>{{ talk.name }}</h4>
-          <div class="cv-talks__talk">
-            <div class="cv-talks__description">
+          <div class="cv-item">
+            <div class="cv-description">
               <p>{{ talk.description }}</p>
             </div>
-            <ul class="cv-talks__dates">
+            <ul class="cv-dates">
               <li>{{ talk.date }}</li>
               <li>{{ talk.place }}</li>
               <li>{{ talk.location }}</li>
@@ -81,14 +83,14 @@
     </section>
     <section class="cv-work">
       <h3>Related Work Experience</h3>
-        <div class="cv-work__wrapper">
+        <div class="cv-wrapper">
         {% for work in page.work %}
         <h4>{{ work.role }}</h4>
-        <div class="cv-work__job">
-          <div class="cv-work__description">
+        <div class="cv-item">
+          <div class="cv-description">
             <p>{{ work.description }}</p>
           </div>
-          <ul class="cv-dates__description">
+          <ul class="cv-dates">
             <li>{{ work.date }}</li>
             <li>{{ work.location }}</li>
           </ul>

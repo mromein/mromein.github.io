@@ -1,9 +1,18 @@
 article {
   max-width: 212px;
-  margin: 60px auto 160px;
+  margin: 50px auto;
 
   @include tablet {
-    max-width: $tablet-width;
+    max-width: 700px;
+    margin: 60px auto 160px;
+  }
+  @include laptop {
+    max-width: 920px;
+    margin: 90px auto 80px;
+  }
+  @include desktop {
+    max-width: 1260px;
+    margin: 130px auto 100px;
   }
 }
 
@@ -11,7 +20,7 @@ section {
   h3 {
     text-decoration: underline;
 
-  @include tablet {
+  @include greater_than_tablet {
     width: 33%;
     }
   }
@@ -24,7 +33,7 @@ section {
     margin: 25px 0 0;
   }
 
-  @include tablet {
+  @include greater_than_tablet {
     display: flex;
   }
 }
@@ -35,7 +44,11 @@ section {
 
   h1, h2 {
     font-size: 15px;
-    display: inline
+    display: inline;
+
+    @include desktop {
+      font-size: 24px;
+    }
   }
 
   h2 {
@@ -91,13 +104,14 @@ section {
   }
 }
 
-.cv-performances {
 
-}
+// .cv-performances {
 
-.cv-performances__wrapper {
+// }
 
-  @include tablet {
+.cv-wrapper {
+
+  @include greater_than_tablet {
     width: 67%;
 
     h4 {
@@ -108,79 +122,34 @@ section {
       }
     }
   }
-}
 
-.cv-performances__performance {
-  @include tablet {
-    display: flex;
-    margin: 25px 0 0;
-  }
-}
-
-.cv-performances__description {
-
-  &:not(:first-of-type) {
-    margin: 60px 0 0;
-  }
-
-  @include tablet {
-    width: 60%;
-
-    p {
-      max-width: 212px;
-      margin: 0;
-    }
-  }
-}
-
-.cv-performances__dates {
-
-  @include tablet {
-    width: 40%;
-
-    ul {
-      margin: 0;
-
-      &:not(:first-of-type) {
-        margin: 25px 0 0;
-      }
-    }
-  }
-}
-
-.cv-awards {
-
-}
-
-.cv-awards__wrapper {
-
-  @include tablet {
-    width: 67%;
-
+  @include laptop {
     h4 {
-      max-width: 212px;
-      margin: 0;
-      &:not(:first-of-type) {
-        margin: 60px 0 0;
-      }
+      max-width: 282px;
+    }
+  }
+
+  @include desktop {
+    h4 {
+      max-width: 416px;
     }
   }
 }
 
-.cv-awards__award {
-  @include tablet {
+.cv-item {
+  @include greater_than_tablet {
     display: flex;
     margin: 25px 0 0;
   }
 }
 
-.cv-awards__description {
+.cv-description {
 
   &:not(:first-of-type) {
     margin: 60px 0 0;
   }
 
-  @include tablet {
+  @include greater_than_tablet {
     width: 60%;
 
     p {
@@ -188,13 +157,25 @@ section {
       margin: 0;
     }
   }
+
+  @include laptop {
+    p {
+      max-width: 282px;
+    }
+  }
+
+  @include desktop {
+    p {
+      max-width: 416px;
+    }
+  }
 }
 
-.cv-awards__dates {
+.cv-dates {
 
-  @include tablet {
+  @include greater_than_tablet {
     width: 40%;
-    margin: 0;
+      margin: 0;
 
     &:not(:first-of-type) {
       margin: 25px 0 0;
@@ -202,110 +183,14 @@ section {
   }
 }
 
-.cv-talks {
-
-}
-
-.cv-talks__wrapper {
-
-  @include tablet {
-    width: 67%;
-
-    h4 {
-      max-width: 212px;
-      margin: 0;
-      &:not(:first-of-type) {
-        margin: 60px 0 0;
-      }
-    }
-  }
-}
-
-.cv-talks__talk {
-  @include tablet {
-    display: flex;
-    margin: 25px 0 0;
-  }
-}
-
-.cv-talks__description {
-
-  &:not(:first-of-type) {
-    margin: 60px 0 0;
+@media print {
+  body {
+    color: black;
   }
 
-  @include tablet {
-    width: 60%;
-
-    p {
-      max-width: 212px;
-      margin: 0;
-    }
-  }
-}
-
-.cv-talks__dates {
-
-  @include tablet {
-    width: 40%;
-    margin: 0;
-
-    &:not(:first-of-type) {
-      margin: 25px 0 0;
-    }
-  }
-}
-
-
-.cv-work {
-}
-
-.cv-work__wrapper {
-
-  @include tablet {
-    width: 67%;
-
-    h4 {
-      max-width: 212px;
-      margin: 0;
-      &:not(:first-of-type) {
-        margin: 60px 0 0;
-      }
-    }
-  }
-}
-
-.cv-work__job {
-  @include tablet {
-    display: flex;
-    margin: 25px 0 0;
-  }
-}
-
-.cv-work__description {
-
-  &:not(:first-of-type) {
-    margin: 60px 0 0;
-  }
-
-  @include tablet {
-    width: 60%;
-
-    p {
-      max-width: 212px;
-      margin: 0;
-    }
-  }
-}
-
-.cv-work__dates {
-
-  @include tablet {
-    width: 40%;
-    margin: 0;
-
-    &:not(:first-of-type) {
-      margin: 25px 0 0;
+  .cv-header {
+    a:not(:first-of-type) {
+      display: none;
     }
   }
 }

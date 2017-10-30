@@ -1,6 +1,6 @@
 $favorit: 15px "Favorit", Arial, "Helvetica Neue", Helvetica, sans-serif;
 
-$tablet-width: 650px;//changed from 768
+$tablet-width: 500px;//changed from 768
 $laptop-width: 1024px;
 $desktop-width: 1440px;
 
@@ -21,6 +21,13 @@ $desktop-width: 1440px;
     @content;
   }
 }
+
+@mixin greater_than_tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
 
 body {
   font: $favorit;
