@@ -1,11 +1,19 @@
 article {
   max-width: 212px;
-  margin: 50px auto 60px;
+  margin: 60px auto 160px;
+
+  @include tablet {
+    max-width: $tablet-width;
+  }
 }
 
 section {
   h3 {
     text-decoration: underline;
+
+  @include tablet {
+    width: 33%;
+    }
   }
 
   &:not(:first-of-type) {
@@ -14,6 +22,10 @@ section {
 
   h4, p, ul {
     margin: 25px 0 0;
+  }
+
+  @include tablet {
+    display: flex;
   }
 }
 
@@ -40,8 +52,42 @@ section {
 }
 
 .cv-education {
+}
+
+.cv-education__schools {
+  @include tablet {
+    width: 67%
+  }
+}
+
+.cv-education__school {
   ul, li {
     margin-top: 25px;
+  }
+
+  li {
+    @include tablet {
+      width: 50%;
+      margin: 0;
+      div {
+        max-width: 180px;
+      }
+      &:first-of-type {
+        width: 60%;
+      }
+      &:not(:first-of-type) {
+        width: 40%;
+      }
+    }
+  }
+
+  @include tablet {
+    display: flex;
+    margin: 0;
+
+    &:not(:first-of-type) {
+      margin: 26px 0 0;
+    }
   }
 }
 
@@ -49,10 +95,56 @@ section {
 
 }
 
+.cv-performances__wrapper {
+
+  @include tablet {
+    width: 67%;
+
+    h4 {
+      max-width: 212px;
+      margin: 0;
+      &:not(:first-of-type) {
+        margin: 60px 0 0;
+      }
+    }
+  }
+}
+
+.cv-performances__performance {
+  @include tablet {
+    display: flex;
+    margin: 25px 0 0;
+  }
+}
+
 .cv-performances__description {
 
   &:not(:first-of-type) {
     margin: 60px 0 0;
+  }
+
+  @include tablet {
+    width: 60%;
+
+    p {
+      max-width: 212px;
+      margin: 0;
+    }
+  }
+}
+
+.cv-performances__dates {
+
+  @include tablet {
+    width: 40%;
+
+    ul {
+      margin: 0;
+
+      &:not(:first-of-type) {
+        margin: 25px 0 0;
+      }
+    }
   }
 }
 
@@ -60,10 +152,53 @@ section {
 
 }
 
+.cv-awards__wrapper {
+
+  @include tablet {
+    width: 67%;
+
+    h4 {
+      max-width: 212px;
+      margin: 0;
+      &:not(:first-of-type) {
+        margin: 60px 0 0;
+      }
+    }
+  }
+}
+
+.cv-awards__award {
+  @include tablet {
+    display: flex;
+    margin: 25px 0 0;
+  }
+}
+
 .cv-awards__description {
 
   &:not(:first-of-type) {
     margin: 60px 0 0;
+  }
+
+  @include tablet {
+    width: 60%;
+
+    p {
+      max-width: 212px;
+      margin: 0;
+    }
+  }
+}
+
+.cv-awards__dates {
+
+  @include tablet {
+    width: 40%;
+    margin: 0;
+
+    &:not(:first-of-type) {
+      margin: 25px 0 0;
+    }
   }
 }
 
@@ -71,19 +206,106 @@ section {
 
 }
 
+.cv-talks__wrapper {
+
+  @include tablet {
+    width: 67%;
+
+    h4 {
+      max-width: 212px;
+      margin: 0;
+      &:not(:first-of-type) {
+        margin: 60px 0 0;
+      }
+    }
+  }
+}
+
+.cv-talks__talk {
+  @include tablet {
+    display: flex;
+    margin: 25px 0 0;
+  }
+}
+
 .cv-talks__description {
 
   &:not(:first-of-type) {
     margin: 60px 0 0;
   }
+
+  @include tablet {
+    width: 60%;
+
+    p {
+      max-width: 212px;
+      margin: 0;
+    }
+  }
 }
 
+.cv-talks__dates {
+
+  @include tablet {
+    width: 40%;
+    margin: 0;
+
+    &:not(:first-of-type) {
+      margin: 25px 0 0;
+    }
+  }
+}
+
+
 .cv-work {
+}
+
+.cv-work__wrapper {
+
+  @include tablet {
+    width: 67%;
+
+    h4 {
+      max-width: 212px;
+      margin: 0;
+      &:not(:first-of-type) {
+        margin: 60px 0 0;
+      }
+    }
+  }
+}
+
+.cv-work__job {
+  @include tablet {
+    display: flex;
+    margin: 25px 0 0;
+  }
 }
 
 .cv-work__description {
 
   &:not(:first-of-type) {
     margin: 60px 0 0;
+  }
+
+  @include tablet {
+    width: 60%;
+
+    p {
+      max-width: 212px;
+      margin: 0;
+    }
+  }
+}
+
+.cv-work__dates {
+
+  @include tablet {
+    width: 40%;
+    margin: 0;
+
+    &:not(:first-of-type) {
+      margin: 25px 0 0;
+    }
   }
 }
