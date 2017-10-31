@@ -10,59 +10,99 @@
   <canvas id="bg-canvas"></canvas>
 </body>
 <script type="text/javascript">
-  var canvas = document.getElementById("bg-canvas");
-  var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
-    antialias: true,
-    view: canvas
+  var loader = PIXI.loader;
+
+  loader.add("bgVideo", "assets/reel2014.mp4")
+    .add("largeMask", "assets/large_mask.png")
+    .add("smallMask", "assets/small_mask.png");
+
+  loader.onLoad.add(function(){
+    console.log("add loading functionality here");
   });
-  var stage = new PIXI.Container();
-  var texture = PIXI.Texture.fromVideo('assets/reel2014.mp4');
 
-  var bg = new PIXI.Sprite(texture);
+  loader.onComplete.add(function(){
+    console.log("hide loader with this");
+  })
 
-  bg.anchor.x = 0.5;
-  bg.anchor.y = 0.5;
+  loader.load(function(loader, resources){
 
-  bg.position.x = renderer.width / 2;
-  bg.position.y = renderer.height / 2;
+    function whichImage(){
+      if(window.innerWidth > 1024){
+        ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
+        return resources.largeMask.texture;
+      } else {
+        ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
+        return resources.smallMask.texture;
+      }
+    }
 
-  stage.addChild(bg);
+    var canvas = document.getElementById("bg-canvas");
+    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
+      antialias: true,
+      view: canvas,
+      autoResize: true
+    });
 
-  var bgFront = new PIXI.Sprite(texture);
-  bgFront.anchor.x = 0.5;
-  bgFront.anchor.y = 0.5;
+    resources.bgVideo.data.loop = true;
+    var stage = new PIXI.Container();
+    var texture = PIXI.Texture.fromVideo(resources.bgVideo.data);
 
-  var container = new PIXI.Container();
-  container.position.x = renderer.width / 2;
-  container.position.y = renderer.height / 2;
+    var bg = new PIXI.Sprite(texture);
 
-  // add a bunch of sprites
+    bg.anchor.x = 0.5;
+    bg.anchor.y = 0.5;
 
-  bgFront.position.x = renderer.width / 2.2;
-  bgFront.position.y = renderer.height / 2.2;
+    bg.position.x = renderer.width / 2;
+    bg.position.y = renderer.height / 2;
 
-  container.addChild(bgFront);
+    stage.addChild(bg);
 
-  stage.addChild(container);
+    var bgFront = new PIXI.Sprite(texture);
+    bgFront.width *= 1.2;
+    bgFront.height *= 1.2;
 
-  var thing = PIXI.Sprite.fromImage('assets/mask.png');
-  thing.anchor.set(0.5);
-  thing.position.x = renderer.width/2;
-  thing.position.y = renderer.height/2;
+    bgFront.anchor.x = 0.5;
+    bgFront.anchor.y = 0.5;
 
-  container.mask = thing;
-  stage.addChild(thing)
-  var count = 0;
+    bgFront.position.x = renderer.width / 2;
+    bgFront.position.y = renderer.height / 2;
 
-  animate();
+    stage.addChild(bgFront);
 
-  function animate(){
-      renderer.render(stage);
-      requestAnimationFrame(animate);
-  }
+    var thing = new PIXI.Sprite(whichImage());
 
-  window.onresize = function(){
+    var ratio = thing.height / thing.width;
+    thing.width = window.innerWidth * 0.8;
+    thing.height = ratio * thing.width;
+    thing.anchor.set(0.5, 0.5);
+    thing.position.x = renderer.width / 2;
+    thing.position.y = renderer.height / 2;
 
-  }
+    bgFront.mask = thing;
+    stage.addChild(thing);
+
+    animate();
+
+    function animate(){
+        renderer.render(stage);
+        requestAnimationFrame(animate);
+    }
+
+    window.onresize = function(){
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+      thing.texture = whichImage();
+      thing.width = width * 0.8;
+      thing.height = ratio * thing.width;
+
+      thing.position.x = width / 2;
+      thing.position.y = height / 2;
+      bgFront.position.x = width / 2;
+      bgFront.position.y = height / 2;
+      bg.position.x = width / 2;
+      bg.position.y = height / 2;
+    }
+  });
 </script>
 </html>

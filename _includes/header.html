@@ -1,11 +1,11 @@
 <header>
   <nav class="header">
     <div class="main-nav">
-      <a><h1 class="nav-work">work</h1></a>
+      <a><h1 class="nav-work" id="menu-button">work</h1></a>
       <a href="{{ site.url }}/info" ><h1 class="nav-info">info</h1></a>
       
     </div>
-    <div class="menu-wrapper">
+    <div class="menu-wrapper menu-invisible" id="menu">
       <ul class="menu">
         <!-- <li class="menu-item"><h2 class="no-click">Projects</h2></li> -->
         {% for project in site.projects reversed %}
@@ -15,4 +15,12 @@
       </ul>
     </div>
   </nav>
+  <script type="text/javascript">
+    var menu = document.getElementById("menu");
+    var menuButton = document.getElementById("menu-button");
+
+    menuButton.addEventListener("click", function(){
+      menu.classList.toggle("menu-invisible");
+    })
+  </script>
 </header>
