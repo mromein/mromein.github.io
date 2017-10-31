@@ -47,6 +47,7 @@
     var stage = new PIXI.Container();
     var texture = PIXI.Texture.fromVideo(resources.bgVideo.data);
 
+
     var bg = new PIXI.Sprite(texture);
 
     bg.anchor.x = 0.5;
@@ -88,9 +89,21 @@
         requestAnimationFrame(animate);
     }
 
-    window.onresize = function(){
+    function resize(){
       var width = window.innerWidth;
       var height = window.innerHeight;
+
+      if(texture.width < width){
+        var bgratio = texture.height / texture.width;
+        bg.width = bgFront.width = renderer.width;
+        bg.height = bgFront.height = bg.width * bgratio;
+      } else {
+        bg.width = bgFront.width = texture.width;
+        bg.height = bgFront.height = texture.height;
+      }
+
+      bgFront.width *= 1.2;
+      bgFront.height *= 1.2;
 
       thing.texture = whichImage();
       thing.width = width * 0.8;
@@ -102,7 +115,12 @@
       bgFront.position.y = height / 2;
       bg.position.x = width / 2;
       bg.position.y = height / 2;
+
     }
+
+    resize();
+
+    window.onresize = resize;
   });
 </script>
 </html>
