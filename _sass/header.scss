@@ -1,3 +1,5 @@
+$cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
+
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -5,6 +7,10 @@
 
 .nav-work, .nav-info {
   display: inline-block;
+}
+
+.nav-work {
+  cursor: pointer;
 }
 
 .nav-work {
@@ -41,8 +47,19 @@
 
 .menu-wrapper {
   // display: none; //temporary until I get the dropdown menu working
-  background-color: black;
+  // background-color: black;
+  max-height: 2000px;
+  height: auto;
+  overflow: hidden;
+  opacity: 1;
 
+  -webkit-transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
+  transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
+  // -webkit-transition: opacity 0.6s  $cubic, -webkit-transform 0.5s $cubic;
+  // transition: opacity 0.6s $cubic, -webkit-transform 0.5s $cubic;
+  // -webkit-transition-delay: 0.3s;
+  //  -o-transition-delay: 0.3s;
+  //     transition-delay: 0.3s;
 }
 
 .menu {
@@ -92,5 +109,6 @@
 }
 
 .menu-invisible {
-  display: none;
+  max-height: 0;
+  opacity: 0;
 }
