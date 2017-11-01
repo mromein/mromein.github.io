@@ -62,3 +62,9 @@ p {
 p:last-of-type {
   margin-bottom: 0;
 }
+
+//display none while still being available to screen readers
+.hidden {
+  position: absolute;
+  left: -9999px;
+}

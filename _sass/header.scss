@@ -1,8 +1,21 @@
 $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 
 .main-nav {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
+  opacity: 1;
+  z-index: 101;
+
+  -webkit-transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
+}
+
+.nav-hidden {
+  opacity: 0;
 }
 
 .nav-work, .nav-info {
@@ -46,62 +59,98 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 }
 
 .menu-wrapper {
-  // display: none; //temporary until I get the dropdown menu working
-  // background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
   max-height: 2000px;
-  height: auto;
-  overflow: hidden;
+  height: 100vh;
+  overflow-y: scroll;
   opacity: 1;
+  width: 100%;
+  z-index: 100;
 
-  -webkit-transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
-  transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
-  // -webkit-transition: opacity 0.6s  $cubic, -webkit-transform 0.5s $cubic;
-  // transition: opacity 0.6s $cubic, -webkit-transform 0.5s $cubic;
-  // -webkit-transition-delay: 0.3s;
-  //  -o-transition-delay: 0.3s;
-  //     transition-delay: 0.3s;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+
+  &::-webkit-scrollbar { 
+    display: none; 
+  }
+
+  // -webkit-transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
+  // transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
 }
 
 .menu {
-  max-width: 250px;
   text-align: center;
-  margin: 90px auto;
+  margin: 0 auto;
+  // text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  h2 {
+    max-width: 250px;
+    margin: auto;
+    text-transform: uppercase;
+  }
 
   li {
+    &:first-child {
+      padding: 150px 0 25px;
+    }
+
     &:not(:first-child){
-      margin: 50px 0 0;
+      padding: 25px 0 25px;
     }
   }
 
   @include tablet {
-    max-width: 500px;
-    margin: 150px auto 0;
+
+    h2 {
+      max-width: 500px;
+      margin: auto;
+    }
 
     li {
+      &:first-child {
+        padding: 250px 0 40px;
+      }
+
       &:not(:first-child){
-        margin: 80px 0 0;
+        padding: 40px 0 40px;
       }
     }
   }
 
   @include laptop {
-    max-width: 650px;
+
+    h2 {
+      max-width: 650px;
+      margin: auto;
+    }
 
     li {
+      &:first-child {
+        padding: 200px 0 45px;
+      }
+
       &:not(:first-child){
-        margin: 90px 0 0;
+        padding: 45px 0 45px;
       }
     }
   }
 
   @include desktop {
-    max-width: 1050px;
+
+    h2 {
+      max-width: 1050px;
+      margin: auto;
+    }
 
     li {
+      &:first-child {
+        padding: 275px 0 65px;
+      }
       &:not(:first-child){
-        margin: 130px 0 0;
+        padding: 65px 0 65px;
       }
     }
   }
@@ -111,4 +160,45 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 .menu-invisible {
   max-height: 0;
   opacity: 0;
+}
+
+@keyframes example {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.svg-wrapper {
+  position: fixed;
+  right: 25px;
+  bottom: 40px;
+  width: 30px;
+
+  @include tablet {
+    width: 60px;
+    right: 70px;
+    bottom: 70px; 
+  }
+
+  @include laptop {
+    width: 42px;
+    right: 135px;
+    bottom: 100px;
+  }
+
+  @include desktop {
+    width: 62px;
+    right: 170px;
+    bottom: 70px;
+  }
+
+  svg {
+    transform: rotate(270deg);
+    width: 100%;
+    height: auto;
+        animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+  }
 }

@@ -47,6 +47,9 @@
     var stage = new PIXI.Container();
     var texture = PIXI.Texture.fromVideo(resources.bgVideo.data);
 
+    // var blurFilter = new PIXI.filters.BlurFilter();
+    // blurFilter.blur = 20;
+    // stage.filters = [blurFilter];
 
     var bg = new PIXI.Sprite(texture);
 
@@ -116,9 +119,6 @@
       bg.position.x = width / 2;
       bg.position.y = height / 2;
 
-      // renderer.width = width;
-      // renderer.height = height;
-      // console.log(renderer.width)
       renderer.resize(width, height)
     }
 

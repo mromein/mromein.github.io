@@ -1,26 +1,65 @@
 <header>
   <nav class="header">
-    <div class="main-nav">
-      <a><h1 class="nav-work" id="menu-button">work</h1></a>
-      <a href="{{ site.url }}/info" ><h1 class="nav-info">info</h1></a>
-      
-    </div>
     <div class="menu-wrapper menu-invisible" id="menu">
       <ul class="menu">
-        <!-- <li class="menu-item"><h2 class="no-click">Projects</h2></li> -->
         {% for project in site.projects reversed %}
-        <li class="menu-item"><a href="{{ site.url }}{{ project.permalink }}"><h2>{{ project.title }}</h2></a></li>
+        <li onmouseover="menuMouseOver(this)" class="menu-item">
+          <img class="hidden" src="{{ \"project.root\" | absolute_url }}preview.jpg">
+          <a href="{{ site.url }}{{ project.permalink }}">
+            <h2>{{ project.title }}</h2>
+          </a>
+        </li>
         {% endfor %}
-        <!-- <li class="menu-item"><a href="{{ site.url }}/grandcentral.html">GRAND CENTRAL</a></li> -->
+        <div class="svg-wrapper" id="down-arrow">{% include arrow.svg %}</div>
       </ul>
+    </div>
+    <div class="main-nav" id="main-nav">
+      <a><h1 class="nav-work" id="menu-button">work</h1></a>
+      <a href="{{ site.url }}/info" ><h1 class="nav-info">info</h1></a>
     </div>
   </nav>
   <script type="text/javascript">
-    var menu = document.getElementById("menu");
-    var menuButton = document.getElementById("menu-button");
+    var menu = document.getElementById("menu"),
+    menuButton = document.getElementById("menu-button"),
+    nav = document.getElementById("main-nav"),
+    downArrow = document.getElementById("down-arrow");
+
+    function displayArrow(){
+      if(menu.scrollHeight == menu.offsetHeight){
+        downArrow.style.display = "none";
+      } else {
+        downArrow.style.display = "inherit";
+      }
+    }
 
     menuButton.addEventListener("click", function(){
       menu.classList.toggle("menu-invisible");
-    })
+      displayArrow();
+    });
+
+    menu.onscroll = function(ev) {
+      downArrow.style.opacity = nav.style.opacity = 1 - 4 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
+      // if((menu.offsetHeight + menu.scrollTop) >= menu.scrollHeight) {
+      //   //bottom
+      //   // nav.classList.toggle("nav-hidden");
+      //   // downArrow.style.opacity = 0;
+      // } else if(menu.scrollTop == 0){
+      //   //top
+      //   nav.classList.toggle("nav-hidden");
+      //   // downArrow.style.opacity = 1;
+      // } else {
+      //   //somewhere in the middle
+      //   if(!nav.classList.contains("nav-hidden")){
+      //     nav.classList.toggle("nav-hidden");
+      //   }
+      // }
+    };
+
+    window.addEventListener("resize", displayArrow);
+
+    function menuMouseOver(el){
+      menu.style.backgroundImage = "url(" + el.getElementsByTagName("img")[0].src + ")";
+    }
+
   </script>
 </header>
