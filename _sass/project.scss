@@ -1,0 +1,406 @@
+.project-bgvideo {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.project-bgvideo__poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+
+  -webkit-transition: all 0.6s $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 0.6s $cubic;//, -webkit-transform 0.5s $cubic;
+
+  @include tablet {
+
+  }
+
+  @include laptop {
+  }
+
+  @include desktop {
+  }
+}
+
+.project-title__wrapper {
+  width: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 60%;
+  -webkit-transition: all 0.1s;// $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 0.1s;// $cubic;//, -webkit-transform 0.5s $cubic;
+
+  @include tablet {
+    max-width: 585px;
+  }
+
+  @include laptop {
+    max-width: 750px;
+  }
+
+  @include desktop {
+    max-width: 1050px;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+
+    @include tablet {
+      font-size: 100px;
+    }
+
+    @include laptop {
+      font-size: 100px;
+    }
+
+    @include desktop {
+      font-size: 144px;
+    }
+  }
+
+  svg {
+    width: 35px;
+    -webkit-transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
+    transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
+    display: block;
+    margin: 90px auto 0;
+    cursor: pointer;
+
+    @include tablet {
+      width: 50px;
+    }
+
+    @include laptop {
+      width: 60px;
+    }
+
+    @include desktop {
+      width: 90px;
+    }
+
+    &:hover {
+      width: 45px;
+
+      @include tablet {
+        width: 65px;
+      }
+
+      @include laptop {
+        width: 75px;
+      }
+
+      @include desktop {
+        width: 115px;
+      }
+    }
+  }
+}
+
+.project-info {
+  margin: 50px auto;
+  width: 212px;
+
+  @include tablet {
+    width: 575px;
+    margin: 0 auto;
+  }
+
+  @include laptop {
+    width: 950px;
+  }
+
+  @include desktop {
+    width: 1300px;
+  }
+
+  h2 {
+    font-size: 15px;
+    text-decoration: underline;
+    margin: 25px auto 0;
+  }
+
+  p {
+    margin: 25px auto 0;
+  }
+}
+
+.project-info__details {
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include laptop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.project-info__meta {
+  @include tablet {
+    width: 212px;
+  }
+
+  @include laptop {
+    width: 282px;
+  }
+
+  @include desktop {
+    width: 416px;
+  }
+}
+
+.project-info__performances {
+  max-height: 0;
+  overflow-y: hidden;
+  -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+
+  @include tablet {
+    max-height: none;
+    overflow-y: auto;
+    width: 212px;
+  }
+
+  @include laptop {
+    max-height: none;
+    overflow-y: auto;
+    width: 282px;
+  }
+
+  @include desktop {
+    max-height: none;
+    overflow-y: auto;
+    width: 416px;
+  }
+}
+
+.project-info__performance{
+  margin: 25px auto 0;
+
+  //make sure to update this for all screen sizes
+  @include desktop {
+    margin: 40px auto 0;
+  }
+}
+
+#info-expand {
+  margin: 25px auto 0;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include laptop {
+    display: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
+}
+
+.project-media {
+
+  @include tablet {
+    margin: 135px auto 0;
+  }
+
+  iframe {
+    width: 100%;
+    margin: 36px auto 0;
+    display: block;
+
+    @include tablet {
+      width: 500px;
+      margin: 60px auto 0;
+    }
+
+    @include laptop {
+      width: 665px;
+      margin: 90px auto 0;
+    }
+
+    @include desktop {
+      width: 980px;
+      margin: 125px auto 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    margin: 36px auto 0;
+    display: block;
+
+    @include tablet {
+      width: 500px;
+      margin: 60px auto 0;
+    }
+
+    @include laptop {
+      width: 665px;
+      margin: 90px auto 0;
+    }
+
+    @include desktop {
+      width: 980px;
+      margin: 125px auto 0;
+    }
+  }
+}
+
+.project-media__extra {
+  max-height: 0;
+  overflow-y: hidden;
+  -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+}
+
+.project-seemore {
+  text-align: center;
+  cursor: pointer;
+  margin: 70px auto 0;
+
+  @include tablet {
+    margin: 90px auto 0;
+  }
+
+  @include laptop {
+    margin: 115px auto 0;
+  }
+
+  @include desktop {
+    margin: 160px auto 0;
+  }
+
+  span {
+    font-size: 30px;
+
+    @include tablet {
+      font-size: 38px;
+    }
+
+    @include laptop {
+      font-size: 50px;
+    }
+
+    @include desktop {
+      font-size: 75px;
+    }
+  }
+}
+
+.project-seemore__arrow {
+  display: inline-block;
+  width: 30px;
+  margin: 0 0 0 16px;
+
+  @include tablet {
+    width: 35px;
+  }
+
+  @include laptop {
+    width: 45px;
+  }
+
+  @include desktop {
+    width: 70px;
+  }
+
+  svg {
+    transform: rotate(270deg);
+    width: 100%;
+    height: auto;
+    -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+    transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+
+    #Fill-6 {
+      visibility: hidden;
+    }
+  }
+
+  .rotated {
+    transform: rotate(90deg);
+  }
+}
+
+
+.project-menu__wrapper {
+  width: 212px;
+  margin: 0 auto 50px;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include tablet {
+    width: 535px;
+    margin: 125px auto 90px;
+    font-size: 35px;
+  }
+
+  @include laptop {
+    width: 800px;
+    margin: 180px auto 100px;
+  }
+
+  @include desktop {
+    width: 1050px;
+    margin: 260px auto 300px;
+  }
+
+  li {
+    margin: 48px auto 0;
+
+    @include tablet {
+      margin: 60px auto 0;
+    }
+
+    @include laptop {
+      margin: 100px auto 0;
+    }
+
+    @include desktop {
+      margin: 130px auto 0;
+    }
+
+    h2 {
+      @include tablet {
+        font-size: 38px;
+      }
+
+      @include laptop {
+        font-size: 50px;
+      }
+
+      @include desktop {
+        font-size: 74px;
+      }
+    }
+  }
+}
+
+.expanded {
+  max-height: 2000px;
+  -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+  transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+}

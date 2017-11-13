@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+{% capture style %}{% include project.scss %}{% endcapture %}
+{% include head.html %}
+<body>
+{% include header.html %}
+
+<section class="project-bgvideo" id="project-bgvideo">
+  {{ page.bg-video }}
+  <div class="project-bgvideo__poster" id="project-bgvideo__poster" style="background-image: url({{ page.root | absolute_url }}preview.jpg)">
+    <div class="project-title__wrapper">
+      <h1>{{ page.title }}</h1>
+      {% include playarrow.svg %}
+    </div>
+  </div>
+</section>
+<section class="project-info">
+  <h1 class="hidden">Project Info</h1>
+  <ul class="project-info__details">
+    <div class="project-info__meta">
+    <li>
+      <h2>Title</h2>
+      <p>{{ page.title }}</p>
+    </li>
+    <li>
+      <h2>Created</h2>
+      <p>{{ page.created }}</p>
+    </li>
+    <p>{{ page.description }}</p>
+    {% if page.performances %}
+    </div>
+    <ul class="project-info__performances" id="project-performances">
+      <h2>Select Performances</h2>
+    {% for performance in page.performances %}
+      <li>
+        <ul class="project-info__performance">
+          {% if performance.date %}<li>{{ performance.date }}</li>{% endif %}
+          {% if performance.event %}<li>{{ performance.event }}</li>{% endif %}
+          {% if performance.venue %}<li>{{ performance.venue }}</li>{% endif %}
+          {% if performance.location %}<li>{{ performance.location }}</li>{% endif %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <li id="info-expand">Read more...</li>
+  </ul>
+</section>
+<section class="project-media">
+  {% for content in page.documentation limit: 3 %}
+    {% capture content_type %}{{ content | downcase }}{% endcapture %}
+    {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
+      <img src="{{ page.root | absolute_url }}{{ content }}">
+    {% else %}
+      {{ content }}
+    {% endif %}
+  {% endfor %}
+
+  {% if page.documentation.size > 3 %}
+  <div class="project-media__extra" id="media-extra">
+    {% for content in page.documentation offset: 3 %}
+      {% capture content_type %}{{ content | downcase }}{% endcapture %}
+      {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
+        <img src="{{ page.root | absolute_url }}{{ content }}">
+      {% else %}
+        {{ content }}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="project-seemore" id="see-more">
+    <span>See more</span>
+      <div class="project-seemore__arrow">
+    {% include arrow.svg %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+<section class="project-menu__wrapper">
+  <ul class="project-menu">
+    {% for project in site.projects reversed %}
+    <li>
+      <a href="{{ project.permalink | absolute_url }}">
+        <h2>{{ project.title }}</h2>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+</body>
+<script type="text/javascript">
+  (function(){
+    var button = document.getElementById("project-bgvideo__play");
+    var video = document.getElementById("project-bgvideo");
+    var img = document.getElementById("project-bgvideo__poster");
+    var isPlaying = false;
+
+    if(video.children[0].tagName.toLowerCase() === "iframe"){
+      button.onclick = function(e){
+        e.preventDefault();
+        isPlaying = true;
+        if(!video.children[0].src.includes("?")) video.children[0].src += "?";
+        video.children[0].src += "&auto_play=true&autoplay=1";
+        // setTimeout(function(){
+        img.style.opacity = button.style.opacity = 0;
+        // }, 500)
+      }
+    }
+
+    var nav = document.getElementById("main-nav");
+    var t;
+    document.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onmousedown = resetTimer; // touchscreen presses
+    document.ontouchstart = resetTimer;
+    document.onclick = resetTimer;     // touchpad clicks
+    document.onscroll = resetTimer;    // scrolling with arrow keys
+    document.onkeypress = resetTimer;
+
+    function hideNav() {
+      if(isPlaying){
+        nav.style.opacity = 0;
+      }
+    }
+
+    function resetTimer() {
+        clearTimeout(t);
+        nav.style.opacity = 1;
+        t = setTimeout(hideNav, 500)
+        // 1000 milisec = 1 sec
+    }
+
+    var expand = document.getElementById("info-expand");
+    var performances = document.getElementById("project-performances");
+
+    expand.addEventListener("click", function(){
+      expand.innerText = (expand.innerText == "Read more...") ? "Read less..." : "Read more...";
+      performances.classList.toggle("expanded");
+    });
+
+    var seeMore = document.getElementById("see-more");
+    var extraMedia = document.getElementById("media-extra");
+    var arrow = seeMore.getElementsByTagName("svg")[0];
+
+    seeMore.addEventListener("click", function(){
+      extraMedia.classList.toggle("expanded");
+      seeMore.firstElementChild.innerText = (seeMore.firstElementChild.innerText == "See more") ? "See less" : "See more";
+      arrow.classList.toggle("rotated");
+    })
+  })();
+</script>
+</html>
