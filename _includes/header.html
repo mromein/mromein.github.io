@@ -10,12 +10,18 @@
           </a>
         </li>
         {% endfor %}
+        <li class="menu-item">
+          <!-- <img class="hidden" src="{{ \"project.root\" | absolute_url }}preview.jpg"> -->
+          <a href="{{ site.url }}">
+            <h2>HOME</h2>
+          </a>
+        </li>
         <div class="svg-wrapper" id="down-arrow">{% include arrow.svg %}</div>
       </ul>
     </div>
     <div class="main-nav" id="main-nav">
-      <a><h1 class="nav-work" id="menu-button">work</h1></a>
-      <a href="{{ site.url }}/info" ><h1 class="nav-info">info</h1></a>
+      <a><h1 class="nav-work noselect" id="menu-button">work</h1></a>
+      <a href="{{ site.url }}/info" ><h1 class="nav-info noselect">info</h1></a>
     </div>
   </nav>
   <script type="text/javascript">
@@ -34,6 +40,7 @@
 
     menuButton.addEventListener("click", function(){
       menu.classList.toggle("menu-invisible");
+      document.body.classList.toggle("no-overflow")
       displayArrow();
     });
 
