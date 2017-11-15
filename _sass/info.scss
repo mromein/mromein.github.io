@@ -1,4 +1,4 @@
-article {
+.info {
   max-width: 212px;
   margin: 110px auto 0;
 
@@ -21,7 +21,7 @@ article {
   }
 }
 
-.about-img {
+.info-img {
 
   @include tablet {
     position: absolute;
@@ -45,7 +45,7 @@ article {
   }
 }
 
-.about-text {
+.info-text {
   margin: 30px 0 0;
 
   @include tablet {
@@ -73,7 +73,7 @@ article {
   }
 }
 
-.about-contacts {
+.info-contacts {
 
   @include tablet {
     position: absolute;

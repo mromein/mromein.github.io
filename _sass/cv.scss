@@ -1,4 +1,4 @@
-article {
+.cv {
   max-width: 212px;
   margin: 50px auto;
 
@@ -16,7 +16,7 @@ article {
   }
 }
 
-section {
+.cv-education,.cv-performances, .cv-awards, .cv-talks, .cv-work {
   h3 {
     text-decoration: underline;
 
