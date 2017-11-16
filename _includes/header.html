@@ -4,7 +4,8 @@
       <ul class="menu">
         {% for project in site.projects reversed %}
         <li onmouseover="menuMouseOver(this)" class="menu-item">
-          <img class="hidden" src="{{ \"project.root\" | absolute_url }}preview.jpg">
+          <img class="menu-item__image" src="{{ \"project.root\" | absolute_url }}preview.jpg">
+          <div class="menu-item__bgimage" style="background-image: url({{ \"project.root\" | absolute_url }}preview.jpg)"></div>
           <a href="{{ site.url }}{{ project.permalink }}">
             <h2>{{ project.title }}</h2>
           </a>
@@ -64,8 +65,13 @@
 
     window.addEventListener("resize", displayArrow);
 
+    var bgs = document.getElementsByClassName("menu-item__bgimage");
     function menuMouseOver(el){
-      menu.style.backgroundImage = "url(" + el.getElementsByTagName("img")[0].src + ")";
+      // menu.style.backgroundImage = "url(" + el.getElementsByTagName("img")[0].src + ")";
+      for(var i = 0; i < bgs.length; i ++){
+        bgs[i].style.opacity = 0;
+      }
+      el.getElementsByClassName("menu-item__bgimage")[0].style.opacity = 1;
     }
 
   </script>

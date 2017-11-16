@@ -108,19 +108,20 @@
         video.children[0].src += "&auto_play=true&autoplay=1";
         // setTimeout(function(){
         img.style.opacity = button.style.opacity = 0;
+        img.style.pointerEvents = "none";
         // }, 500)
       }
     }
 
     var nav = document.getElementById("main-nav");
     var t;
-    document.onload = resetTimer;
-    document.onmousemove = resetTimer;
-    document.onmousedown = resetTimer; // touchscreen presses
-    document.ontouchstart = resetTimer;
-    document.onclick = resetTimer;     // touchpad clicks
-    document.onscroll = resetTimer;    // scrolling with arrow keys
-    document.onkeypress = resetTimer;
+    window.addEventListener("load", resetTimer);
+    window.addEventListener("mousemove", resetTimer);
+    window.addEventListener("mousedown", resetTimer);
+    window.addEventListener("touchstart", resetTimer);
+    window.addEventListener("click", resetTimer);
+    window.addEventListener("scroll", resetTimer);
+    window.addEventListener("keypress", resetTimer);
 
     function hideNav() {
       if(isPlaying){

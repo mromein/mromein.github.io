@@ -68,3 +68,7 @@ p:last-of-type {
   position: absolute;
   left: -9999px;
 }
+
+::-webkit-scrollbar { 
+    display: none; 
+}
