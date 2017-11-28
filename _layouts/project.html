@@ -26,7 +26,7 @@
       <h2>Created</h2>
       <p>{{ page.created }}</p>
     </li>
-    <p>{{ page.description }}</p>
+    <p>{{ page.description | markdownify }}</p>
     {% if page.performances %}
     </div>
     <ul class="project-info__performances" id="project-performances">

@@ -8,7 +8,7 @@ bg-video: >
   <iframe src="https://player.vimeo.com/video/153056895" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  Custom experimental instrument for live performance. A 3D audio/visual sampler in which the performer remixes live recordings of  their face and voice which are then projected as a large scale triptych.
+  In Triplicate is a custom audio/visual instrument originally developed for the New Interfaces in Musical Expression showcase. Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques.
 
 performances:
   - event: "SXSW Interactive Conference"
@@ -16,6 +16,7 @@ performances:
     location: "Austin, Texas"
   - event: "Mixed Signals"
     date: "February 2016"
+    venue: "Umbrella Factory"
     location: "NYC"
   - event: "Pataphysical February "
     date: "February 2016"
@@ -27,13 +28,10 @@ performances:
     location: "NYC"
 
 documentation:
-  - >
-    <iframe src="https://player.vimeo.com/video/153056895" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  - "3ld.jpg"
-  - "mixed_signals_002.jpg"
-  - "mixed_signals_002.jpg"
-  - "mixed_signals_002.jpg"
-  - "mixed_signals_002.jpg"
-  - >
-    <iframe src="https://player.vimeo.com/video/153056895" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - "1_Sehyun_AV_Kim.jpg"
+  - "2_Sehyun_AV_Kim.jpg"
+  - "3_Leon_Eckert.jpg"
+  - "4_Leon_Eckert.jpg"
+  - "5_Skye_Morse_Hodgson.jpg"
+  - "6_Skye_Morse_Hodgson.jpg"
 ---
