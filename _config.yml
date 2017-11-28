@@ -4,7 +4,7 @@ email: seth@channel.studio
 description: > 
   Some copy about Matt Romein
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://matt-romein.com/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mromein.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: polyrhythmatic
 
 logo: "/assets/logo.png"
