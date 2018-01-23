@@ -21,4 +21,109 @@
   </section>
 </article>
 </body>
+<footer>
+  <style type="text/css">
+    canvas {
+      pointer-events: none;
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    function ChromaFilter() {
+      var vertexShader = null;
+      var fragmentShader = "\
+      vec3 rgb2hsv(vec3 c)\
+      {\
+          vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\
+          vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\
+          vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\
+      \
+          float d = q.x - min(q.w, q.y);\
+          float e = 1.0e-10;\
+          return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\
+      }\
+      \
+      float chromaKey(vec3 color)\
+      {\
+        vec3 backgroundColor = vec3(0.08, .65, 0.08);\
+        vec3 weights = vec3(4., 1., 2.);\
+        \
+        vec3 hsv = rgb2hsv(color);\
+        vec3 target = rgb2hsv(backgroundColor);\
+        float dist = length(weights * (target - hsv));\
+        return 1. - clamp(3. * dist - 1.5, 0., 1.);\
+      }\
+      \
+      precision mediump float;\
+      varying vec2 vTextureCoord;\
+      uniform sampler2D uSampler;\
+      uniform vec4 dimensions;\
+      \
+      void main()\
+      {\
+        vec4 color = texture2D(uSampler, vTextureCoord);\
+        vec4 bg = vec4(0.0, 0.0, 0.0, 0.0);\
+        float incrustation = chromaKey(color.rgb);\
+        gl_FragColor = mix(gl_FragColor, color, 1. - incrustation);\
+      }\
+      "
+
+      var uniforms = {};
+
+      PIXI.Filter.call(this, vertexShader, fragmentShader);
+
+      this.uniforms.thresholdSensitivity = 0.4;
+      this.uniforms.smoothing = 0.1;
+      this.uniforms.colorToReplace = [(37 / 255), (255 / 255), (10 / 255)];
+    }
+
+    ChromaFilter.prototype = Object.create(PIXI.Filter.prototype);
+    ChromaFilter.prototype.constructor = ChromaFilter;
+
+    var app = new PIXI.Application(window.innerWidth, window.innerHeight, { antialias: true, transparent: true });
+    document.body.appendChild(app.view);
+
+    var videoURLs = ["{{ "assets/naked/1.mp4" | absolute_url }}", "{{ "assets/naked/2.mp4" | absolute_url }}", "{{ "assets/naked/3.mp4" | absolute_url }}", "{{ "assets/naked/4.mp4" | absolute_url }}", "{{ "assets/naked/5.mp4" | absolute_url }}", "{{ "assets/naked/6.mp4" | absolute_url }}", "{{ "assets/naked/7.mp4" | absolute_url }}", "{{ "assets/naked/8.mp4" | absolute_url }}", "{{ "assets/naked/9.mp4" | absolute_url }}", "{{ "assets/naked/10.mp4" | absolute_url }}", "{{ "assets/naked/11.mp4" | absolute_url }}", "{{ "assets/naked/12.mp4" | absolute_url }}", "{{ "assets/naked/13.mp4" | absolute_url }}", "{{ "assets/naked/14.mp4" | absolute_url }}"];
+
+    var video = document.createElement("video");
+    video.setAttribute('playsinline', 'playsinline');
+    video.preload = "auto";
+    video.muted = true;
+    video.autoplay = true;
+    video.oncanplay = addToPIXI;
+    video.src = videoURLs[Math.floor(Math.random() * 14)];
+
+    video.onended = function(){
+      var src = videoURLs[Math.floor(Math.random() * 14)];
+      if(video.src !== src) {
+        video.src = src;
+        console.log(video.src)
+      } else {
+        console.log("double!")
+        video.onended();
+      }
+    }
+
+    function addToPIXI() {
+        var texture = PIXI.Texture.fromVideo(video);
+        var bg = new PIXI.Sprite(texture);
+
+        bg.anchor.x = 0.5;
+        bg.anchor.y = 0.5;
+
+        bg.position.x = app.renderer.width / 2;
+        bg.position.y = app.renderer.height / 2;
+
+        app.stage.addChild(bg);
+        var filter = new ChromaFilter();
+
+        bg.filters = [filter];
+    }
+  </script>
+</footer>
 </html>
