@@ -1,9 +1,9 @@
 ---
 layout: project
-permalink: /real_time_puppeteering/
-title: "Real Time Puppeteering"
+permalink: /real_time_avateering/
+title: "Real Time Avateering"
 created: "May 2016"
-root: "/assets/real_time_puppeteering/"
+root: "/assets/real_time_avateering/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/209097149" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -12,9 +12,12 @@ description: >
 
 
 documentation:
+  - "1.gif"
+  - "2.gif"
+  - "3.gif"
+  - "4.gif"
+  - "5.gif"
+  - "6.gif"
   - >
     <iframe src="https://player.vimeo.com/video/169132287" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  - "1.jpg"
-  - "2.jpg"
-  - "3.jpg"
 ---

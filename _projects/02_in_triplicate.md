@@ -5,7 +5,7 @@ title: "In Triplicate"
 created: "October 2016"
 root: "/assets/in_triplicate/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/153056895" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/249836876" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   In Triplicate is a custom audio/visual instrument originally developed for the New Interfaces in Musical Expression showcase. Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques.
@@ -28,10 +28,12 @@ performances:
     location: "NYC"
 
 documentation:
-  - "1_Sehyun_AV_Kim.jpg"
-  - "2_Sehyun_AV_Kim.jpg"
-  - "3_Leon_Eckert.jpg"
-  - "4_Leon_Eckert.jpg"
-  - "5_Skye_Morse_Hodgson.jpg"
-  - "6_Skye_Morse_Hodgson.jpg"
+  - "1.jpg"
+  - "2.jpg"
+  - "3.jpg"
+  - "4.jpg"
+  - "5.jpg"
+  - "6.jpg"
+  - "7.jpg"
+  - "8.jpg"
 ---
