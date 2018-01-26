@@ -13,6 +13,7 @@
     <h3><a href="{{ "cv" | absolute_url }}">Curriculum Vitae</a></h3>
     <h3><a href="mailto:matt.romein@gmail.com">Contact</a></h3>
     <h3><a href="https://www.instagram.com/header_munging/">Instagram</a></h3>
+    <h3>Please don't click!</h3>
   </section>
 </article>
 </body>
@@ -91,7 +92,8 @@
     video.muted = true;
     video.autoplay = true;
     video.oncanplay = addToPIXI;
-    video.src = videoURLs[Math.floor(Math.random() * 14)];
+    // video.src = videoURLs[Math.floor(Math.random() * 14)];
+    video.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}"
 
     video.onended = function(){
       var src = videoURLs[Math.floor(Math.random() * 14)];

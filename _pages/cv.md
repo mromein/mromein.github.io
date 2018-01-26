@@ -4,15 +4,15 @@ permalink: /cv
 title: "cv"
 
 education:
-  - name: "MPS - NYU Tisch School of the Arts - ITP - Creative Coding"
+  - name: "MPS | NYU Tisch School of the Arts"
     year: "2016"
-  - name: "BA - Willamette University - Theater & Art/Technology"
+  - name: "BA | Willamette University"
     year: "2010"
 
 performances:
   - name: "Meat Puppet Arcade"
     description: >
-      Commissioned piece for IDFA’s annual Doclab Expo. Three arcade cabinet installations in which viewers can play surrealist arcade games utilizing nude 3D scans of the artists. Created in collaboration with artist Joseph Mango.
+      Arcade cabinet installations in which viewers can play surrealist arcade games utilizing nude 3D scans of the artists. Created in collaboration with artist Joseph Mango.
 
     dates:
       - event: "DocLab: Elastic Reality"
@@ -41,7 +41,7 @@ performances:
 
   - name: "analmosh"
     description: >
-      Mixed media dance performance involving live body tracking and custom visuals driven by the dancer’s movement. Created in collaboration with dancer Sophie Sotsky.
+      Custom made generative visual system, sometimes presented as a live performance in which the imagery is accompanied by sample-based audio.
     dates:
       - event: "Virtual Sky"
         date: "August 2015"
@@ -59,11 +59,11 @@ performances:
         date: "March 17th 2014"
         venue: "Cloud City"
         location: "NYC"
-      - event: "Single Channel Cheeseburgers II"
+      - event: "Single Channel Cheeseburgers"
         date: "February 2014"
         venue: "Outpost Artist Resources"
         location: "NYC"
-      - event: "Single Channel Cheeseburgers I"
+      - event: "Single Channel Cheeseburgers"
         date: "December 2014"
         venue: "Secret Project Robot"
         location: "NYC"
@@ -71,28 +71,28 @@ performances:
 awards:
   - name: "ITP Research Resident"
     description: >
-      Year long residency at ITP providing assistance for graduate students in the form of office hours, TA’ing classes, and developing workshops to assist students. Also spent time researching and developing methods for scanning bodies and developing choreographic languages for motion capture enabled dance performances.
+      Year long residency at ITP providing assistance for graduate students in the form of office hours, assisting classes, and developing workshops to assist students. Also spent time researching and developing methods for scanning bodies and developing choreographic languages for motion capture enabled dance performances.
     date: "August 2016 - August 2017"
     place: "Tisch School of the Arts ITP"
     location: "NYC"
 
   - name: "ACE Artist in Residence"
     description: > 
-      Micro residency at the Ace Hotel in Manhattan for one night.
+      Micro residency at the Ace Hotel in Manhattan.
     date: "March 26th 2017"
     place: "ACE Hotel"
     location: "NYC"
 
-  - name: "xStory Experiments in Storytelling Google Grant"
+  - name: "Google xStory"
     description: > 
-      Research group at ITP centered around experiments in storytelling and sponsored by Google. Funding provided for research relating to scanning and rigging real life bodies.
-    date: "March 26th 2017"
-    place: "ACE Hotel"
+      Research group at NYU centered around experiments in storytelling and sponsored by Google. Funding provided for research relating to scanning and rigging real life bodies.
+    date: "September 2015 - May 2017"
+    place: "NYU, ITP"
     location: "NYC"
 
   - name: "Keck Art & Technology Summer Research Grant"
     description: > 
-      Stipend for a summer of research centered around circuit bending. Developed many different instruments and led a workshop on making your own circuit bent instrument.
+      Grant for the purpose of researching circuit bending. Developed many different instruments and led a workshop on developing circuit bent instruments.
     date: "June - Aug 2009"
     place: "Willamette University"
     location: "Salem, OR"
@@ -100,24 +100,43 @@ awards:
 talks:
   - name: "MVR 2.1"
     description: >
-      Series of talks hosted by Nancy Nowak revolving around the body and technology.
+      Series of talks hosted by Nancy Nowacek and David Sheinkopf involving the body and technology.
     date: "Feb 13th 2017"
     place: "Brooklyn Central BKC"
     location: "NYC"
 
   - name: "DocLab: Interactive Conference"
     description: >
-      Day long conference for select artists involved in IDFA’s DocLab expo. Gave a talk covering a variety of topics surrounding identity, ownership of digital representations, and hacking the uncanny valley.
+      Conference for artists involved in IDFA’s DocLab expo. Spoke about identity, ownership of digital representations, and hacking the uncanny valley.
     date: "Nov 19th 2016"
     place: "De Brakke Grond"
     location: "Amsterdam"
 
   - name: "DocLab: The Best of Awkward Tech"
     description: >
-      Panel talk discussing technology that straddles the line between useless and thought provoking.
+      Panel discussing technology that straddles the line between useless and thought provoking.
     date: "Nov 17th 2016"
     place: "De Brakke Grond"
     location: "Amsterdam"
+
+teaching:
+  - name: "Live Image Processing and Performance"
+    description: >
+      A Max/MSP/Jitter course on manipulating visual media (video, still imagery, live camera feeds) in integration with various interactive elements (sound, physical interfaces, sensors) in order to create dynamic and replicable video performance systems.
+
+    dates:
+      - date: "Spring 2018"
+        venue: "NYU ITP"
+        location: "NYC"
+
+  - name: "Performative Avatars"
+    description: >
+      A look at how avatars are being used in art/entertainment, utilizing existing avatar creation tools to develop projects that examine identity and body politics in the context of contemporary performance.
+
+    dates:
+      - date: "Fall 2017"
+        venue: "NYU ITP"
+        location: "NYC"
 
 work:
   - role: "Creative Technologist Intern"

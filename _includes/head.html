@@ -28,5 +28,17 @@
   <meta name="msapplication-TileImage" content="{{ site.url }}/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.6/pixi.min.js"></script>
+  <style type="text/css">
+    @font-face {
+      font-family: "favorit";
+      src: local("☺︎"),
+        url("{{ 'fonts/favorit-regular.woff2' | absolute_url }}") format("woff2"),
+        url("{{ 'fonts/favorit-regular.woff' | absolute_url }}") format("woff"),
+        url("{{ 'fonts/favorit-regular.otf' | absolute_url }}") format("opentype"),
+        url("{{ 'fonts/favorit-regular.eot' | absolute_url }}"),
+        url("{{ 'fonts/favorit-regular.eot' | absolute_url }}?#iefix") format("embedded-opentype"),
+        url("{{ 'fonts/favorit-regular.ttf' | absolute_url }}") format("truetype");
+    }
+  </style>
   <style type="text/css">{{ style | scssify }}</style>
 </head>

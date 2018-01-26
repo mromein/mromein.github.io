@@ -81,11 +81,38 @@
         {% endfor %}
       </div>
     </section>
+
+    <section class="cv-teaching">
+      <h3>Teaching</h3>
+      <div class="cv-wrapper">
+        {% for class in page.teaching%}
+        <h4>{{ class.name }}</h4>
+        <div class="cv-item">
+          <div class="cv-description">
+            <p>{{ class.description }}</p>
+          </div>
+          <ul class="cv-dates">
+            {% for date in class.dates %}
+            <li class="cv-date">
+              <ul>
+                <li>{{ date.date }}</li>
+                <li>{{ date.event }}</li>
+                {% if date.venue %}<li>{{ date.venue }}</li>{% endif %}
+                <li>{{ date.location }}</li>
+              </ul>
+            {% endfor %}
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
     <section class="cv-work">
       <h3>Related Work Experience</h3>
         <div class="cv-wrapper">
         {% for work in page.work %}
-        <h4>{{ work.role }}</h4>
+        <h4>{{ work.place }}</h4>
+        <h5>{{ work.role }}</h5>
         <div class="cv-item">
           <div class="cv-description">
             <p>{{ work.description }}</p>
