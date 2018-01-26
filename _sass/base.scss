@@ -57,6 +57,10 @@ h1, h2 {
 
 p {
   margin-bottom: 25px;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 p:last-of-type {
