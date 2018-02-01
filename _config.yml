@@ -2,9 +2,9 @@
 title: Matt Romein
 email: seth@channel.studio
 description: > 
-  Some copy about Matt Romein
+  Matt Romein is an artist and performer working at the intersection of live performance, generative computer art, and multi-media installation. Originally trained as an actor, he has worked in NYC’s downtown theater and dance community as a sound and video designer while also making his own technology-centric live performances.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mromein.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://matt-romein.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: polyrhythmatic
 
 logo: "/assets/logo.png"
