@@ -8,7 +8,7 @@ bg-video: >
   <iframe src="https://player.vimeo.com/video/249836876" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  In Triplicate is a custom audio/visual instrument originally developed for the New Interfaces in Musical Expression showcase. Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques.
+  In Triplicate is a custom audio/visual instrument originally developed for the New Interfaces in Musical Expression showcase. Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques. Photos by AV Kim, Leon Eckert, and Skye Morse-Hodgson.
 
 performances:
   - event: "SXSW Interactive Conference"
