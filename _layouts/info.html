@@ -13,7 +13,7 @@
     <h3><a href="{{ "cv" | absolute_url }}">Curriculum Vitae</a></h3>
     <h3><a href="mailto:matt.romein@gmail.com">Contact</a></h3>
     <h3><a target="_blank" href="https://www.instagram.com/header_munging/">Instagram</a></h3>
-    <h3>Please don't click!</h3>
+    <h3><a id="dontclick">Please don't click!</a></h3>
   </section>
 </article>
 </body>
@@ -22,11 +22,14 @@
     canvas {
       pointer-events: none;
       z-index: 1;
-      position: absolute;
+      position: fixed;
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
+    }
+    a {
+      cursor: pointer;
     }
   </style>
   <script type="text/javascript">
@@ -92,8 +95,25 @@
     video.muted = true;
     video.autoplay = true;
     video.oncanplay = addToPIXI;
-    // video.src = videoURLs[Math.floor(Math.random() * 14)];
-    video.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}"
+
+    var first = true;
+    var manyFirst = true;
+
+    var manyVideo = document.createElement("video");
+    manyVideo.setAttribute('playsinline', 'playsinline');
+    manyVideo.preload = "auto";
+    manyVideo.muted = true;
+    manyVideo.autoplay = false;
+    manyVideo.oncanplay = addManyToPIXI;
+    manyVideo.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}";
+
+    var dontclick = document.getElementById("dontclick");
+    dontclick.addEventListener("click", function(){
+      manyVideo.play();
+    });
+
+    video.src = videoURLs[Math.floor(Math.random() * 14)];
+    // video.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}"
 
     video.onended = function(){
       var src = videoURLs[Math.floor(Math.random() * 14)];
@@ -106,21 +126,70 @@
       }
     }
 
+    var texture = PIXI.Texture.fromVideo(video);
+    var bg = new PIXI.Sprite(texture);
+
+    var manyTex = PIXI.Texture.fromVideo(manyVideo);
+    var manybg = new PIXI.Sprite(manyTex);
+
     function addToPIXI() {
-        var texture = PIXI.Texture.fromVideo(video);
-        var bg = new PIXI.Sprite(texture);
+        if(first){
+          bg.anchor.x = 0.5;
+          bg.anchor.y = 0.5;
 
-        bg.anchor.x = 0.5;
-        bg.anchor.y = 0.5;
+          bg.position.x = app.renderer.width / 2;
+          bg.position.y = app.renderer.height / 2;
 
-        bg.position.x = app.renderer.width / 2;
-        bg.position.y = app.renderer.height / 2;
+          app.stage.addChild(bg);
+          var filter = new ChromaFilter();
 
-        app.stage.addChild(bg);
-        var filter = new ChromaFilter();
-
-        bg.filters = [filter];
+          bg.filters = [filter];
+          first = false;
+          window.setTimeout(resize, 300)
+        }
     }
+
+    function addManyToPIXI() {
+        if(manyFirst){
+          manybg.anchor.x = 0.5;
+          manybg.anchor.y = 0.5;
+
+          manybg.position.x = app.renderer.width / 2;
+          manybg.position.y = app.renderer.height / 2;
+
+          app.stage.addChild(manybg);
+          var filter = new ChromaFilter();
+
+          manybg.filters = [filter];
+          manyFirst = false;
+          window.setTimeout(resize, 300)
+          window.setTimeout(function(){
+            manyVideo.pause();
+          }, 200);
+        }
+    }
+
+
+    function resize(){
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      app.renderer.resize(width, height)
+
+      if(texture.width/texture.height <= width/height){
+        var bgratio = texture.height / texture.width;
+        bg.width = manybg.width = app.renderer.width;
+        bg.height = manybg.height = app.renderer.width * bgratio;
+      } else {
+        var bgratio = texture.height / texture.width;
+        bg.height = manybg.height = app.renderer.height;
+        bg.width = manybg.width = app.renderer.height / bgratio;
+      }
+
+      bg.position.x = manybg.position.x = width / 2;
+      bg.position.y = manybg.position.y = height / 2;
+    }
+    window.addEventListener("resize", resize);
+
   </script>
 </footer>
 </html>
