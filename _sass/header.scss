@@ -161,10 +161,10 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
 }
 
-.menu-item:hover {
-  // h2 {
-  //   border: 4px solid white;
-  // }
+.menu-item {
+  a {
+    display: inline-block;
+  }
 }
 
 .menu-item__image {
