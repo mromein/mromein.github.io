@@ -137,8 +137,9 @@
         bg.width = bgFront.width = renderer.width;
         bg.height = bgFront.height = bg.width * bgratio;
       } else {
-        bg.width = bgFront.width = texture.width;
-        bg.height = bgFront.height = texture.height;
+        var bgratio = texture.height / texture.width;
+        bg.height = bgFront.height = renderer.height;
+        bg.width = bgFront.width = renderer.height / bgratio;
       }
 
       bgFront.width *= 1.4;
@@ -154,15 +155,11 @@
       bgFront.position.y = height / 2;
       bg.position.x = width / 2;
       bg.position.y = height / 2;
-
-      // renderer.view.style.width = width + 'px';
-      // renderer.view.style.height = height + 'px';
     }
 
     resize();
 
-    window.addEventListener("resize", resize);
-    // debugger;
+    window.addEventListener("resize", resize, false);
   });
 </script>
 </html>
