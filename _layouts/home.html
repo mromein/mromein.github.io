@@ -106,6 +106,15 @@
     bgFront.position.x = renderer.width / 2;
     bgFront.position.y = renderer.height / 2;
 
+    // window.addEventListener("mousemove", function(e){
+    //   bgFront.position.x = renderer.width / 2 + 100 * (0.5 - e.clientX/renderer.width);
+    //   bgFront.position.y = renderer.height / 2 - 100 * (0.5 - e.clientY/renderer.height);
+    // });
+
+    // window.addEventListener("devicemotion", function(e){
+    //   // debugger;
+    // });
+
     stage.addChild(bgFront);
 
     var thing = new PIXI.Sprite(whichImage());

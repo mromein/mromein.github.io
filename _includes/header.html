@@ -4,15 +4,14 @@
       <ul class="menu">
         {% for project in site.projects reversed %}
         <li onmouseover="menuMouseOver(this)" class="menu-item">
-          <img class="menu-item__image" src="{{ \"project.root\" | absolute_url }}preview.jpg">
           <div class="menu-item__bgimage" style="background-image: url({{ \"project.root\" | absolute_url }}preview.jpg)"></div>
           <a href="{{ site.url }}{{ project.permalink }}">
+          <img class="menu-item__image" src="{{ \"project.root\" | absolute_url }}preview.jpg">
             <h2>{{ project.title }}</h2>
           </a>
         </li>
         {% endfor %}
         <li class="menu-item">
-          <!-- <img class="hidden" src="{{ \"project.root\" | absolute_url }}preview.jpg"> -->
           <a href="{{ site.url }}">
             <h2>HOME</h2>
           </a>
@@ -29,13 +28,18 @@
     var menu = document.getElementById("menu"),
     menuButton = document.getElementById("menu-button"),
     nav = document.getElementById("main-nav"),
-    downArrow = document.getElementById("down-arrow");
+    downArrow = document.getElementById("down-arrow"),
+    innerMenu = document.querySelectorAll("#menu>ul")[0];
 
     function displayArrow(){
       if(menu.scrollHeight == menu.offsetHeight){
         downArrow.style.display = "none";
       } else {
         downArrow.style.display = "inherit";
+      }
+
+      if(innerMenu.scrollHeight < window.innerHeight) {
+        downArrow.style.display = "none";
       }
     }
 
@@ -47,27 +51,12 @@
 
     menu.onscroll = function(ev) {
       downArrow.style.opacity = nav.style.opacity = 1 - 4 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
-      // if((menu.offsetHeight + menu.scrollTop) >= menu.scrollHeight) {
-      //   //bottom
-      //   // nav.classList.toggle("nav-hidden");
-      //   // downArrow.style.opacity = 0;
-      // } else if(menu.scrollTop == 0){
-      //   //top
-      //   nav.classList.toggle("nav-hidden");
-      //   // downArrow.style.opacity = 1;
-      // } else {
-      //   //somewhere in the middle
-      //   if(!nav.classList.contains("nav-hidden")){
-      //     nav.classList.toggle("nav-hidden");
-      //   }
-      // }
     };
 
     window.addEventListener("resize", displayArrow);
 
     var bgs = document.getElementsByClassName("menu-item__bgimage");
     function menuMouseOver(el){
-      // menu.style.backgroundImage = "url(" + el.getElementsByTagName("img")[0].src + ")";
       for(var i = 0; i < bgs.length; i ++){
         bgs[i].style.opacity = 0;
       }
