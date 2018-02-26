@@ -166,14 +166,16 @@
     });
 
     video.src = videoURLs[Math.floor(Math.random() * 14)];
-    // video.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}"
 
     video.onended = function(){
       var src = videoURLs[Math.floor(Math.random() * 14)];
       if(video.src !== src) {
         video.src = src;
         console.log(video.src)
-        video.play();
+        // video.play();
+        video.onloadeddata = function() {
+          video.play();
+        }
       } else {
         console.log("double!")
         video.onended();
@@ -204,9 +206,11 @@
     }
 
     function addManyToPIXI() {
-      setTimeout(function(){
-        manyVideo.pause();
-      }, 0);
+      if(manyFirst){
+        setTimeout(function(){
+          manyVideo.pause();
+        }, 0);
+      }
       setTimeout(function(){
         if(manyFirst){
           manybg.anchor.x = 0.5;
