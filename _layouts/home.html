@@ -5,13 +5,12 @@
 <body>
   {% include header.html %}
   <canvas id="bg-canvas"></canvas>
+  <div id="loader">Loading...</div>
 </body>
 <script type="text/javascript">
   var loadedVideos = [];
-  var that;
 
-
-  function requestVideo(num){
+  function requestVideo(num, cb){
     var req = new XMLHttpRequest();
     req.open("GET", "assets/bg_videos/" + num + ".mp4", true);
     req.responseType = "blob";
@@ -22,11 +21,13 @@
       if (this.status === 200) {
         var videoBlob = this.response;
         loadedVideos.push(URL.createObjectURL(videoBlob)); // IE10+
-        if(num < 4 && num !== 1){
+        if(num < 12){
           requestVideo(num + 1)
-        } else if (num >= 4){
-          requestVideo(1);
         }
+      }
+      if (cb) {
+        loadIndicator.style.display = "none";
+        cb();
       }
     }
     req.onerror = function(e) {
@@ -35,23 +36,26 @@
 
     req.send();
   }
-  var loader = PIXI.loader;
 
-  loader.add("bgVideo", "assets/bg_videos/1.mp4")
-    .add("largeMask", "assets/large_mask.png")
+  var loader = PIXI.loader;
+  var loadIndicator = document.getElementById("loader");
+
+  loader.add("largeMask", "assets/large_mask.png")
     .add("smallMask", "assets/small_mask.png");
 
   loader.onLoad.add(function(e){
     console.log("add loading functionality here");
     console.log(e)
+    loadIndicator.innerHTML = "<p>" + (Math.round(e.progress*.66)) + "% loaded <span>.</span><span>.</span><span>.</span></p>";
   });
 
-  loader.onComplete.add(function(){
-    requestVideo(2);
-    console.log("hide loader with this");
-  })
-
   loader.load(function(loader, resources){
+    requestVideo(1, function(){
+      loaded(loader, resources);
+    });
+  });
+
+  function loaded(loader, resources){
 
     function whichImage(){
       if(window.innerWidth > 1024){
@@ -63,7 +67,6 @@
       }
     }
 
-    that = this;
     var canvas = document.getElementById("bg-canvas");
     var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
       antialias: true,
@@ -71,20 +74,26 @@
       autoResize: true
     });
 
-    resources.bgVideo.data.muted = true;
-    resources.bgVideo.data.setAttribute('playsinline', 'playsinline');
-    resources.bgVideo.data.autoplay = true;
+    var bgVideo = document.createElement("video");
+
+    bgVideo.muted = true;
+    bgVideo.setAttribute('playsinline', 'playsinline');
+    bgVideo.autoplay = true;
+    bgVideo.preload = "auto"
+    bgVideo.src = loadedVideos[0];
     var counter = 0;
 
-    resources.bgVideo.data.onended = function(){
-      resources.bgVideo.data.src = loadedVideos[counter];
-      resources.bgVideo.data.play();
+    bgVideo.onended = function(){
+      bgVideo.src = loadedVideos[counter];
+      bgVideo.oncanplay = function(){
+        bgVideo.play();
+      }
       counter ++;
-      if(counter > 3) counter = 0;
+      if(counter >= loadedVideos.length) counter = 0;
     };
 
     var stage = new PIXI.Container();
-    var texture = PIXI.Texture.fromVideo(resources.bgVideo.data);
+    var texture = PIXI.Texture.fromVideo(bgVideo);
 
     var bg = new PIXI.Sprite(texture);
 
@@ -170,6 +179,6 @@
 
     window.addEventListener("resize", resize, false);
     window.addEventListener("orientationchange", resize, false);
-  });
+  }
 </script>
 </html>

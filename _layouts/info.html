@@ -168,18 +168,17 @@
     video.src = videoURLs[Math.floor(Math.random() * 14)];
 
     video.onended = function(){
-      var src = videoURLs[Math.floor(Math.random() * 14)];
-      if(video.src !== src) {
-        video.src = src;
-        console.log(video.src)
-        // video.play();
-        video.onloadeddata = function() {
-          video.play();
+      setTimeout(function(){
+        var src = videoURLs[Math.floor(Math.random() * 14)];
+        if(video.src !== src) {
+          video.src = src;
+          video.onloadeddata = function() {
+            video.play();
+          }
+        } else {
+          video.onended();
         }
-      } else {
-        console.log("double!")
-        video.onended();
-      }
+      }, 4000)
     }
 
     var texture = PIXI.Texture.fromVideo(video);
