@@ -38,6 +38,23 @@
   left: 50%;
   top: 50%;
 
+  & p {
+    font-size: 30px;
+    min-width: 200px;
+
+    @include tablet {
+      font-size: 50px;
+    }
+
+    @include laptop {
+      font-size: 50px;
+    }
+
+    @include desktop {
+      font-size: 75px;
+    }
+  }
+
   span {
       /**
        * Use the blink animation, which is defined above
