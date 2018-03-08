@@ -139,12 +139,16 @@
 
     var app = new PIXI.Application(window.innerWidth, window.innerHeight, {
       antialias: true,
-      transparent: true,
-      legacy: true
+      transparent: true
+    });
+
+    app.renderer = new PIXI.WebGLRenderer({
+      antialias: true,
+      transparent: true
     });
     document.body.appendChild(app.view);
 
-    var videoURLs = ["{{ "assets/naked/1.mp4" | absolute_url }}", "{{ "assets/naked/2.mp4" | absolute_url }}", "{{ "assets/naked/3.mp4" | absolute_url }}", "{{ "assets/naked/4.mp4" | absolute_url }}", "{{ "assets/naked/5.mp4" | absolute_url }}", "{{ "assets/naked/6.mp4" | absolute_url }}", "{{ "assets/naked/7.mp4" | absolute_url }}", "{{ "assets/naked/8.mp4" | absolute_url }}", "{{ "assets/naked/9.mp4" | absolute_url }}", "{{ "assets/naked/10.mp4" | absolute_url }}", "{{ "assets/naked/11.mp4" | absolute_url }}", "{{ "assets/naked/12.mp4" | absolute_url }}", "{{ "assets/naked/13.mp4" | absolute_url }}", "{{ "assets/naked/14.mp4" | absolute_url }}"];
+    var videoURLs = ["{{ "assets/naked/1_.mp4" | absolute_url }}", "{{ "assets/naked/2_.mp4" | absolute_url }}", "{{ "assets/naked/3_.mp4" | absolute_url }}", "{{ "assets/naked/4_.mp4" | absolute_url }}", "{{ "assets/naked/5_.mp4" | absolute_url }}", "{{ "assets/naked/6_.mp4" | absolute_url }}", "{{ "assets/naked/7_.mp4" | absolute_url }}", "{{ "assets/naked/8_.mp4" | absolute_url }}", "{{ "assets/naked/9_.mp4" | absolute_url }}", "{{ "assets/naked/10_.mp4" | absolute_url }}", "{{ "assets/naked/11_.mp4" | absolute_url }}", "{{ "assets/naked/12_.mp4" | absolute_url }}", "{{ "assets/naked/13_.mp4" | absolute_url }}", "{{ "assets/naked/14_.mp4" | absolute_url }}"];
 
     var video = document.createElement("video");
     video.setAttribute('playsinline', 'playsinline');
@@ -162,7 +166,7 @@
     manyVideo.muted = true;
     manyVideo.autoplay = false;
     manyVideo.oncanplay = addManyToPIXI;
-    manyVideo.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}";
+    manyVideo.src = "{{ "assets/naked/bodies_.mp4" | absolute_url }}";
 
     var dontclick = document.getElementById("dontclick");
     dontclick.addEventListener("click", function(){
