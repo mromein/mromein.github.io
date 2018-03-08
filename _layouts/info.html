@@ -33,6 +33,9 @@
     }
   </style>
   <script type="text/javascript">
+  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
+  if(!isIE11){
     function ChromaFilter() {
       var vertexShader = null;
       var fragmentShader = "" +
@@ -147,11 +150,7 @@
       transparent: true
     });
 
-    var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-
-    if(!isIE11){
-      document.body.appendChild(app.view);
-    }
+    document.body.appendChild(app.view);
 
     var videoURLs = ["{{ "assets/naked/1.mp4" | absolute_url }}", "{{ "assets/naked/2.mp4" | absolute_url }}", "{{ "assets/naked/3.mp4" | absolute_url }}", "{{ "assets/naked/4.mp4" | absolute_url }}", "{{ "assets/naked/5.mp4" | absolute_url }}", "{{ "assets/naked/6.mp4" | absolute_url }}", "{{ "assets/naked/7.mp4" | absolute_url }}", "{{ "assets/naked/8.mp4" | absolute_url }}", "{{ "assets/naked/9.mp4" | absolute_url }}", "{{ "assets/naked/10.mp4" | absolute_url }}", "{{ "assets/naked/11.mp4" | absolute_url }}", "{{ "assets/naked/12.mp4" | absolute_url }}", "{{ "assets/naked/13.mp4" | absolute_url }}", "{{ "assets/naked/14.mp4" | absolute_url }}"];
 
@@ -261,7 +260,9 @@
       bg.position.y = manybg.position.y = height / 2;
     }
     window.addEventListener("resize", resize);
-
+  } else if (isIE11) {
+    document.getElementById("dontclick").display = "none";
+  }
   </script>
 </footer>
 </html>

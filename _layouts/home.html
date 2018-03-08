@@ -5,10 +5,11 @@
 <body>
   {% include header.html %}
   <canvas id="bg-canvas"></canvas>
-  <div id="loader">Loading...</div>
+  <div id="loader"><p>Loading<span>.</span><span>.</span><span>.</span></p></div>
 </body>
 <script type="text/javascript">
   var loadedVideos = [];
+  var loadIndicator = document.getElementById("loader");
 
   function requestVideo(num, cb){
     var req = new XMLHttpRequest();
@@ -37,148 +38,170 @@
     req.send();
   }
 
-  var loader = PIXI.loader;
-  var loadIndicator = document.getElementById("loader");
+  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
-  loader.add("largeMask", "assets/large_mask.png")
-    .add("smallMask", "assets/small_mask.png");
+  if(!isIE11){
+    var loader = PIXI.loader;
 
-  loader.onLoad.add(function(e){
-    console.log("add loading functionality here");
-    console.log(e)
-    loadIndicator.innerHTML = "<p>" + (Math.round(e.progress*.66)) + "% loaded <span>.</span><span>.</span><span>.</span></p>";
-  });
+    loader.add("largeMask", "assets/large_mask.png")
+      .add("smallMask", "assets/small_mask.png");
 
-  loader.load(function(loader, resources){
-    requestVideo(1, function(){
-      loaded(loader, resources);
-    });
-  });
-
-  function loaded(loader, resources){
-
-    function whichImage(){
-      if(window.innerWidth > 1024){
-        ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
-        return resources.largeMask.texture;
-      } else {
-        ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
-        return resources.smallMask.texture;
-      }
-    }
-
-    var canvas = document.getElementById("bg-canvas");
-    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
-      antialias: true,
-      view: canvas,
-      autoResize: true
+    loader.onLoad.add(function(e){
+      console.log("add loading functionality here");
+      console.log(e)
+      loadIndicator.innerHTML = "<p>" + (Math.round(e.progress*.66)) + "% loaded <span>.</span><span>.</span><span>.</span></p>";
     });
 
-    var bgVideo = document.createElement("video");
+    loader.load(function(loader, resources){
+      requestVideo(1, function(){
+        loaded(loader, resources);
+      });
+    });
 
-    bgVideo.muted = true;
-    bgVideo.setAttribute('playsinline', 'playsinline');
-    bgVideo.autoplay = true;
-    bgVideo.preload = "auto"
-    bgVideo.src = loadedVideos[0];
-    var counter = 0;
+    function loaded(loader, resources){
 
-    bgVideo.onended = function(){
-      bgVideo.src = loadedVideos[counter];
-      bgVideo.oncanplay = function(){
-        bgVideo.play();
-      }
-      counter ++;
-      if(counter >= loadedVideos.length) counter = 0;
-    };
-
-    var stage = new PIXI.Container();
-    var texture = PIXI.Texture.fromVideo(bgVideo);
-
-    var bg = new PIXI.Sprite(texture);
-
-    bg.anchor.x = 0.5;
-    bg.anchor.y = 0.5;
-
-    bg.position.x = renderer.width / 2;
-    bg.position.y = renderer.height / 2;
-
-    stage.addChild(bg);
-
-    var bgFront = new PIXI.Sprite(texture);
-    bgFront.width *= 1.4;
-    bgFront.height *= 1.4;
-
-    bgFront.anchor.x = 0.5;
-    bgFront.anchor.y = 0.5;
-
-    bgFront.position.x = renderer.width / 2;
-    bgFront.position.y = renderer.height / 2;
-
-    // window.addEventListener("mousemove", function(e){
-    //   bgFront.position.x = renderer.width / 2 + 100 * (0.5 - e.clientX/renderer.width);
-    //   bgFront.position.y = renderer.height / 2 - 100 * (0.5 - e.clientY/renderer.height);
-    // });
-
-    // window.addEventListener("devicemotion", function(e){
-    //   // debugger;
-    // });
-
-    stage.addChild(bgFront);
-
-    var thing = new PIXI.Sprite(whichImage());
-
-    var ratio = thing.height / thing.width;
-    thing.width = window.innerWidth * 0.8;
-    thing.height = ratio * thing.width;
-    thing.anchor.set(0.5, 0.5);
-    thing.position.x = renderer.width / 2;
-    thing.position.y = renderer.height / 2;
-
-    bgFront.mask = thing;
-    stage.addChild(thing);
-
-    animate();
-
-    function animate(){
-      renderer.render(stage);
-      requestAnimationFrame(animate);
-    }
-
-    function resize(){
-      var width = window.innerWidth;
-      var height = window.innerHeight;
-      renderer.resize(width, height)
-
-      if(texture.width/texture.height <= width/height){
-        var bgratio = texture.height / texture.width;
-        bg.width = bgFront.width = renderer.width;
-        bg.height = bgFront.height = bg.width * bgratio;
-      } else {
-        var bgratio = texture.height / texture.width;
-        bg.height = bgFront.height = renderer.height;
-        bg.width = bgFront.width = renderer.height / bgratio;
+      function whichImage(){
+        if(window.innerWidth > 1024){
+          ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
+          return resources.largeMask.texture;
+        } else {
+          ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
+          return resources.smallMask.texture;
+        }
       }
 
+      var canvas = document.getElementById("bg-canvas");
+      var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
+        antialias: true,
+        view: canvas,
+        autoResize: true
+      });
+
+      var bgVideo = document.createElement("video");
+
+      bgVideo.muted = true;
+      bgVideo.setAttribute('playsinline', 'playsinline');
+      bgVideo.autoplay = true;
+      bgVideo.preload = "auto"
+      bgVideo.src = loadedVideos[0];
+      var counter = 0;
+
+      bgVideo.onended = function(){
+        bgVideo.src = loadedVideos[counter];
+        bgVideo.oncanplay = function(){
+          bgVideo.play();
+        }
+        counter ++;
+        if(counter >= loadedVideos.length) counter = 0;
+      };
+
+      var stage = new PIXI.Container();
+      var texture = PIXI.Texture.fromVideo(bgVideo);
+
+      var bg = new PIXI.Sprite(texture);
+
+      bg.anchor.x = 0.5;
+      bg.anchor.y = 0.5;
+
+      bg.position.x = renderer.width / 2;
+      bg.position.y = renderer.height / 2;
+
+      stage.addChild(bg);
+
+      var bgFront = new PIXI.Sprite(texture);
       bgFront.width *= 1.4;
       bgFront.height *= 1.4;
 
-      thing.texture = whichImage();
-      thing.width = width * 0.8;
+      bgFront.anchor.x = 0.5;
+      bgFront.anchor.y = 0.5;
+
+      bgFront.position.x = renderer.width / 2;
+      bgFront.position.y = renderer.height / 2;
+
+      // window.addEventListener("mousemove", function(e){
+      //   bgFront.position.x = renderer.width / 2 + 100 * (0.5 - e.clientX/renderer.width);
+      //   bgFront.position.y = renderer.height / 2 - 100 * (0.5 - e.clientY/renderer.height);
+      // });
+
+      // window.addEventListener("devicemotion", function(e){
+      //   // debugger;
+      // });
+
+      stage.addChild(bgFront);
+
+      var thing = new PIXI.Sprite(whichImage());
+
+      var ratio = thing.height / thing.width;
+      thing.width = window.innerWidth * 0.8;
       thing.height = ratio * thing.width;
+      thing.anchor.set(0.5, 0.5);
+      thing.position.x = renderer.width / 2;
+      thing.position.y = renderer.height / 2;
 
-      thing.position.x = width / 2;
-      thing.position.y = height / 2;
-      bgFront.position.x = width / 2;
-      bgFront.position.y = height / 2;
-      bg.position.x = width / 2;
-      bg.position.y = height / 2;
+      bgFront.mask = thing;
+      stage.addChild(thing);
+
+      animate();
+
+      function animate(){
+        renderer.render(stage);
+        requestAnimationFrame(animate);
+      }
+
+      function resize(){
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        renderer.resize(width, height)
+
+        if(texture.width/texture.height <= width/height){
+          var bgratio = texture.height / texture.width;
+          bg.width = bgFront.width = renderer.width;
+          bg.height = bgFront.height = bg.width * bgratio;
+        } else {
+          var bgratio = texture.height / texture.width;
+          bg.height = bgFront.height = renderer.height;
+          bg.width = bgFront.width = renderer.height / bgratio;
+        }
+
+        bgFront.width *= 1.4;
+        bgFront.height *= 1.4;
+
+        thing.texture = whichImage();
+        thing.width = width * 0.8;
+        thing.height = ratio * thing.width;
+
+        thing.position.x = width / 2;
+        thing.position.y = height / 2;
+        bgFront.position.x = width / 2;
+        bgFront.position.y = height / 2;
+        bg.position.x = width / 2;
+        bg.position.y = height / 2;
+      }
+
+      resize();
+
+      window.addEventListener("resize", resize, false);
+      window.addEventListener("orientationchange", resize, false);
     }
+  } else if(isIE11){
+    var counter = 0;
+    var video = document.createElement("video");
+    requestVideo(1, function(){
+      video.src = loadedVideos[0];
+      video.oncanplay = function(){
+        video.play();
+      }
+      video.onended = function(){
+        video.src = loadedVideos[counter];
+        video.oncanplay = function(){
+          video.play();
+        }
+        counter ++;
+        if(counter >= loadedVideos.length) counter = 0;
+      };
 
-    resize();
-
-    window.addEventListener("resize", resize, false);
-    window.addEventListener("orientationchange", resize, false);
+    });
+    document.body.appendChild(video);
   }
 </script>
 </html>
