@@ -177,7 +177,9 @@
       manyVideo.play();
     });
 
-    video.src = videoURLs[Math.floor(Math.random() * 14)];
+    setTimeout(function(){
+      video.src = videoURLs[Math.floor(Math.random() * 14)];
+    }, 4000);
 
     video.onended = function(){
       setTimeout(function(){
@@ -261,7 +263,7 @@
     }
     window.addEventListener("resize", resize);
   } else if (isIE11) {
-    document.getElementById("dontclick").display = "none";
+    document.getElementById("dontclick").style.display = "none";
   }
   </script>
 </footer>
