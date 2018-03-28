@@ -71,6 +71,7 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   max-height: 2000px;
   height: 100vh;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; //adds physics on scroll
   opacity: 1;
   width: 100%;
   z-index: 100;
@@ -245,10 +246,11 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
     animation-iteration-count: infinite;
 
   }
-}
+} 
 
 .no-overflow {
-  overflow-y: hidden;
+  overflow: hidden;
+  height: 100%;
 }
 
 .noselect {

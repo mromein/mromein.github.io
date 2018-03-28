@@ -46,6 +46,7 @@
     function showHideMenu(){
       menu.classList.toggle("menu-invisible");
       document.body.classList.toggle("no-overflow")
+        document.documentElement.classList.toggle("no-overflow");
       displayArrow();
     }
 
@@ -54,7 +55,8 @@
     window.addEventListener("keydown", function(e){
         if(e.keyCode == 27){
           menu.classList.add("menu-invisible");
-          document.body.classList.remove("no-overflow")
+          document.body.classList.remove("no-overflow");
+          document.documentElement.classList.remove("no-overflow");
           displayArrow();
         }
       });
