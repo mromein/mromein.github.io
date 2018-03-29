@@ -171,6 +171,19 @@
     manyVideo.autoplay = false;
     manyVideo.oncanplay = addManyToPIXI;
     manyVideo.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}";
+    manyVideo.onplay = function(){
+      manyVideo.pause();
+      manyVideo.currentTime = 0;
+      manyVideo.onplay = undefined;
+    }
+    manyVideo.onended = function(){
+      manyVideo.pause();
+      manyVideo.currentTime = 0;
+      manyVideo.play();
+      setTimeout(function(){
+        manyVideo.pause();
+      }, 30);
+    }
 
     var dontclick = document.getElementById("dontclick");
     dontclick.addEventListener("click", function(){
@@ -201,6 +214,15 @@
     var manyTex = PIXI.Texture.fromVideo(manyVideo);
     var manybg = new PIXI.Sprite(manyTex);
 
+    var childrenToAdd = 0;
+
+    function addChildren(){
+      if(childrenToAdd == 2){
+        app.stage.addChild(bg);
+        app.stage.addChild(manybg);
+      }
+    }
+
     function addToPIXI() {
         if(first){
           bg.anchor.x = 0.5;
@@ -209,20 +231,19 @@
           bg.position.x = app.renderer.width / 2;
           bg.position.y = app.renderer.height / 2;
 
-          app.stage.addChild(bg);
+          childrenToAdd += 1;
+          addChildren();
           var filter = new ChromaFilter();
 
           bg.filters = [filter];
           first = false;
-          window.setTimeout(resize, 300)
+          setTimeout(resize, 0)
         }
     }
 
     function addManyToPIXI() {
       if(manyFirst){
-        setTimeout(function(){
-          manyVideo.pause();
-        }, 0);
+        resize();
       }
       setTimeout(function(){
         if(manyFirst){
@@ -232,14 +253,14 @@
           manybg.position.x = app.renderer.width / 2;
           manybg.position.y = app.renderer.height / 2;
 
-          app.stage.addChild(manybg);
+          childrenToAdd += 1;
+          addChildren();
           var filter = new ChromaFilter();
 
           manybg.filters = [filter];
           manyFirst = false;
-          window.setTimeout(resize, 300)
         }
-      }, 1000)
+      }, 1000);
     }
 
 
@@ -248,12 +269,12 @@
       var height = window.innerHeight;
       app.renderer.resize(width, height)
 
-      if(texture.width/texture.height <= width/height){
-        var bgratio = texture.height / texture.width;
+      if(1920/1080 <= width/height){
+        var bgratio = 1080 / 1920;
         bg.width = manybg.width = app.renderer.width;
         bg.height = manybg.height = app.renderer.width * bgratio;
       } else {
-        var bgratio = texture.height / texture.width;
+        var bgratio = 1080 / 1920;
         bg.height = manybg.height = app.renderer.height;
         bg.width = manybg.width = app.renderer.height / bgratio;
       }
