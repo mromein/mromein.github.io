@@ -168,7 +168,7 @@
     manyVideo.setAttribute('playsinline', 'playsinline');
     manyVideo.preload = "auto";
     manyVideo.muted = true;
-    manyVideo.autoplay = false;
+    manyVideo.autoplay = true;
     manyVideo.oncanplay = addManyToPIXI;
     manyVideo.src = "{{ "assets/naked/bodies.mp4" | absolute_url }}";
     manyVideo.onplay = function(){
@@ -262,7 +262,6 @@
         }
       }, 1000);
     }
-
 
     function resize(){
       var width = window.innerWidth;
