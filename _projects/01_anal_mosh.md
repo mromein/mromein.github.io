@@ -5,12 +5,16 @@ title: "analmosh"
 created: "June 2014"
 root: "/assets/anal_mosh/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/250728054" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   analmosh is custom made generative visual system. Optical flow, feedback chains, and glitch techniques are used to create colorful and dynamic imagery that is generated in real-time. analmosh is sometimes presented as a live performance in which the imagery is accompanied by sample-based audio programmed to match the visual movement and tone.
 
 performances:
+  - event: "Zip:UNCOMPRESSED Vol.4"
+    date: "February 2018"
+    venue: "3LD Art + Technology Center"
+    location: "NYC"
   - event: "Virtual Sky"
     date: "August 2015"
     venue: "Palisades"

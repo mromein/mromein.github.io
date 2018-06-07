@@ -24,6 +24,10 @@ performances:
     description: >
       Custom experimental instrument for live performance. A 3D audio/visual sampler in which the performer remixes live recordings of  their face and voice which are then projected as a large scale triptych.
     dates:
+      - event: "Refest 2.0"
+        date: "March 2018"
+        location: "NYC"
+        venue: "CultureHub"
       - event: "SXSW Interactive Conference"
         date: "March 2016"
         location: "Austin, Texas"
@@ -43,6 +47,10 @@ performances:
     description: >
       Custom made generative visual system, sometimes presented as a live performance in which the imagery is accompanied by sample-based audio.
     dates:
+      - event: "Zip:UNCOMPRESSED Vol.4"
+        date: "February 2018"
+        venue: "3LD Art + Technology Center"
+        location: "NYC"
       - event: "Virtual Sky"
         date: "August 2015"
         venue: "Palisades"
