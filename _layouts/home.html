@@ -10,6 +10,7 @@
 <script type="text/javascript">
   var loadedVideos = [];
   var loadIndicator = document.getElementById("loader");
+  var totalVideos = 9; // Set this to the total number of videos available
 
   function requestVideo(num, cb){
     var req = new XMLHttpRequest();
@@ -22,8 +23,9 @@
       if (this.status === 200) {
         var videoBlob = this.response;
         loadedVideos.push(URL.createObjectURL(videoBlob)); // IE10+
-        if(num < 12){
-          requestVideo(num + 1)
+        if(loadedVideos.length < totalVideos){
+          var nextNum = Math.floor(Math.random() * totalVideos) + 1;
+          requestVideo(nextNum);
         }
       }
       if (cb) {
@@ -53,7 +55,7 @@
     });
 
     loader.load(function(loader, resources){
-      requestVideo(1, function(){
+      requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
         loaded(loader, resources);
       });
     });
@@ -84,15 +86,15 @@
       bgVideo.autoplay = true;
       bgVideo.preload = "auto"
       bgVideo.src = loadedVideos[0];
-      var counter = 0;
 
       bgVideo.onended = function(){
-        bgVideo.src = loadedVideos[counter];
-        bgVideo.oncanplay = function(){
-          bgVideo.play();
-        }
-        counter ++;
-        if(counter >= loadedVideos.length) counter = 0;
+        var nextVideoIndex = Math.floor(Math.random() * totalVideos) + 1;
+        requestVideo(nextVideoIndex, function(){
+          bgVideo.src = loadedVideos[loadedVideos.length - 1];
+          bgVideo.oncanplay = function(){
+            bgVideo.play();
+          }
+        });
       };
 
       var stage = new PIXI.Container();
@@ -184,20 +186,20 @@
       window.addEventListener("orientationchange", resize, false);
     }
   } else if(isIE11){
-    var counter = 0;
     var video = document.createElement("video");
-    requestVideo(1, function(){
+    requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
       video.src = loadedVideos[0];
       video.oncanplay = function(){
         video.play();
       }
       video.onended = function(){
-        video.src = loadedVideos[counter];
-        video.oncanplay = function(){
-          video.play();
-        }
-        counter ++;
-        if(counter >= loadedVideos.length) counter = 0;
+        var nextVideoIndex = Math.floor(Math.random() * totalVideos) + 1;
+        requestVideo(nextVideoIndex, function(){
+          video.src = loadedVideos[loadedVideos.length - 1];
+          video.oncanplay = function(){
+            video.play();
+          }
+        });
       };
 
     });
