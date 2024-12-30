@@ -51,7 +51,7 @@
     loader.onLoad.add(function(e){
       console.log("add loading functionality here");
       console.log(e)
-      loadIndicator.innerHTML = "<p>" + (Math.round(e.progress*.66)) + "% loaded <span>.</span><span>.</span><span>.</span></p>";
+      loadIndicator.innerHTML = "<p>LOADING<span>.</span><span>.</span><span>.</span></p>";
     });
 
     loader.load(function(loader, resources){
