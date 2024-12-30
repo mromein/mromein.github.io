@@ -4,8 +4,14 @@ permalink: /info
 title: "info"
 ---
 
-Matt Romein is an artist and performer working at the intersection of live performance, generative computer art, and multi-media installation. Originally trained as an actor, he has worked in NYC’s downtown theater and dance community as a sound and video designer while also making his own technology-centric live performances.
+BIO
 
-He attended NYU Tisch School of the Arts ITP, a graduate program focusing on experimental and artistic uses of technology. He now teaches there as an adjunct professor with classes focused on live video performance and the usage of avatars in an artistic practice.
+Matt Romein is an artist and performer based in Brooklyn NY. His work consists of live performance, virtual production, generative computer art, and multi-media installation. 
 
-His current artistic research explores how the physical body is represented in digital spaces and how those bodies can be manipulated in evocative and unsettling ways in order to challenge ideas of identity, autonomy, and ethics.
+He is a NYFA/NYSCA 2023 Artist Fellow in Digital/Electronic Arts, a 2024 MacDowell Fellow, a 2025 Yaddo Resident Artist, and a Studio Member at Onassis ONX Studio. 
+
+ARTIST STATEMENT
+
+My practice focuses on the human body’s relationship with technology. As a hard-of-hearing individual who has relied on hearing aids throughout my life, I am fascinated by technology's ability to enhance and transform our physical forms. Through the use of code, technology, and live performance, I manipulate the body as a puppet, avatar, and object.
+
+In my work the body becomes a site of tension—technology propels it beyond its natural limitations, yet complicates our understanding of its multifaceted identities. Employing humor and subversion, my work playfully navigates the complexities of bodies caught in the space between physical and digital worlds.
