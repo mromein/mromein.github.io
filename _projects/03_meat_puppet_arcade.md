@@ -11,24 +11,21 @@ description: >
   Collection of video pieces and installations in which people manipulate the artist’s body in odd and unsettling ways. People are encouraged to download the body for their own use and exploration at [downloadmybody.com](http://www.downloadmybody.com). Flesh Cube, Body Cannon, and Limb Blaster created in collaboration with artist [Joe Mango](http://josephmango.com/).
 
 collaborators:
-- Joe Mango
-- Casper Sonnen
+  - person: Joe Mango
 
 links:
-- this doesnt work
-- either does this
+  - text: SPORTS
+    url: https://espn.com
 
 showings:
-- Under The Radar - January 2024
-- MAXlive Festival - October 2023
-- IDFA DocLab - November 2022
+  - text: Under The Radar - January 2024
 
 awards:
-- Henry Hewes
-- Obie
+  - text: Henry Hewes
 
 press:
-- Vulture
+  - text: Vulture
+    url: https://vulture.com
 
 documentation:
   - "1.gif"

@@ -40,7 +40,11 @@
     {% for collaborator in page.collaborators %}
       <li>
         <ul class="project-info__performance">
-        <li>{{ collaborator }}</li>
+          {% if collaborator.url %}
+            <li><u><a href="{{ collaborator.url }}" target="_blank">{{ collaborator.person }}</a></u></li>
+          {% else %}
+            <li>{{ collaborator.person }}</li>
+          {% endif %}
         </ul>
       </li>
     {% endfor %}
@@ -51,7 +55,11 @@
     {% for showing in page.showings %}
       <li>
         <ul class="project-info__performance">
-        <li>{{ showing }}</li>
+          {% if showing.url %}
+            <li><u><a href="{{ showing.url }}" target="_blank">{{ showing.text }}</a></u></li>
+          {% else %}
+            <li>{{ showing.text }}</li>
+          {% endif %}
         </ul>
       </li>
     {% endfor %}
@@ -62,7 +70,7 @@
     {% for link in page.links %}
       <li>
         <ul class="project-info__performance">
-        <li>{{ link }}</li>
+        <li><u><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></u></li>
         </ul>
       </li>
     {% endfor %}
@@ -73,7 +81,11 @@
     {% for award in page.awards %}
       <li>
         <ul class="project-info__performance">
-        <li>{{ award }}</li>
+        {% if award.url %}
+          <li><u><a href="{{ award.url }}" target="_blank">{{ award.text }}</a></u></li>
+        {% else %}
+          <li>{{ award.text }}</li>
+        {% endif %}
         </ul>
       </li>
     {% endfor %}
@@ -84,7 +96,11 @@
     {% for press in page.press %}
       <li>
         <ul class="project-info__performance">
-        <li>{{ press }}</li>
+        {% if press.url %}
+          <li><u><a href="{{ press.url }}" target="_blank">{{ press.text }}</a></u></li>
+        {% else %}
+          <li>{{ press.text }}</li>
+        {% endif %}
         </ul>
       </li>
     {% endfor %}
