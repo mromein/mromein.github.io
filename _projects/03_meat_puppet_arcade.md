@@ -10,21 +10,25 @@ bg-video: >
 description: >
   Collection of video pieces and installations in which people manipulate the artist’s body in odd and unsettling ways. People are encouraged to download the body for their own use and exploration at [downloadmybody.com](http://www.downloadmybody.com). Flesh Cube, Body Cannon, and Limb Blaster created in collaboration with artist [Joe Mango](http://josephmango.com/).
 
-performances:
-  - event: "Tech-ond Sunday"
-    date: "May 2017"
-    location: "Brooklyn"
-    venue: "Pioneer Works"
+collaborators:
+- Joe Mango
+- Casper Sonnen
 
-  - event: "ACE Hotel: Artist in Residence"
-    date: "March 2017"
-    venue: "ACE Hotel"
-    location: "NYC"
+links:
+- this doesnt work
+- either does this
 
-  - event: "DocLab 2016: Elastic Reality"
-    date: "November 2016"
-    venue: "De Brakke Grond"
-    location: "Amsterdam"
+showings:
+- Under The Radar - January 2024
+- MAXlive Festival - October 2023
+- IDFA DocLab - November 2022
+
+awards:
+- Henry Hewes
+- Obie
+
+press:
+- Vulture
 
 documentation:
   - "1.gif"

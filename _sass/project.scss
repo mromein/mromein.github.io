@@ -150,8 +150,9 @@
 }
 
 .project-info__meta {
+
   @include tablet {
-    width: 212px;
+    width: 300px;
   }
 
   @include laptop {
@@ -159,7 +160,7 @@
   }
 
   @include desktop {
-    width: 416px;
+    width: 700px;
   }
 }
 
@@ -195,11 +196,11 @@
 }
 
 .project-info__performance{
-  margin: 25px auto 0;
+  margin: 10px auto 0;
 
   //make sure to update this for all screen sizes
   @include desktop {
-    margin: 40px auto 0;
+    margin: 10px auto 0;
   }
 }
 

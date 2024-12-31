@@ -23,26 +23,74 @@
       <p>{{ page.title }}</p>
     </li>
     <li>
-      <h2>Created</h2>
-      <p>{{ page.created }}</p>
+      <h2>Description</h2>
+      <p>{{ page.description | markdownify }}</p>
     </li>
-    <p>{{ page.description | markdownify }}</p>
-    {% if page.performances %}
     </div>
+
     <ul class="project-info__performances" id="project-performances">
-      <h2>Select Performances</h2>
-    {% for performance in page.performances %}
+
+    <li>
+    <h2>Created</h2>
+    <p>{{ page.created }}</p>
+    </li>
+
+    {% if page.collaborators %}
+    <h2>Collaborators</h2>
+    {% for collaborator in page.collaborators %}
       <li>
         <ul class="project-info__performance">
-          {% if performance.date %}<li>{{ performance.date }}</li>{% endif %}
-          {% if performance.event %}<li>{{ performance.event }}</li>{% endif %}
-          {% if performance.venue %}<li>{{ performance.venue }}</li>{% endif %}
-          {% if performance.location %}<li>{{ performance.location }}</li>{% endif %}
+        <li>{{ collaborator }}</li>
         </ul>
       </li>
     {% endfor %}
-    </ul>
     {% endif %}
+
+    {% if page.showings %}
+    <h2>Select Showings</h2>
+    {% for showing in page.showings %}
+      <li>
+        <ul class="project-info__performance">
+        <li>{{ showing }}</li>
+        </ul>
+      </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if page.links %}
+    <h2>Links</h2>
+    {% for link in page.links %}
+      <li>
+        <ul class="project-info__performance">
+        <li>{{ link }}</li>
+        </ul>
+      </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if page.awards %}
+    <h2>Awards</h2>
+    {% for award in page.awards %}
+      <li>
+        <ul class="project-info__performance">
+        <li>{{ award }}</li>
+        </ul>
+      </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if page.press %}
+    <h2>Press</h2>
+    {% for press in page.press %}
+      <li>
+        <ul class="project-info__performance">
+        <li>{{ press }}</li>
+        </ul>
+      </li>
+    {% endfor %}
+    {% endif %}
+
+    </ul>
     <li id="info-expand">Read more...</li>
   </ul>
 </section>
