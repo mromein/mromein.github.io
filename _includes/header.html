@@ -33,7 +33,6 @@
       } else {
         downArrow.style.display = "inherit";
       }
-
       if(innerMenu.scrollHeight < window.innerHeight) {
         downArrow.style.display = "none";
       }
@@ -62,7 +61,7 @@
         li.innerHTML = `
           <div class="menu-item__bgimage" style="background-image: url(${item.root}preview.jpg)"></div>
           <a href="${item.permalink}">
-            <img class="menu-item__image" src="${item.root}preview.jpg}">
+            <img class="menu-item__image" src="${item.root}preview.jpg">
             <h2>${item.title}</h2>
           </a>
         `;
