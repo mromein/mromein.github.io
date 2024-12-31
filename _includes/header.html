@@ -1,12 +1,13 @@
 <header>
   <nav class="header">
     <div class="menu-wrapper menu-invisible" id="menu">
+
       <ul class="menu">
-        {% for project in site.projects reversed %}
+        {% for project in site.designs reversed %}
         <li onmouseover="menuMouseOver(this)" class="menu-item">
-          <div class="menu-item__bgimage" style="background-image: url({{ \"project.root\" | absolute_url }}preview.jpg)"></div>
+          <div class="menu-item__bgimage" style="background-image: url({{ project.root | absolute_url }}preview.jpg)"></div>
           <a href="{{ site.url }}{{ project.permalink }}">
-          <img class="menu-item__image" src="{{ \"project.root\" | absolute_url }}preview.jpg">
+          <img class="menu-item__image" src="{{ project.root | absolute_url }}preview.jpg">
             <h2>{{ project.title }}</h2>
           </a>
         </li>
@@ -18,6 +19,7 @@
         </li>
         <div class="svg-wrapper" id="down-arrow">{% include arrow.svg %}</div>
       </ul>
+
     </div>
     <div class="main-nav" id="main-nav">
       <a><h1 class="nav-work noselect" id="menu-button">work</h1></a>

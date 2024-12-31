@@ -18,6 +18,8 @@ include:
 collections:
   projects:
     output: true
+  designs:
+    output: true
 
 sass:
   style: compressed
