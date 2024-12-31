@@ -3,9 +3,9 @@
     <div class="menu-wrapper menu-invisible" id="menu">
 
       <ul class="menu">
-        {% for project in site.designs reversed %}
+        {% for project in site.projects reversed %}
         <li onmouseover="menuMouseOver(this)" class="menu-item">
-          <div class="menu-item__bgimage" style="background-image: url({{ project.root | absolute_url }}preview.jpg)"></div>
+          <div class="menu-item__bgimage" style="background-image: url('{{ project.root | absolute_url }}preview.jpg')"></div>
           <a href="{{ site.url }}{{ project.permalink }}">
           <img class="menu-item__image" src="{{ project.root | absolute_url }}preview.jpg">
             <h2>{{ project.title }}</h2>

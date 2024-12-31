@@ -1,32 +1,32 @@
 # Site settings
-title: Matt Romein
-email: seth@channel.studio
-description: > 
+title: Matt Romein  # The title of the site
+email: seth@channel.studio  # The email address for the site
+description: >  # A description of the site
   Matt Romein is an artist and performer working at the intersection of live performance, generative computer art, and multi-media installation. Originally trained as an actor, he has worked in NYC’s downtown theater and dance community as a sound and video designer while also making his own technology-centric live performances.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://matt-romein.com" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: polyrhythmatic
+baseurl: ""  # The subpath of your site, e.g. /blog
+url: "https://matt-romein.com"  # The base hostname & protocol for your site, e.g. http://example.com
+github_username: polyrhythmatic  # The GitHub username for the site
 
-logo: "/assets/og_image.jpg"
+logo: "/assets/og_image.jpg"  # The path to the site's logo
 
 # Build settings
-markdown: kramdown
+markdown: kramdown  # The Markdown processor to use
 
 include: 
-  - _pages
+  - _pages  # Additional directories to include in the build
 
 collections:
   projects:
-    output: true
+    output: true  # Enable output for the projects collection
   designs:
-    output: true
+    output: true  # Enable output for the designs collection
 
 sass:
-  style: compressed
+  style: compressed  # The style for Sass output (compressed, expanded, etc.)
 
 exclude:
-  - Gemfile
-  - Gemfile.lock
+  - Gemfile  # Exclude the Gemfile from the build
+  - Gemfile.lock  # Exclude the Gemfile.lock from the build
 
 plugins:
-  - jekyll-sitemap
+  - jekyll-sitemap  # Plugins to use (e.g., jekyll-sitemap)

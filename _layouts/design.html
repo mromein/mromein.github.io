@@ -7,7 +7,7 @@
 
 <section class="project-bgvideo" id="project-bgvideo">
   {{ page.bg-video }}
-  <div class="project-bgvideo__poster" id="project-bgvideo__poster" style="background-image: url({{ page.root | absolute_url }}preview.jpg)">
+  <div class="project-bgvideo__poster" id="project-bgvideo__poster" style="background-image: url('{{ page.root | absolute_url }}preview.jpg')">
     <div class="project-title__wrapper">
       <h1>{{ page.title }}</h1>
       {% include playarrow.svg %}
@@ -34,13 +34,8 @@
     <h2>Created</h2>
     <p>{{ page.created }}</p>
     </li>
-
-    <li>
-    <h2>Created</h2>
-    <p>{{ page.created }}</p>
-    </li>
-
-    {% if page.collaborators %}
+     
+    {% if page.artists %}
     <h2>Lead Artist</h2>
     {% for artist in page.artists %}
       <li>
@@ -54,6 +49,11 @@
       </li>
     {% endfor %}
     {% endif %}
+
+    <li>
+    <h2>Role</h2>
+    <p>{{ page.role }}</p>
+    </li>
 
     {% if page.showings %}
     <h2>Select Showings</h2>
