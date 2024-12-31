@@ -1,17 +1,8 @@
 <header>
   <nav class="header">
     <div class="menu-wrapper menu-invisible" id="menu">
-
-      <ul class="menu">
-        {% for project in site.projects reversed %}
-        <li onmouseover="menuMouseOver(this)" class="menu-item">
-          <div class="menu-item__bgimage" style="background-image: url('{{ project.root | absolute_url }}preview.jpg')"></div>
-          <a href="{{ site.url }}{{ project.permalink }}">
-          <img class="menu-item__image" src="{{ project.root | absolute_url }}preview.jpg">
-            <h2>{{ project.title }}</h2>
-          </a>
-        </li>
-        {% endfor %}
+      <ul class="menu" id="menu-list">
+        <!-- Menu items will be dynamically inserted here -->
         <li class="menu-item">
           <a href="{{ site.url }}">
             <h2>HOME</h2>
@@ -19,19 +10,22 @@
         </li>
         <div class="svg-wrapper" id="down-arrow">{% include arrow.svg %}</div>
       </ul>
-
     </div>
     <div class="main-nav" id="main-nav">
-      <a><h1 class="nav-work noselect" id="menu-button">work</h1></a>
+      <a><h1 class="nav-work noselect" id="work-button">projects</h1></a>
+      <a><h1 class="nav-design noselect" id="design-button">design</h1></a>
       <a href="{{ site.url }}/info" ><h1 class="nav-info noselect">info</h1></a>
     </div>
   </nav>
   <script type="text/javascript">
     var menu = document.getElementById("menu"),
-    menuButton = document.getElementById("menu-button"),
-    nav = document.getElementById("main-nav"),
-    downArrow = document.getElementById("down-arrow"),
-    innerMenu = document.querySelectorAll("#menu>ul")[0];
+        workButton = document.getElementById("work-button"),
+        designButton = document.getElementById("design-button"),
+        nav = document.getElementById("main-nav"),
+        downArrow = document.getElementById("down-arrow"),
+        innerMenu = document.querySelectorAll("#menu>ul")[0],
+        menuList = document.getElementById("menu-list"),
+        currentMenu = '';
 
     function displayArrow(){
       if(menu.scrollHeight == menu.offsetHeight){
@@ -45,23 +39,92 @@
       }
     }
 
-    function showHideMenu(){
-      menu.classList.toggle("menu-invisible");
-      document.body.classList.toggle("no-overflow")
-        document.documentElement.classList.toggle("no-overflow");
+    function showMenu() {
+      menu.classList.remove("menu-invisible");
+      document.body.classList.add("no-overflow");
+      document.documentElement.classList.add("no-overflow");
       displayArrow();
     }
 
-    menuButton.addEventListener("click", showHideMenu);
+    function hideMenu() {
+      menu.classList.add("menu-invisible");
+      document.body.classList.remove("no-overflow");
+      document.documentElement.classList.remove("no-overflow");
+      displayArrow();
+    }
+
+    function populateMenu(items) {
+      menuList.innerHTML = '';
+      items.forEach(function(item) {
+        var li = document.createElement('li');
+        li.className = 'menu-item';
+        li.setAttribute('onmouseover', 'menuMouseOver(this)');
+        li.innerHTML = `
+          <div class="menu-item__bgimage" style="background-image: url(${item.root}preview.jpg)"></div>
+          <a href="${item.permalink}">
+            <img class="menu-item__image" src="${item.root}preview.jpg}">
+            <h2>${item.title}</h2>
+          </a>
+        `;
+        menuList.appendChild(li);
+      });
+      var homeLi = document.createElement('li');
+      homeLi.className = 'menu-item';
+      homeLi.innerHTML = `
+        <a href="{{ site.url }}">
+          <h2>HOME</h2>
+        </a>
+      `;
+      menuList.appendChild(homeLi);
+      menuList.appendChild(downArrow);
+    }
+
+    workButton.addEventListener("click", function() {
+      var projects = [
+        {% for project in site.projects %}
+        {
+          title: "{{ project.title }}",
+          permalink: "{{ project.permalink }}",
+          root: "{{ project.root }}"
+        },
+        {% endfor %}
+      ];
+      if (currentMenu === 'work' && !menu.classList.contains("menu-invisible")) {
+        hideMenu();
+        currentMenu = '';
+      } else {
+        populateMenu(projects);
+        showMenu();
+        currentMenu = 'work';
+      }
+    });
+
+    designButton.addEventListener("click", function() {
+      var designs = [
+        {% for design in site.designs %}
+        {
+          title: "{{ design.title }}",
+          permalink: "{{ design.permalink }}",
+          root: "{{ design.root }}"
+        },
+        {% endfor %}
+      ];
+      if (currentMenu === 'design' && !menu.classList.contains("menu-invisible")) {
+        hideMenu();
+        currentMenu = '';
+      } else {
+        populateMenu(designs);
+        showMenu();
+        currentMenu = 'design';
+      }
+    });
 
     window.addEventListener("keydown", function(e){
-        if(e.keyCode == 27){
-          menu.classList.add("menu-invisible");
-          document.body.classList.remove("no-overflow");
-          document.documentElement.classList.remove("no-overflow");
-          displayArrow();
-        }
-      });
+      if(e.keyCode == 27){
+        hideMenu();
+        currentMenu = '';
+      }
+    });
 
     menu.onscroll = function(ev) {
       downArrow.style.opacity = nav.style.opacity = 1 - 4 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
@@ -76,6 +139,5 @@
       }
       el.getElementsByClassName("menu-item__bgimage")[0].style.opacity = 1;
     }
-
   </script>
 </header>
