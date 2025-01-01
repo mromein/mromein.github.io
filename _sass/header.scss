@@ -19,12 +19,13 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   opacity: 0;
 }
 
-.nav-work, .nav-design, .nav-info {
+.nav-work, .nav-design, .nav-experiment, .nav-teaching, .nav-info {
   display: inline-block;
   pointer-events: all;
+  //font-size: 60px;
 }
 
-.nav-work, .nav-design {
+.nav-work, .nav-experiment, .nav-design {
   cursor: pointer;
 }
 
@@ -49,6 +50,39 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 }
 
 .nav-design {
+  margin: 30px 0 0 0;
+
+  @include tablet {
+    margin: 50px 0 0 0;
+  }
+
+  @include laptop {
+    margin: 65px 0 0 0;
+  }
+
+  @include desktop {
+    margin: 80px 60px 0 0;
+  }
+}
+
+.nav-experiment {
+  margin: 30px 0 0 0;
+
+  @include tablet {
+    margin: 50px 0 0 0;
+  }
+
+  @include laptop {
+    margin: 65px 0 0 0;
+  }
+
+  @include desktop {
+    margin: 80px 60px 0 0;
+  }
+}
+
+
+.nav-teaching {
   margin: 30px 0 0 0;
 
   @include tablet {

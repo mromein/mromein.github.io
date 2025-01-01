@@ -14,6 +14,8 @@
     <div class="main-nav" id="main-nav">
       <a><h1 class="nav-work noselect" id="work-button">projects</h1></a>
       <a><h1 class="nav-design noselect" id="design-button">design</h1></a>
+      <a><h1 class="nav-experiment noselect" id="experiment-button">r+d</h1></a>
+      <a href="{{ site.url }}/teaching" ><h1 class="nav-teaching noselect">teaching</h1></a>
       <a href="{{ site.url }}/info" ><h1 class="nav-info noselect">info</h1></a>
     </div>
   </nav>
@@ -21,6 +23,7 @@
     var menu = document.getElementById("menu"),
         workButton = document.getElementById("work-button"),
         designButton = document.getElementById("design-button"),
+        experimentButton = document.getElementById("experiment-button"),
         nav = document.getElementById("main-nav"),
         downArrow = document.getElementById("down-arrow"),
         innerMenu = document.querySelectorAll("#menu>ul")[0],
@@ -115,6 +118,26 @@
         populateMenu(designs);
         showMenu();
         currentMenu = 'design';
+      }
+    });
+
+    experimentButton.addEventListener("click", function() {
+      var experiments = [
+        {% for experiment in site.experiments %}
+        {
+          title: "{{ experiment.title }}",
+          permalink: "{{ experiment.permalink }}",
+          root: "{{ experiment.root }}"
+        },
+        {% endfor %}
+      ];
+      if (currentMenu === 'experiment' && !menu.classList.contains("menu-invisible")) {
+        hideMenu();
+        currentMenu = '';
+      } else {
+        populateMenu(experiment);
+        showMenu();
+        currentMenu = 'experiment';
       }
     });
 
