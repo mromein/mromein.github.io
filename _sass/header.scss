@@ -22,19 +22,19 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 .nav-work, .nav-design, .nav-experiment, .nav-teaching, .nav-info {
   display: inline-block;
   pointer-events: all;
-  font-size: 20px;
+  font-size: 17px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
 
   @include tablet {
-    font-size: 15px;
+    font-size: 29px;
   }
 
   @include laptop {
-    font-size: 25px;
+    font-size: 45px;
   }
 
   @include desktop {
-    font-size: 90px;
+    font-size: 65px;
   }
 }
 

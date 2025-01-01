@@ -8,7 +8,12 @@ BIO
 
 Matt Romein is an artist and performer based in Brooklyn NY. His work consists of live performance, virtual production, generative computer art, and multi-media installation. 
 
-He is a NYFA/NYSCA 2023 Artist Fellow in Digital/Electronic Arts, a 2024 MacDowell Fellow, a 2025 Yaddo Resident Artist, and a Studio Member at Onassis ONX Studio. 
+RECENT HONORS
+
+NYFA/NYSCA Artist Fellow in Digital/Electronic Arts ~ 2023<br>
+MacDowell Fellow ~ 2024<br>
+Yaddo Resident Artist ~ 2025<br>
+Studio Member at Onassis ONX Studio
 
 ARTIST STATEMENT
 
