@@ -1,22 +1,40 @@
 <!DOCTYPE html>
+
 <html>
 <!-- {% capture style %}{% include info.scss %}{% endcapture %} -->
 {% include head.html %}
+
 <body>
 {% include header.html %}
 <article class="info">
   <img class="info-img" src="{{ site.url }}/assets/headshot.jpg">
   <section class="info-text">
-    {{ content }}
+    <h1><u>BIO</u></h1>
+      <h2>{{ page.bio }}</h2>
+    <h1><u>ARTIST STATEMENT</u></h1>
+      <h2>{{ page.statement }}</h2>
   </section>
-  <section class="info-contacts">
-    <h3><a href="{{ "cv" | absolute_url }}">CV</a></h3>
-    <h3><a href="mailto:matt.romein@gmail.com">Contact</a></h3>
-    <h3><a target="_blank" href="https://www.instagram.com/header_munging/">Instagram</a></h3>
+  <section class="info-text">
+    <h1><u>RECENT HONORS</u></h1>
+    {% for honor in page.honors %}
+      <h3>• {{ honor.text }}</h3>
+    {% endfor %}
+    <h1><u>SOCIAL</u></h1>
+    {%for social in page.social%}
+      <h3>Contact: <u>{{ social.email }}</u></h3>
+      <h3>Instagram: <u>{{ social.instagram }}</u></h3>
+      <h3>YouTube: <u>{{ social.youtube }}</u></h3>
+    {% endfor %}
+    <h1><u>LINKS</u></h1>
+      <h3><-- &emsp;<u><a href="{{ site.url }}/cv">LINK TO CV</a></u> &emsp;--></h3>
+      <h3><-- &emsp;<u><a href="{{ site.url }}/teaching">LINK TO TEACHING</a></u> &emsp;--></h3>
+    <br>
+   
     <!-- <h3><a id="dontclick">Please don't click!</a></h3> -->
   </section>
 </article>
 </body>
+
 <footer>
   <style type="text/css">
     canvas {

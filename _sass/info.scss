@@ -1,118 +1,151 @@
 .info {
-  max-width: 212px;
-  margin: 110px auto 0;
+  max-width: 300px;
+  margin: 90px auto 0;
 
   @include tablet {
-    max-width: $tablet-width;
-    margin: 0;
-    position: relative;
+    max-width: 700px;
+    margin: 140px auto 0;
   }
 
   @include laptop {
-    max-width: $laptop-width;
-    margin: 0;
-    position: relative;
+    display: flex;
+    align-items: start; 
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 55px;
+
+    max-width: $laptop-width * 1.45;
+    margin: 240px auto 0;
   }
 
   @include desktop {
-    max-width: $desktop-width;
-    margin: 0;
-    position: relative;
+    display: flex;
+    align-items: start; 
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 55px;
+
+    max-width: $desktop-width * 1.45;
+    margin: 240px auto 0;
   }
 }
 
 .info-img {
 
   @include tablet {
-    position: absolute;
-    width: 348px;
-    top: 240px;
-    left: 150px;
+    //position: absolute;
+    //width: 348px;
+    //top: 240px;
+    //left: 150px;
+    //width: 100%;
   }
 
   @include laptop {
-    position: absolute;
-    width: 348px;
-    top: 0;
-    left: 250px;
+    //position: absolute;
+    width: 42%;
+    height: auto
+    //top: 0;
+    //left: 250px;
   }
 
   @include desktop {
-    position: absolute;
-    width: 562px;
-    top: 0;
-    left: 300px;
+    //position: relative;
+    //width: 800px;
+    width: 42%;
+    height: auto
+    //top: 244px;
+    //left: 50px;
   }
 }
 
 .info-text {
-  margin: 30px 0 0;
-  font-size: 10px; // Add or modify this line to control the font size
-  line-height: 1.4; // Add this line to control the line spacing
+  //margin: 30px 0 0;
+  //font-size: 10px; // Add or modify this line to control the font size
+  //line-height: 1.4; // Add this line to control the line spacing
 
-  @include tablet {
-    margin: 0;
-    position: absolute;
-    left: 35px;
-    top: 285px;
-    width: 212px;
-    font-size: 18px; // Add or modify this line to control the font size for tablet
-    // line-height: 1.6; // Add this line to control the line spacing for tablet
+  h1 {
+    margin: 20px 10px;
+    font-size: 14px;
   }
 
-  @include laptop {
-    margin: 0;
-    position: absolute;
-    width: 282px;
-    left: 43px;
-    top: 175px;
-    font-size: 20px; // Add or modify this line to control the font size for laptop
-    // line-height: 1.7; // Add this line to control the line spacing for laptop
-  }
-
-  @include desktop {
-    margin: 0;
-    position: absolute;
-    width: 700px;
-    top: 240px;
-    left: 70px;
-    font-size: 20px; // Add or modify this line to control the font size for desktop
-    // line-height: 1.8; // Add this line to control the line spacing for desktop
-  }
-}
-
-.info-contacts {
-
-  @include tablet {
-    position: absolute;
-    left: 525px;
-    top: 380px;
-  }
-
-  @include laptop {
-    position: absolute;
-    top: 240px;
-    left: 700px;
-  }
-
-  @include desktop {
-    position: absolute;
-    left: 1025px;
-    top: 400px;
+  h2 {
+    margin: 20px 10px;
+    font-size: 12px; 
   }
 
   h3 {
-    margin: 25px 0 0;
-    text-decoration: underline;
-    font-size: 18px; // Add or modify this line to control the font size for h3
-    line-height: 1.5; // Add this line to control the line spacing for h3
+    margin: 10px 10px;
+    font-size: 12px; 
+    line-height: 13px;
   }
 
-  a {
-    margin: 25px 0 0;
-    display: block;
-    font-size: 16px; // Add or modify this line to control the font size for links
-    line-height: 1.5; // Add this line to control the line spacing for links
+
+  @include tablet {
+
+
+    h1 {
+      margin: 40px 10px;
+      font-size: 24px;
+    }
+  
+    h2 {
+      margin: 40px 10px;
+      font-size: 22px; 
+    }
+
+    h3 {
+      margin: 20px 10px;
+      font-size: 22px;
+    }
+
+  }
+
+  @include laptop {
+    margin: 0;
+    width: 1000px;
+
+    h1 {
+      margin: 10px 0;
+      font-size: 19px; 
+    }
+  
+    h2 {
+      margin: 20px 0;
+      font-size: 17px; 
+    }
+
+    h3 {
+      margin: 20px 0;
+      font-size: 17px; 
+    }
+
+  }
+
+  @include desktop {
+    margin: 0;
+    width: 100%;
+
+    h1 {
+      margin: 10px 0;
+      font-size: 24px; 
+    }
+  
+    h2 {
+      margin: 30px 0;
+      font-size: 22px;
+    }
+
+    h3 {
+      margin: 30px 0;
+      font-size: 22px; 
+      line-height: 13px;
+    }
+
+    h4 {
+      margin: 30px 0;
+      font-size: 60px; 
+    }
+
   }
 }
 
