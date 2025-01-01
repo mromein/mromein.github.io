@@ -22,7 +22,20 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 .nav-work, .nav-design, .nav-experiment, .nav-teaching, .nav-info {
   display: inline-block;
   pointer-events: all;
-  //font-size: 60px;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
+
+  @include tablet {
+    font-size: 15px;
+  }
+
+  @include laptop {
+    font-size: 25px;
+  }
+
+  @include desktop {
+    font-size: 90px;
+  }
 }
 
 .nav-work, .nav-experiment, .nav-design {
@@ -129,6 +142,7 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   background-color: black;
   background-size: cover;
   background-position: center;
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, .5); // Add subtle drop shadow
 
   &::-webkit-scrollbar { 
     display: none; 
