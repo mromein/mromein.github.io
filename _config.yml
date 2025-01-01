@@ -1,11 +1,11 @@
 # Site settings
 title: Matt Romein  # The title of the site
-email: seth@channel.studio  # The email address for the site
+email: matt.romein@gmail.com  # The email address for the site
 description: >  # A description of the site
   Matt Romein is an artist and performer working at the intersection of live performance, generative computer art, and multi-media installation. Originally trained as an actor, he has worked in NYC’s downtown theater and dance community as a sound and video designer while also making his own technology-centric live performances.
 baseurl: ""  # The subpath of your site, e.g. /blog
 url: "https://matt-romein.com"  # The base hostname & protocol for your site, e.g. http://example.com
-github_username: polyrhythmatic  # The GitHub username for the site
+github_username: mromein  # The GitHub username for the site
 
 logo: "/assets/og_image.jpg"  # The path to the site's logo
 
@@ -20,6 +20,8 @@ collections:
     output: true  # Enable output for the projects collection
   designs:
     output: true  # Enable output for the designs collection
+  experiments:
+    output: true  # Enable output for the experiments collection
 
 sass:
   style: compressed  # The style for Sass output (compressed, expanded, etc.)

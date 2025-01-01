@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+{% capture style %}{% include cv.scss %}{% endcapture %}
+{% include head.html %}
+<body>
+  <article class="teaching">
+    <header class="teaching-header">
+      <a href="{{ site.url }}"><h1>Matt Romein</h1></a>
+      <a href="javascript:history.back()">{% include arrow.svg %}<h2>back</h2></a>
+    </header>
+    <div class="teaching-header__dash">ㅡ</div>
+    <section class="teaching-education">
+      <h3>Education</h3>
+      <div class="teaching-education__schools">
+        {% for school in page.education %}
+        <ul class="teaching-education__school">
+          <li><div>{{ school.name }}</div></li>
+          <li>{{ school.year }}</li>
+        </ul>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="teaching-performances">
+      <h3>Selected Shows & Performances</h3>
+      <div class="teaching-wrapper">
+        {% for performance in page.performances%}
+        <h4>{{ performance.name }}</h4>
+        <div class="teaching-item">
+          <div class="teaching-description">
+            <p>{{ performance.description }}</p>
+          </div>
+          <ul class="teaching-dates">
+            {% for date in performance.dates %}
+            <li class="teaching-date">
+              <ul>
+                <li>{{ date.date }}</li>
+                <li>{{ date.event }}</li>
+                {% if date.venue %}<li>{{ date.venue }}</li>{% endif %}
+                <li>{{ date.location }}</li>
+              </ul>
+            {% endfor %}
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="teaching-awards">
+      <h3>Grants & Residencies</h3>
+      <div class="teaching-wrapper">
+        {% for award in page.awards %}
+        <h4>{{ award.name }}</h4>
+        <div class="teaching-item">
+          <div class="teaching-description">
+            <p>{{ award.description }}</p>
+          </div>
+          <ul class="teaching-dates">
+            <li>{{ award.date }}</li>
+            <li>{{ award.place }}</li>
+            <li>{{ award.location }}</li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="teaching-talks">
+      <h3>Talks</h3>
+        <div class="teaching-wrapper">
+        {% for talk in page.talks %}
+          <h4>{{ talk.name }}</h4>
+          <div class="teaching-item">
+            <div class="teaching-description">
+              <p>{{ talk.description }}</p>
+            </div>
+            <ul class="teaching-dates">
+              <li>{{ talk.date }}</li>
+              <li>{{ talk.place }}</li>
+              <li>{{ talk.location }}</li>
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="teaching-teaching">
+      <h3>Teaching</h3>
+      <div class="teaching-wrapper">
+        {% for class in page.teaching%}
+        <h4>{{ class.name }}</h4>
+        <div class="teaching-item">
+          <div class="teaching-description">
+            <p>{{ class.description }}</p>
+          </div>
+          <ul class="teaching-dates">
+            {% for date in class.dates %}
+            <li class="teaching-date">
+              <ul>
+                <li>{{ date.date }}</li>
+                <li>{{ date.event }}</li>
+                {% if date.venue %}<li>{{ date.venue }}</li>{% endif %}
+                <li>{{ date.location }}</li>
+              </ul>
+            {% endfor %}
+            </li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <section class="teaching-work">
+      <h3>Related Work Experience</h3>
+        <div class="teaching-wrapper">
+        {% for work in page.work %}
+        <h4>{{ work.place }}</h4>
+        <h5>{{ work.role }}</h5>
+        <div class="teaching-item">
+          <div class="teaching-description">
+            <p>{{ work.description }}</p>
+          </div>
+          <ul class="teaching-dates">
+            <li>{{ work.date }}</li>
+            <li>{{ work.location }}</li>
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </article>
+</body>
+</html>
