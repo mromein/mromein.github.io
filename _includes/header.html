@@ -28,7 +28,8 @@
         downArrow = document.getElementById("down-arrow"),
         innerMenu = document.querySelectorAll("#menu>ul")[0],
         menuList = document.getElementById("menu-list"),
-        currentMenu = '';
+        currentMenu = '',
+        selectedButton = null;
 
     function displayArrow(){
       if(menu.scrollHeight == menu.offsetHeight){
@@ -53,6 +54,10 @@
       document.body.classList.remove("no-overflow");
       document.documentElement.classList.remove("no-overflow");
       displayArrow();
+      if (selectedButton) {
+        selectedButton.style.color = "";
+        selectedButton = null;
+      }
     }
 
     function populateMenu(items) {
@@ -81,6 +86,22 @@
       menuList.appendChild(downArrow);
     }
 
+    function handleMenuClick(button, menuType, items) {
+      if (currentMenu === menuType && !menu.classList.contains("menu-invisible")) {
+        hideMenu();
+        currentMenu = '';
+      } else {
+        if (selectedButton) {
+          selectedButton.style.color = "";
+        }
+        button.style.color = "#adadad";
+        selectedButton = button;
+        populateMenu(items);
+        showMenu();
+        currentMenu = menuType;
+      }
+    }
+
     workButton.addEventListener("click", function() {
       var projects = [
         {% for project in site.projects %}
@@ -91,14 +112,7 @@
         },
         {% endfor %}
       ];
-      if (currentMenu === 'work' && !menu.classList.contains("menu-invisible")) {
-        hideMenu();
-        currentMenu = '';
-      } else {
-        populateMenu(projects);
-        showMenu();
-        currentMenu = 'work';
-      }
+      handleMenuClick(workButton, 'work', projects);
     });
 
     designButton.addEventListener("click", function() {
@@ -111,14 +125,7 @@
         },
         {% endfor %}
       ];
-      if (currentMenu === 'design' && !menu.classList.contains("menu-invisible")) {
-        hideMenu();
-        currentMenu = '';
-      } else {
-        populateMenu(designs);
-        showMenu();
-        currentMenu = 'design';
-      }
+      handleMenuClick(designButton, 'design', designs);
     });
 
     experimentButton.addEventListener("click", function() {
@@ -131,14 +138,7 @@
         },
         {% endfor %}
       ];
-      if (currentMenu === 'experiment' && !menu.classList.contains("menu-invisible")) {
-        hideMenu();
-        currentMenu = '';
-      } else {
-        populateMenu(experiments);
-        showMenu();
-        currentMenu = 'experiment';
-      }
+      handleMenuClick(experimentButton, 'experiment', experiments);
     });
 
     window.addEventListener("keydown", function(e){
