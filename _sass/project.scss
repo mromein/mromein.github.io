@@ -32,9 +32,11 @@
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 60%;
+  top: 53%;
   -webkit-transition: opacity 0.1s;
   transition: opacity 0.1s;
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
 
   @include tablet {
     max-width: 585px;
@@ -45,7 +47,7 @@
   }
 
   @include desktop {
-    max-width: 1050px;
+    max-width: 1850px;
   }
 
   h1 {
@@ -72,6 +74,8 @@
     display: block;
     margin: 90px auto 0;
     cursor: pointer;
+
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35)); // Add subtle drop shadow
 
     @include tablet {
       width: 50px;
