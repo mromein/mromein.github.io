@@ -121,8 +121,8 @@
       bgFront.position.y = renderer.height / 2;
 
       // window.addEventListener("mousemove", function(e){
-      //   bgFront.position.x = renderer.width / 2 + 100 * (0.5 - e.clientX/renderer.width);
-      //   bgFront.position.y = renderer.height / 2 - 100 * (0.5 - e.clientY/renderer.height);
+      //   bgFront.position.x = renderer.width / 2 + 1000 * (0.5 - e.clientX/renderer.width);
+      //   bgFront.position.y = renderer.height / 2 - 1000 * (0.5 - e.clientY/renderer.height);
       // });
 
       // window.addEventListener("devicemotion", function(e){
@@ -164,9 +164,14 @@
           bg.height = bgFront.height = renderer.height;
           bg.width = bgFront.width = renderer.height / bgratio;
         }
+        
+        // adjsut bg.front width and height to increase the mask displacement by percentage
 
-        bgFront.width *= 1.4;
-        bgFront.height *= 1.4;
+        // bgFront.width *= 1.4;
+        // bgFront.height *= 1.4;
+
+        bgFront.width *= 1.0;
+        bgFront.height *= 1.0;
 
         thing.texture = whichImage();
         thing.width = width * 0.8;
@@ -174,8 +179,14 @@
 
         thing.position.x = width / 2;
         thing.position.y = height / 2;
+
+        // adjsut bg.front width and height to increase the mask displacement by percentage
+
         bgFront.position.x = width / 2;
-        bgFront.position.y = height / 2;
+        // bgFront.position.y = height / 2;
+        bgFront.position.y = height;
+        
+
         bg.position.x = width / 2;
         bg.position.y = height / 2;
       }
