@@ -34,26 +34,13 @@
     <h2>Created</h2>
     <p>{{ page.created }}</p>
     </li>
-     
-    {% if page.artists %}
-    <h2>Lead Artist</h2>
-    {% for artist in page.artists %}
-      <li>
-        <ul class="project-info__performance">
-          {% if artist.url %}
-            <li><u><a href="{{ artist.url }}" target="_blank">{{ artist.person }}</a></u></li>
-          {% else %}
-            <li>{{ artist.person }}</li>
-          {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
 
-    <li>
-    <h2>Role</h2>
-    <p>{{ page.role }}</p>
-    </li>
+    {% if page.role %}
+      <li>
+      <h2>Role</h2>
+      <p>{{ page.role }}</p>
+      </li>
+    {% endif %}
 
     {% if page.showings %}
     <h2>Select Showings</h2>

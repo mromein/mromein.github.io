@@ -3,7 +3,7 @@ layout: project
 permalink: /in_triplicate/
 title: "In Triplicate"
 created: "October 2016"
-root: "/assets/in_triplicate/"
+root: "/assets/01_projects/in_triplicate/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/249836876" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

@@ -3,7 +3,7 @@ layout: project
 permalink: /meat_puppet_arcade/
 title: "Meat Puppet Arcade"
 created: "November 2016"
-root: "/assets/meat_puppet_arcade/"
+root: "/assets/01_projects/meat_puppet_arcade/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/249831908" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

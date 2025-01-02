@@ -1,25 +1,38 @@
 ---
 layout: design
-permalink: /50_50/
+permalink: /50_50_old_school_animation/
 title: "50/50 old school animation"
-created: "June 2014"
-root: "/assets/anal_mosh/"
+created: "TBD"
+root: "/assets/02_design/50_50_old_school_animation/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  analmosh is custom made generative visual system. Optical flow, feedback chains, and glitch techniques are used to create colorful and dynamic imagery that is generated in real-time. analmosh is sometimes presented as a live performance in which the imagery is accompanied by sample-based audio programmed to match the visual movement and tone.
+  TBD
 
 artists:
-  - person: Peter Mills Weiss
-  - person: Julia Mounsey
+  - person: TBD
+    url: https://espn.com
 
 role:
  - Video Designer
 
 showings:
-  - text: Under The Radar - 2020
-  - text: Schauspielhaus Hamburg - 2022
+  - text: TBD
+    url: https://espn.com
+
+credits:
+  - TBD
+  - TBD
+  - TBD
+
+awards:
+  - text: TBD
+    url: https://espn.com
+
+press:
+  - text: TBD
+    url: https://espn.com
 
 documentation:
   - "1.jpg"

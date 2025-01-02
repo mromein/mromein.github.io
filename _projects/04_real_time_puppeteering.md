@@ -3,7 +3,7 @@ layout: project
 permalink: /real_time_avateering/
 title: "Real Time Avateering"
 created: "May 2016"
-root: "/assets/real_time_avateering/"
+root: "/assets/01_projects/real_time_avateering/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/249832060" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

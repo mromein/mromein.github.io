@@ -3,7 +3,7 @@ layout: project
 permalink: /analmosh/
 title: "analmosh"
 created: "June 2014"
-root: "/assets/anal_mosh/"
+root: "/assets/01_projects/anal_mosh/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
