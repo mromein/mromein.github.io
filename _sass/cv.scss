@@ -1,5 +1,5 @@
 .cv {
-  max-width: 212px;
+  max-width: 320px;
   margin: 50px auto;
 
   @include tablet {
@@ -13,32 +13,6 @@
   @include desktop {
     max-width: 1260px;
     margin: 130px auto 100px;
-  }
-}
-
-.cv-education,.cv-performances, .cv-awards, .cv-talks, .cv-work, .cv-teaching {
-  h3 {
-    text-decoration: underline;
-
-  @include greater_than_tablet {
-    width: 33%;
-    }
-  }
-
-  &:not(:first-of-type) {
-    margin: 60px 0 0;
-  }
-
-  h4, p, ul {
-    margin: 25px 0 0;
-  }
-
-  @include greater_than_tablet {
-    display: flex;
-
-    h4, p, ul {
-      margin: 0;
-    }
   }
 }
 
@@ -68,179 +42,99 @@
   margin: 40px 0 25px;
 }
 
-.cv-education__schools {
-  @include tablet {
-    width: 67%
-  }
-
-  @include laptop {
-    width: 67%;
-  }
-
-  @include desktop {
-    width: 67%;
-  }
-
-  ul, li {
-    &:not(:first-of-type) {
-      margin-top: 25px;
-    }
-  }
-}
-
-.cv-education__school {
-
-  li {
-    @include tablet {
-      width: 50%;
-      div {
-        max-width: 180px;
-      }
-      &:first-of-type {
-        width: 60%;
-      }
-      &:not(:first-of-type) {
-        width: 40%;
-        margin: 0;
-      }
-    }
-    @include laptop {
-      width: 50%;
-      margin: 0;
-      div {
-        max-width: 282px;
-      }
-      &:first-of-type {
-        width: 60%;
-      }
-      &:not(:first-of-type) {
-        width: 40%;
-        margin: 0;
-      }
-    }
-
-    @include desktop {
-      width: 50%;
-      margin: 0;
-      div {
-        max-width: 416px;
-      }
-      &:first-of-type {
-        width: 60%;
-      }
-      &:not(:first-of-type) {
-        width: 40%;
-        margin: 0;
-      }
-    }
-  }
+.cv-embed {
+  display: block;
+  align-items: start; 
+  justify-content: center;
 
   @include tablet {
-    display: flex;
-    margin: 0;
 
-    &:not(:first-of-type) {
-      margin: 26px 0 0;
-    }
+    display: flex;
+    align-items: start; 
+    justify-content: center;
+    
   }
 
   @include laptop {
-    display: flex;
-    margin: 0;
 
-    &:not(:first-of-type) {
-      margin: 26px 0 0;
-    }
+    display: flex;
+    align-items: start; 
+    justify-content: center;
+    
   }
 
   @include desktop {
-    display: flex;
-    margin: 0;
 
-    &:not(:first-of-type) {
-      margin: 26px 0 0;
-    }
+    display: flex;
+    align-items: start; 
+    justify-content: center;
+
   }
+
 }
 
-.cv-wrapper {
+.cv-embed__doc {
+  
+  $doc-height: 1100px;
 
-  @include greater_than_tablet {
-    width: 67%;
+  width: 610px;
+  height: $doc-height * .85;
 
-    h4 {
-      max-width: 212px;
-      margin: 0;
-      &:not(:first-of-type) {
-        margin: 60px 0 0;
-      }
-    }
+  zoom: 0.7;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.75);
+  -webkit-transform-origin: 0 0;
 
-    h5 {
-      margin: 10px auto 0;
-    }
+  @include tablet {
+    
+    width: 800px;
+    height: $doc-height * .75;
+
+
+    zoom: 1.0;
+    -moz-transform: scale(1);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(1);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 0 0;
+
   }
 
   @include laptop {
-    h4 {
-      max-width: 282px;
-    }
+
+    width: 800px;
+    height: $doc-height;
+
+    zoom: 1.0;
+    -moz-transform: scale(1);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(1);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 0 0;
+    
   }
 
   @include desktop {
-    h4 {
-      max-width: 416px;
-    }
-  }
-}
 
-.cv-item {
-  @include greater_than_tablet {
-    display: flex;
-    margin: 25px 0 0;
-  }
-}
 
-.cv-description {
+    width: 800px;
+    height: $doc-height;
 
-  &:not(:first-of-type) {
-    margin: 60px 0 0;
+    zoom: 1.0;
+    -moz-transform: scale(1);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(1);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 0 0;
+
   }
 
-  @include greater_than_tablet {
-    width: 60%;
-
-    p {
-      max-width: 212px;
-      margin: 0;
-    }
-  }
-
-  @include laptop {
-    p {
-      max-width: 282px;
-    }
-  }
-
-  @include desktop {
-    p {
-      max-width: 416px;
-    }
-  }
-}
-
-.cv-dates {
-
-  @include greater_than_tablet {
-    width: 40%;
-      margin: 0;
-
-      .cv-date {
-        &:not(:first-of-type) {
-          margin: 25px 0 0;
-        }
-      }
-  }
 }
 
 @media print {
