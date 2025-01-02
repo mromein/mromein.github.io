@@ -149,7 +149,7 @@
     });
 
     menu.onscroll = function(ev) {
-      downArrow.style.opacity = nav.style.opacity = 1 - 4 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
+      downArrow.style.opacity = nav.style.opacity = 1 - 12 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
     };
 
     window.addEventListener("resize", displayArrow);

@@ -309,6 +309,8 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
     animation-duration: 1s;
     animation-iteration-count: infinite;
 
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35)); // Add subtle drop shadow
+
   }
 } 
 

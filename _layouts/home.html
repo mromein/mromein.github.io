@@ -167,11 +167,11 @@
         
         // adjsut bg.front width and height to increase the mask displacement by percentage
 
+         bgFront.width *= 1.0;
+         bgFront.height *= 1.0;
+
         // bgFront.width *= 1.4;
         // bgFront.height *= 1.4;
-
-        bgFront.width *= 1.0;
-        bgFront.height *= 1.0;
 
         thing.texture = whichImage();
         thing.width = width * 0.8;
@@ -183,9 +183,9 @@
         // adjsut bg.front width and height to increase the mask displacement by percentage
 
         bgFront.position.x = width / 2;
-        // bgFront.position.y = height / 2;
-        bgFront.position.y = height;
+        //bgFront.position.y = height / 2;
         
+        bgFront.position.y = height / 1.2;
 
         bg.position.x = width / 2;
         bg.position.y = height / 2;
