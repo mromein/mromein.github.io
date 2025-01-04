@@ -23,6 +23,10 @@
       <p>{{ page.title }}</p>
     </li>
     <li>
+      <h2>Medium</h2>
+      <p>{{ page.medium }}</p>
+    </li>
+    <li>
       <h2>Description</h2>
       <p>{{ page.description | markdownify }}</p>
     </li>
@@ -41,7 +45,7 @@
       <li>
         <ul class="project-info__performance">
           {% if collaborator.url %}
-            <li><u><a href="{{ collaborator.url }}" target="_blank">{{ collaborator.person }}</a></u></li>
+            <li><u><a href="{{ collaborator.url }}" target="_blank">{{ collaborator.person }}</a></u> ~ {{ collaborator.role }}</li>
           {% else %}
             <li>{{ collaborator.person }}</li>
           {% endif %}
