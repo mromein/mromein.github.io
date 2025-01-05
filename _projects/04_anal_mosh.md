@@ -2,13 +2,16 @@
 layout: project
 permalink: /analmosh/
 title: "analmosh"
-created: "June 2014"
+medium: "Live A/V Performance | Installation"
+created: "2014"
 root: "/assets/01_projects/anal_mosh/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  analmosh is custom made generative visual system. Optical flow, feedback chains, and glitch techniques are used to create colorful and dynamic imagery that is generated in real-time. analmosh is sometimes presented as a live performance in which the imagery is accompanied by sample-based audio programmed to match the visual movement and tone.
+  <i>analmosh</!> is a software, tool, and instrument created by the artist. It produces real-time audio and visuals by processing audio samples and video feedback systems. It has been used for live performance and installations.
+  
+  The system incorporates elements of randomness and chance, leading to highly improvised performances, typically last between 15 to 40 minutes.
 
 performances:
   - event: "Zip:UNCOMPRESSED Vol.4"

@@ -2,7 +2,8 @@
 layout: project
 permalink: /header_munging/
 title: "Header Munging"
-created: "TBD"
+created: "2013"
+medium: "Dance"
 root: "/assets/01_projects/header_munging/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/249832060" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -11,32 +12,19 @@ description: >
   TBD
 
 collaborators:
-  - person: TBD
-    url: https://espn.com
+  - person: Sophie Zuehl
+    role: Choreographer + Dancer
 
-showing:
-  - text: TBD
-    url: https://espn.com
-
-links:
-  - text: TBD
-    url: https://espn.com
-
-awards:
-  - text: TBD
-    url: https://espn.com
+showings:
+  - text: Center For Performance Research ~ 2015
+  - text: AUNTS ~ 2015
+  - text: Dixon Place ~ 2014
 
 press:
-  - text: TBD
-    url: https://espn.com
+  - text: Hyperallergic
+    url: https://hyperallergic.com/133757/a-dance-of-digital-shadows/
 
 documentation:
   - "01.jpg"
   - "02.jpg"
-  - "3.gif"
-  - "4.gif"
-  - "5.gif"
-  - "6.gif"
-  - >
-    <iframe src="https://player.vimeo.com/video/169132287" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

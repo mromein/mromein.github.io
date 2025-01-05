@@ -18,7 +18,7 @@ collaborators:
     role: Co-Creator
     url: https://www.lydiajessup.me/
 
-showing:
+showings:
   - text: IDFA DocLab ~ 2020
     url: https://www.idfa.nl/en/film/934a1588-e0f5-4340-8e1d-540fc65878a3/virtualis/
 

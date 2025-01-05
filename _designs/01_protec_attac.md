@@ -9,7 +9,7 @@ bg-video: >
 
 description: >
   Do nothing. Die young. End the world.
-
+  <br><br>
   This is a show that deals directly with feelings of isolation, dread, and political despair. It is an interview with a woman who has given herself fully to misery. For her, misery is both a state of grace and a new form of perverse political action. The interview gradually morphs into a series of strange games that require audience participation and are meant to prime the audience into accepting her agenda: the end of human history. Protec/Attac is a performance about misery, hopelessness, and following directions.
 
 

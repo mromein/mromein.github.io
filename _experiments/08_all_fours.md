@@ -1,9 +1,9 @@
 ---
 layout: project
-permalink: /social_impact/
-title: "Social Impact"
+permalink: /all_fours/
+title: "All Fours"
 created: "2022"
-root: "/assets/01_projects/social_impact/"
+root: "/assets/01_projects/all_fours/"
 bg-video: >
   <iframe src="https://player.vimeo.com/video/249832060" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
@@ -11,8 +11,8 @@ description: >
   TBD
 
 collaborators:
-  - person: TBD
-    url: https://espn.com
+  - person: Peter Burr
+    url: https://www.peterburr.org/
 
 showing:
   - text: XTENSIONS ~ Onassis ONX + NEW INC
