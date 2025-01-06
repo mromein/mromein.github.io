@@ -14,39 +14,22 @@ description: >
   Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques.
 
 showings:
-  - text: Willamette University - 2019
   - text: Roulette - 2019
   - text: CATCH ~ 2018
   - text: Mana Contemporary - 2017
   - text: SXSW - 2016
-  - text: Mixed Signals~ 2015
-  - text: 3-Legged Dog - 2016
+  - text: 3-Legged Dog ~ 2016
   - text: The Bellhouse ~ 2015
 
-performances:
-  - event: "SXSW Interactive Conference"
-    date: "March 2016"
-    location: "Austin, Texas"
-  - event: "Mixed Signals"
-    date: "February 2016"
-    venue: "Umbrella Factory"
-    location: "NYC"
-  - event: "Pataphysical February "
-    date: "February 2016"
-    venue: "3-Legged Dog"
-    location: "NYC"
-  - event: "New Interfaces for Musical Expression"
-    date: "December 2015"
-    venue: "The Bellhouse"
-    location: "NYC"
-
 documentation:
-  - "1.jpg"
-  - "2.jpg"
-  - "3.jpg"
-  - "4.jpg"
-  - "5.jpg"
-  - "6.jpg"
-  - "7.jpg"
-  - "8.jpg"
+  - "01.jpg"
+  - "02.jpg"
+  - "03.jpg"
+  - "04.jpg"
+  - "05.jpg"
+  - "06.jpg"
+  - "07.jpg"
+  - "08.jpg"
+  - "09.jpg"
+  - <iframe src="https://player.vimeo.com/video/153056895" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

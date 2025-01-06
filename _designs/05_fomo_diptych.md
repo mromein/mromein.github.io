@@ -12,19 +12,7 @@ description: >
 
 artists:
   - person: Laurie Berg
-
-credits:
-  - Madison Krekel ~ Sound
-  - Omar Zubair ~ Sound
-  - Shana Crawford ~ Lighting
-  - Jodi Bender ~ Dancer
-  - Ayano Elson ~ Dancer
-  - Marion Spencer ~ Dancer
-  - Laurie Berg ~ Dancer 
-  - jess pretty ~ Creative Consultant
-  - Shomit Barua ~ Techinical Associate
-  - Myssi Robinson ~ Train View Design
-
+  
 role:
  - Technical Designer
 
@@ -37,4 +25,5 @@ documentation:
   - "02.jpg"
   - "03.jpg"
   - "04.jpg"
+  - <iframe src="https://player.vimeo.com/video/761616731" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

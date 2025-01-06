@@ -37,4 +37,7 @@ documentation:
   - "02.jpg"
   - "03.jpg"
   - "04.jpg"
+  - <iframe src="https://www.youtube.com/embed/J8XrJ3VEHBY?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/8kpmpCvjsos?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/G5i1Sy9Hxu0?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

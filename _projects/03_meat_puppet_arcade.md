@@ -21,19 +21,21 @@ links:
     url: https://downloadmybody.com
 
 showings:
-  - text: Pioneer Works (Second Sunday Series) - 2017
+  - text: Pioneer Works ~ 2017
     url: "https://pioneerworks.org/projects/matt-romein-meat-puppet-arcade"
   - text: IDFA DocLab ~ 2016
     url: "https://www.idfa.nl/en/film/e974a800-c61c-48cc-a6cf-9d8141ffd00b/meat-puppet-arcade/"
 
 documentation:
-  - "1.gif"
-  - "2.gif"
-  - "3.gif"
-  - "4.gif"
-  - "5.gif"
-  - "6.gif"
-  - "7.gif"
-  - >
-    <iframe src="https://player.vimeo.com/video/209130337" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - "01.gif"
+  - "02.gif"
+  - "03.gif"
+  - "04.gif"
+  - "05.gif"
+  - "06.gif"
+  - "07.gif"
+  - "08.jpg"
+  - "09.jpg"
+  - <iframe src="https://player.vimeo.com/video/249831908" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/sew7iPWDyFo?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

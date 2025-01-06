@@ -5,8 +5,6 @@ title: "While You Were Partying"
 created: "2021"
 medium: "Theater"
 root: "/assets/02_design/while_you_were_partying/"
-bg-video: >
-  <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   <i>When you were partying I studied The Blade
@@ -30,14 +28,6 @@ showings:
     url: https://sohorep.org/shows/while-you-were-partyin/
   - text: Norderzon ~ 2024
     url: https://www.noorderzon.nl/en/programme/peter-and-julia
-
-credits:
-  - Brian Fiddyment ~ Performer
-  - Kate McGee ~ Lighting Design
-  - dots ~ Scenic Design
-  - Michael Hernandez ~ Co-Sound Design
-  - Kimberly O'Loughlin ~ Co-Sound Design
-  - Aaron Profumo ~ Producer
 
 press:
   - text: NYTimes (Critic's Pick)

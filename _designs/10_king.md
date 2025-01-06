@@ -22,5 +22,5 @@ showings:
 - text: The Kitchen ~ 2013
 
 documentation: >
-  <iframe src="https://www.youtube.com/embed/-73Sh41h9Yc?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=-73Sh41h9Yc" width="640" height="660" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/-73Sh41h9Yc?hd=1&rel=0&modestbranding=1" width="640" height="660" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

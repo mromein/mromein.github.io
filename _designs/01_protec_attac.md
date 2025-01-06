@@ -25,12 +25,6 @@ showings:
     url: https://schauspielhaus.de/st%C3%BCcke/protecattac
   - text: Under The Radar ~ 2023
 
-credits:
-  - Julia Weininger ~ Performer
-  - Lars Rudolph ~ Performer
-  - Kate McGee ~ Stage Design
-  - Aaron Profumo ~ Producer
-
 press:
   - text: Nachtkritik
     url: https://www.nachtkritik.de/nachtkritiken/deutschland/hamburg-schleswig-holstein/hamburg/deutsches-schauspielhaus-hamburg/protec-attac-deutsches-schauspielhaus-hamburg-das-new-yorker-kuenstler-innenduo-julia-mounsey-und-peter-mills-weiss-erzaehlt-von-der-sehnsucht-nach-ausstieg-aus-dem-psychostress
@@ -42,4 +36,5 @@ documentation:
   - "04.jpg"
   - "05.jpg"
   - "06.jpg"
+  - <iframe src="https://www.youtube.com/embed/bf8TFdKXktw?hd=1&rel=0&modestbranding=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

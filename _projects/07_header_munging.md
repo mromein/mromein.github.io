@@ -25,6 +25,8 @@ press:
     url: https://hyperallergic.com/133757/a-dance-of-digital-shadows/
 
 documentation:
-  - "01.jpg"
-  - "02.jpg"
+  - "01.gif"
+  - <iframe src="https://player.vimeo.com/video/165521236" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://player.vimeo.com/video/79614962" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://player.vimeo.com/video/79622684" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

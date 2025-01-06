@@ -12,7 +12,7 @@ description: >
   
   <br><br>
 
-  The puppeteer is moving and puppetting the avatars while the two performers are controlling the avatars faces using iPhones and face motion capture. The camera cuts are being triggered by a technician off camera. All of these elements combine in real time to create a performance on a "virtual stage" which is visible to the audience through projection on the back wall.
+  The puppeteer is moving and puppetting the avatars while the two performers are controlling the avatars faces using iPhones and face motion capture. The camera cuts are being triggered by a technician off camera. All of these elements combine in real time to create a performance on a virtual stage which is visible to the audience through projection on the back wall.
 
   <br><br>
   
@@ -34,5 +34,5 @@ credits:
   - Benita de Wit ~ Dramaturg
 
 documentation: >
-  - <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=vu7xoB-AAj8" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

@@ -21,11 +21,6 @@ showings:
   - text: Under The Radar ~ 2019
   - text: Under The Radar (Incoming!) ~ 2018
 
-credits:
-  - Mo Fry Pasic ~ Performer
-  - Sophie Weisskoff ~ Co-Writer
-  - Kate McGee ~ Lighting Designer
-
 press:
   - text: New Yorker
     url: https://www.newyorker.com/culture/cultural-comment/the-need-for-art-that-hurts
@@ -36,4 +31,5 @@ documentation:
   - "01.jpg"
   - "02.jpg"
   - "03.jpg"
+  -  <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=JN_jDr9Gf9Q" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

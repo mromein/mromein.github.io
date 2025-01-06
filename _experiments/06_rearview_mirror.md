@@ -26,5 +26,5 @@ credits:
   - Jacob Riley Wasserman
 
 documentation: >
-  - <iframe src="https://www.youtube.com/embed/fK-cwCxU4IU?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=fK-cwCxU4IU" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/fK-cwCxU4IU?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---
