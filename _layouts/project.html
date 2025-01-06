@@ -10,7 +10,7 @@
   <div class="project-bgvideo__poster" id="project-bgvideo__poster" style="background-image: url({{ page.root | absolute_url }}preview.jpg)">
     <div class="project-title__wrapper">
       <h1>{{ page.title }}</h1>
-      {% include playarrow.svg %}
+      {% if page.bg-video %} {% include playarrow.svg %} {% endif %}
     </div>
   </div>
 </section>
@@ -115,7 +115,7 @@
   </ul>
 </section>
 <section class="project-media">
-  {% for content in page.documentation limit: 3 %}
+  {% for content in page.documentation limit: 5 %}
     {% capture content_type %}{{ content | downcase }}{% endcapture %}
     {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
       <img src="{{ page.root | absolute_url }}{{ content }}">
@@ -124,9 +124,9 @@
     {% endif %}
   {% endfor %}
 
-  {% if page.documentation.size > 3 %}
+  {% if page.documentation.size > 5 %}
   <div class="project-media__extra" id="media-extra">
-    {% for content in page.documentation offset: 3 %}
+    {% for content in page.documentation offset: 5 %}
       {% capture content_type %}{{ content | downcase }}{% endcapture %}
       {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
         <img src="{{ page.root | absolute_url }}{{ content }}">
@@ -144,14 +144,14 @@
   {% endif %}
 </section>
 <section class="project-menu__wrapper">
-  <ul class="project-menu">
-    {% for project in site.projects reversed %}
+ <ul class="project-menu">
+    <!-- {% for project in site.projects reversed %}
     <li>
       <a href="{{ project.permalink | absolute_url }}">
         <h2>{{ project.title }}</h2>
       </a>
     </li>
-    {% endfor %}
+    {% endfor %} -->
     <li>
       <a href="{{ site.url }}">
         <h2>HOME</h2>

@@ -18,6 +18,6 @@ credits:
   - Peter Burr ~ Producer + Coder
   - Tim Platt ~ Performer
 
-documentation: >
-    - <iframe src="https://www.youtube.com/embed/8ny8dxcPFag?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+documentation:  
+  - <iframe src="https://www.youtube.com/embed/8ny8dxcPFag?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

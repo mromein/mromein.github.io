@@ -8,7 +8,7 @@ bg-video: >
   <iframe src="https://player.vimeo.com/video/206441970" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  A fully-functioning, camera-embedded, doorbell that allows you to get the attention of someone in virtual reality. 
+  A fully-functioning, camera-embedded doorbell that allows you to get the attention of someone in virtual reality. 
   <br><br>
   Developed for the 2017 Stupid Shit No One Needs and Terrible Ideas Hackathon. 
 
@@ -24,6 +24,6 @@ credits:
   - Yifan Hu
   - Sean McIntyre
 
-documentation: >
-  <iframe src="https://player.vimeo.com/video/206441970" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+documentation:
+  - <iframe src="https://player.vimeo.com/video/206441970" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

@@ -33,6 +33,6 @@ credits:
   - Stage Manager ~ Erica Schnitzer
   - Benita de Wit ~ Dramaturg
 
-documentation: >
+documentation:
   - <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

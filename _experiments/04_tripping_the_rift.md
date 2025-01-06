@@ -14,6 +14,6 @@ description: >
 role:
  - Creator
 
-documentation: >
+documentation:
   - <iframe src="https://player.vimeo.com/video/126130699" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

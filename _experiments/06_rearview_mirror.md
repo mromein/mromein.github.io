@@ -25,6 +25,6 @@ credits:
   - Sam Sadtler
   - Jacob Riley Wasserman
 
-documentation: >
+documentation:
   - <iframe src="https://www.youtube.com/embed/fK-cwCxU4IU?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---
