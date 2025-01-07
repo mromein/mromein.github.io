@@ -10,21 +10,23 @@
 <script type="text/javascript">
   var loadedVideos = [];
   var loadIndicator = document.getElementById("loader");
-  var totalVideos = 9; // Set this to the total number of videos available
+  var totalVideos = 11; // Set this to the total number of videos available
+  var lastPlayedIndex = -1; // Variable to keep track of the last played video index
 
   function requestVideo(num, cb){
     var req = new XMLHttpRequest();
-    req.open("GET", "assets/bg_videos/" + num + ".mp4", true);
+    req.open("GET", "assets/bg_videos/0" + num + ".mp4", true);
     req.responseType = "blob";
 
     req.onload = function() {
-      // Onload is triggered even on 404
-      // so we need to check the status code
       if (this.status === 200) {
         var videoBlob = this.response;
         loadedVideos.push(URL.createObjectURL(videoBlob)); // IE10+
         if(loadedVideos.length < totalVideos){
-          var nextNum = Math.floor(Math.random() * totalVideos) + 1;
+          var nextNum;
+          do {
+            nextNum = Math.floor(Math.random() * totalVideos) + 1;
+          } while (nextNum === num); // Ensure the next video is different from the current one
           requestVideo(nextNum);
         }
       }
@@ -86,11 +88,16 @@
       bgVideo.autoplay = true;
       bgVideo.preload = "auto"
       bgVideo.src = loadedVideos[0];
+      lastPlayedIndex = 0; // Set the initial last played index
 
       bgVideo.onended = function(){
-        var nextVideoIndex = Math.floor(Math.random() * totalVideos) + 1;
-        requestVideo(nextVideoIndex, function(){
-          bgVideo.src = loadedVideos[loadedVideos.length - 1];
+        var nextVideoIndex;
+        do {
+          nextVideoIndex = Math.floor(Math.random() * totalVideos);
+        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
+        lastPlayedIndex = nextVideoIndex; // Update the last played index
+        requestVideo(nextVideoIndex + 1, function(){
+          bgVideo.src = loadedVideos[nextVideoIndex];
           bgVideo.oncanplay = function(){
             bgVideo.play();
           }
@@ -119,15 +126,6 @@
 
       bgFront.position.x = renderer.width / 2;
       bgFront.position.y = renderer.height / 2;
-
-      // window.addEventListener("mousemove", function(e){
-      //   bgFront.position.x = renderer.width / 2 + 1000 * (0.5 - e.clientX/renderer.width);
-      //   bgFront.position.y = renderer.height / 2 - 1000 * (0.5 - e.clientY/renderer.height);
-      // });
-
-      // window.addEventListener("devicemotion", function(e){
-      //   // debugger;
-      // });
 
       stage.addChild(bgFront);
 
@@ -204,9 +202,13 @@
         video.play();
       }
       video.onended = function(){
-        var nextVideoIndex = Math.floor(Math.random() * totalVideos) + 1;
-        requestVideo(nextVideoIndex, function(){
-          video.src = loadedVideos[loadedVideos.length - 1];
+        var nextVideoIndex;
+        do {
+          nextVideoIndex = Math.floor(Math.random() * totalVideos);
+        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
+        lastPlayedIndex = nextVideoIndex; // Update the last played index
+        requestVideo(nextVideoIndex + 1, function(){
+          video.src = loadedVideos[nextVideoIndex];
           video.oncanplay = function(){
             video.play();
           }
