@@ -6,7 +6,7 @@ medium: "Live A/V Performance"
 created: "2015"
 root: "/assets/01_projects/in_triplicate/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/249836876" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/249836876" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   In Triplicate is a custom audio/visual instrument originally developed for the New Interfaces in Musical Expression showcase. 

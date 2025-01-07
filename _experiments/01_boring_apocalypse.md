@@ -5,7 +5,7 @@ title: "Boring Apocalypse"
 created: "2024"
 root: "/assets/03_experiments/boring_apocalypse/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/8ny8dxcPFag?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=8ny8dxcPFag" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/8ny8dxcPFag?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   Boring Apocalypse is short film based on The <i>Intellectual Reports</i>, a short story manga created by Ebisu Yoshikazu in 1981.<br><br>

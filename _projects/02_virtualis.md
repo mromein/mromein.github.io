@@ -6,7 +6,7 @@ created: "2020"
 medium: "Live Performance | VR"
 root: "/assets/01_projects/virtualis/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/QN9PAWhzQ9Q?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=QN9PAWhzQ9Q"   width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/QN9PAWhzQ9Q?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   The #1 VRChat Tour Agency!

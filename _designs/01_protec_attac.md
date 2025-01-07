@@ -5,7 +5,7 @@ title: "Protec/Attac"
 created: "2022"
 root: "/assets/02_design/protec_attac/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/bf8TFdKXktw?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=bf8TFdKXktw" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/bf8TFdKXktw?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   Do nothing. Die young. End the world.

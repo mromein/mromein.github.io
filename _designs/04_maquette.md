@@ -5,7 +5,7 @@ title: "Maquette"
 created: "2023"
 root: "/assets/02_design/maquette/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/1018321472" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/1018321472" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   Maquette is a live physical-virtual performance combining motion capture, contemporary circus and gaming technology to push the boundaries of what “human” looks like to both the physical and the programmed eye. Orchestrated, captured and rendered in real time, each performance is unique, providing Maquette’s audience with a never-before-seen experience.

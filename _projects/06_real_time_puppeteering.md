@@ -6,7 +6,7 @@ created: "2016"
 medium: "Research | Performance"
 root: "/assets/01_projects/real_time_avateering/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/249832060" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/249832060" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   Thesis project for Master’s Degree at New York University's ITP Program.

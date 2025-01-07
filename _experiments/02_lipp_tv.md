@@ -5,7 +5,7 @@ title: "LIPP TV"
 created: "2020"
 root: "/assets/03_experiments/lipp_tv/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/J8XrJ3VEHBY?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=J8XrJ3VEHBY" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/J8XrJ3VEHBY?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   LIPP TV is a proof of concept variety tv show built for the streaming age. 

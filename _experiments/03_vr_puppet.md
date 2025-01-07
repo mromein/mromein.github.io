@@ -5,7 +5,7 @@ title: "VR Puppet"
 created: "2024"
 root: "/assets/03_experiments/vr_puppet/"
 bg-video: >
-    <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=vu7xoB-AAj8" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   Proof of concept for a virtual production performance workflow with a person in a virtual reality headset acting as a puppeteer.

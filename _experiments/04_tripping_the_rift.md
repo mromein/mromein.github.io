@@ -5,7 +5,7 @@ title: "Tripping The Rift"
 created: "2015"
 root: "/assets/03_experiments/tripping_the_rift/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/126130699" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/126130699" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   <i>Tripping The Rift</i> is a visual hallucination simulator for the Oculus DK2 VR Headset.

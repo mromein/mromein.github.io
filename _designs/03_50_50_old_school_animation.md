@@ -5,7 +5,7 @@ title: "[50/50] old school animation"
 created: "2018"
 root: "/assets/02_design/50_50_old_school_animation/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=JN_jDr9Gf9Q" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   A presentation on misogyny, cruelty, and agency, [50/50] old school animation is an unnerving exploration of what it means to feel in control.
@@ -31,5 +31,5 @@ documentation:
   - "01.jpg"
   - "02.jpg"
   - "03.jpg"
-  - <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=JN_jDr9Gf9Q" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

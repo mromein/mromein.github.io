@@ -6,7 +6,7 @@ created: "Ongoing"
 medium: "Theater | Motion Capture"
 root: "/assets/01_projects/bag_of_worms/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/9vNePYaHgco?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=9vNePYaHgco" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/9vNePYaHgco?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   An investigation into the anatomy of a famous video game character. A tyrannical disembodied head leading his friends through a series of unnerving experiments. A meditation on all the Sims we left to die on our parent’s desktop computer. 

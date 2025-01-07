@@ -6,7 +6,7 @@ medium: "Live A/V Performance | Installation"
 created: "2018"
 root: "/assets/01_projects/analmosh/"
 bg-video: >
-  <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/270484326" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   <i>analmosh</i> is a software, tool, and instrument created by the artist. It produces real-time audio and visuals by processing audio samples and video feedback systems. It has been used for live performance and installations.

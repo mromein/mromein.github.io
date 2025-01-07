@@ -5,7 +5,7 @@ title: "Rearview Mirror"
 created: "2015"
 root: "/assets/03_experiments/rearview_mirror/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/fK-cwCxU4IU?hd=1&rel=0&modestbranding=1&controls=0&loop=1&playlist=fK-cwCxU4IU" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/fK-cwCxU4IU?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
   A VR program that takes what's behind you and puts it in front you.
