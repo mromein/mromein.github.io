@@ -193,10 +193,18 @@
     window.addEventListener("keypress", resetTimer);
 
     function hideNav() {
-      nav.style.opacity = 0;
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      // Code to execute only on non-mobile devices
+      } 
+      else {
+        nav.style.opacity = 0
+      }
+
+      // nav.style.opacity = 0;
       // if(isPlaying){
       //   nav.style.opacity = 0;
       // }
+      
     }
 
     function resetTimer() {
