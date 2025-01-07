@@ -90,17 +90,28 @@
       bgVideo.src = loadedVideos[0];
       lastPlayedIndex = 0; // Set the initial last played index
 
+      // Prefetch the next video while the current video is playing
+      var nextVideoIndex;
+      do {
+        nextVideoIndex = Math.floor(Math.random() * totalVideos);
+      } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
+      requestVideo(nextVideoIndex + 1, function(videoUrl) {
+        nextVideoUrl = videoUrl; // Store the next video URL
+      });
+
       bgVideo.onended = function(){
-        var nextVideoIndex;
+        lastPlayedIndex = nextVideoIndex; // Update the last played index
+        bgVideo.src = nextVideoUrl; // Set the src to the prefetched video URL
+        bgVideo.oncanplay = function(){
+          bgVideo.play();
+        }
+
+        // Prefetch the next video while the current video is playing
         do {
           nextVideoIndex = Math.floor(Math.random() * totalVideos);
         } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
-        lastPlayedIndex = nextVideoIndex; // Update the last played index
-        requestVideo(nextVideoIndex + 1, function(){
-          bgVideo.src = loadedVideos[nextVideoIndex];
-          bgVideo.oncanplay = function(){
-            bgVideo.play();
-          }
+        requestVideo(nextVideoIndex + 1, function(videoUrl) {
+          nextVideoUrl = videoUrl; // Store the next video URL
         });
       };
 
