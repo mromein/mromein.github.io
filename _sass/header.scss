@@ -240,6 +240,7 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
 
   @include laptop {
+    //width: 700px;
     display: none;
   }
 

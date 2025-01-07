@@ -9,7 +9,7 @@ bg-video: >
 
 description: >
   Boring Apocalypse is short film based on The <i>Intellectual Reports</i>, a short story manga created by Ebisu Yoshikazu in 1981.<br><br>
-  It was created and shot over a period of two weeks as proof of concept for developed a short film in Unreal Engine with the Optirack Motion Capture system. It was captured and developed at Onassis ONX Studio.
+  It was created and shot over a period of two weeks as proof of concept for developing a short film in Unreal Engine with the Optirack Motion Capture system. It was captured and developed at Onassis ONX Studio.
 
 role:
   - Creator
