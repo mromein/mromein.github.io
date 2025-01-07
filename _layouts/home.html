@@ -12,6 +12,7 @@
   var loadIndicator = document.getElementById("loader");
   var totalVideos = 11; // Set this to the total number of videos available
   var lastPlayedIndex = -1; // Variable to keep track of the last played video index
+  var nextVideoUrl = ''; // Variable to store the next video URL
 
   function requestVideo(num, cb){
     var req = new XMLHttpRequest();
@@ -21,18 +22,11 @@
     req.onload = function() {
       if (this.status === 200) {
         var videoBlob = this.response;
-        loadedVideos.push(URL.createObjectURL(videoBlob)); // IE10+
-        if(loadedVideos.length < totalVideos){
-          var nextNum;
-          do {
-            nextNum = Math.floor(Math.random() * totalVideos) + 1;
-          } while (nextNum === num); // Ensure the next video is different from the current one
-          requestVideo(nextNum);
+        var videoUrl = URL.createObjectURL(videoBlob); // IE10+
+        loadedVideos.push(videoUrl);
+        if (cb) {
+          cb(videoUrl);
         }
-      }
-      if (cb) {
-        loadIndicator.style.display = "none";
-        cb();
       }
     }
     req.onerror = function(e) {
@@ -42,192 +36,162 @@
     req.send();
   }
 
-  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+  function loaded(loader, resources){
 
-  if(!isIE11){
-    var loader = PIXI.loader;
-
-    loader.add("largeMask", "assets/large_mask.png")
-      .add("smallMask", "assets/small_mask.png");
-
-    loader.onLoad.add(function(e){
-      console.log("add loading functionality here");
-      console.log(e)
-      loadIndicator.innerHTML = "<p>LOADING<span>.</span><span>.</span><span>.</span></p>";
-    });
-
-    loader.load(function(loader, resources){
-      requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
-        loaded(loader, resources);
-      });
-    });
-
-    function loaded(loader, resources){
-
-      function whichImage(){
-        if(window.innerWidth > 1024){
-          ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
-          return resources.largeMask.texture;
-        } else {
-          ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
-          return resources.smallMask.texture;
-        }
+    function whichImage(){
+      if(window.innerWidth > 1024){
+        ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
+        return resources.largeMask.texture;
+      } else {
+        ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
+        return resources.smallMask.texture;
       }
+    }
 
-      var canvas = document.getElementById("bg-canvas");
-      var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
-        antialias: true,
-        view: canvas,
-        autoResize: true
-      });
+    var canvas = document.getElementById("bg-canvas");
+    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
+      antialias: true,
+      view: canvas,
+      autoResize: true
+    });
 
-      var bgVideo = document.createElement("video");
+    var bgVideo = document.createElement("video");
+    var nextBgVideo = document.createElement("video");
 
-      bgVideo.muted = true;
-      bgVideo.setAttribute('playsinline', 'playsinline');
-      bgVideo.autoplay = true;
-      bgVideo.preload = "auto"
-      bgVideo.src = loadedVideos[0];
-      lastPlayedIndex = 0; // Set the initial last played index
+    bgVideo.muted = true;
+    bgVideo.setAttribute('playsinline', 'playsinline');
+    bgVideo.autoplay = true;
+    bgVideo.preload = "auto";
+    bgVideo.src = loadedVideos[0];
+    lastPlayedIndex = 0; // Set the initial last played index
+
+    nextBgVideo.muted = true;
+    nextBgVideo.setAttribute('playsinline', 'playsinline');
+    nextBgVideo.preload = "auto";
+    nextBgVideo.style.display = "none"; // Hide the next video element
+
+    document.body.appendChild(bgVideo);
+    document.body.appendChild(nextBgVideo);
+
+    // Prefetch the next video while the current video is playing
+    var nextVideoIndex;
+    do {
+      nextVideoIndex = Math.floor(Math.random() * totalVideos);
+    } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
+    requestVideo(nextVideoIndex + 1, function(videoUrl) {
+      nextVideoUrl = videoUrl; // Store the next video URL
+      nextBgVideo.src = nextVideoUrl; // Set the src of the next video element
+    });
+
+    bgVideo.onended = function(){
+      lastPlayedIndex = nextVideoIndex; // Update the last played index
+      bgVideo.style.display = "none"; // Hide the current video element
+      nextBgVideo.style.display = "block"; // Show the next video element
+      nextBgVideo.play();
+
+      // Swap the video elements
+      var temp = bgVideo;
+      bgVideo = nextBgVideo;
+      nextBgVideo = temp;
 
       // Prefetch the next video while the current video is playing
-      var nextVideoIndex;
       do {
         nextVideoIndex = Math.floor(Math.random() * totalVideos);
       } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
       requestVideo(nextVideoIndex + 1, function(videoUrl) {
         nextVideoUrl = videoUrl; // Store the next video URL
+        nextBgVideo.src = nextVideoUrl; // Set the src of the next video element
       });
+    };
 
-      bgVideo.onended = function(){
-        lastPlayedIndex = nextVideoIndex; // Update the last played index
-        bgVideo.src = nextVideoUrl; // Set the src to the prefetched video URL
-        bgVideo.oncanplay = function(){
-          bgVideo.play();
-        }
+    var stage = new PIXI.Container();
+    var texture = PIXI.Texture.fromVideo(bgVideo);
 
-        // Prefetch the next video while the current video is playing
-        do {
-          nextVideoIndex = Math.floor(Math.random() * totalVideos);
-        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
-        requestVideo(nextVideoIndex + 1, function(videoUrl) {
-          nextVideoUrl = videoUrl; // Store the next video URL
-        });
-      };
+    var bg = new PIXI.Sprite(texture);
 
-      var stage = new PIXI.Container();
-      var texture = PIXI.Texture.fromVideo(bgVideo);
+    bg.anchor.x = 0.5;
+    bg.anchor.y = 0.5;
 
-      var bg = new PIXI.Sprite(texture);
+    bg.position.x = renderer.width / 2;
+    bg.position.y = renderer.height / 2;
 
-      bg.anchor.x = 0.5;
-      bg.anchor.y = 0.5;
+    stage.addChild(bg);
 
-      bg.position.x = renderer.width / 2;
-      bg.position.y = renderer.height / 2;
+    var bgFront = new PIXI.Sprite(texture);
+    bgFront.width *= 1.4;
+    bgFront.height *= 1.4;
 
-      stage.addChild(bg);
+    bgFront.anchor.x = 0.5;
+    bgFront.anchor.y = 0.5;
 
-      var bgFront = new PIXI.Sprite(texture);
-      bgFront.width *= 1.4;
-      bgFront.height *= 1.4;
+    bgFront.position.x = renderer.width / 2;
+    bgFront.position.y = renderer.height / 2;
 
-      bgFront.anchor.x = 0.5;
-      bgFront.anchor.y = 0.5;
+    stage.addChild(bgFront);
 
-      bgFront.position.x = renderer.width / 2;
-      bgFront.position.y = renderer.height / 2;
+    var thing = new PIXI.Sprite(whichImage());
 
-      stage.addChild(bgFront);
+    var ratio = thing.height / thing.width;
+    thing.width = window.innerWidth * 0.8;
+    thing.height = ratio * thing.width;
+    thing.anchor.set(0.5, 0.5);
+    thing.position.x = renderer.width / 2;
+    thing.position.y = renderer.height / 2;
 
-      var thing = new PIXI.Sprite(whichImage());
+    bgFront.mask = thing;
+    stage.addChild(thing);
 
-      var ratio = thing.height / thing.width;
-      thing.width = window.innerWidth * 0.8;
-      thing.height = ratio * thing.width;
-      thing.anchor.set(0.5, 0.5);
-      thing.position.x = renderer.width / 2;
-      thing.position.y = renderer.height / 2;
+    animate();
 
-      bgFront.mask = thing;
-      stage.addChild(thing);
-
-      animate();
-
-      function animate(){
-        renderer.render(stage);
-        requestAnimationFrame(animate);
-      }
-
-      function resize(){
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        renderer.resize(width, height)
-
-        if(texture.width/texture.height <= width/height){
-          var bgratio = texture.height / texture.width;
-          bg.width = bgFront.width = renderer.width;
-          bg.height = bgFront.height = bg.width * bgratio;
-        } else {
-          var bgratio = texture.height / texture.width;
-          bg.height = bgFront.height = renderer.height;
-          bg.width = bgFront.width = renderer.height / bgratio;
-        }
-        
-        // adjsut bg.front width and height to increase the mask displacement by percentage
-
-         bgFront.width *= 1.0;
-         bgFront.height *= 1.0;
-
-        // bgFront.width *= 1.4;
-        // bgFront.height *= 1.4;
-
-        thing.texture = whichImage();
-        thing.width = width * 0.8;
-        thing.height = ratio * thing.width;
-
-        thing.position.x = width / 2;
-        thing.position.y = height / 2;
-
-        // adjsut bg.front width and height to increase the mask displacement by percentage
-
-        bgFront.position.x = width / 2;
-        //bgFront.position.y = height / 2;
-        
-        bgFront.position.y = height / 1.2;
-
-        bg.position.x = width / 2;
-        bg.position.y = height / 2;
-      }
-
-      resize();
-
-      window.addEventListener("resize", resize, false);
-      window.addEventListener("orientationchange", resize, false);
+    function animate(){
+      renderer.render(stage);
+      requestAnimationFrame(animate);
     }
-  } else if(isIE11){
-    var video = document.createElement("video");
-    requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
-      video.src = loadedVideos[0];
-      video.oncanplay = function(){
-        video.play();
-      }
-      video.onended = function(){
-        var nextVideoIndex;
-        do {
-          nextVideoIndex = Math.floor(Math.random() * totalVideos);
-        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
-        lastPlayedIndex = nextVideoIndex; // Update the last played index
-        requestVideo(nextVideoIndex + 1, function(){
-          video.src = loadedVideos[nextVideoIndex];
-          video.oncanplay = function(){
-            video.play();
-          }
-        });
-      };
 
-    });
-    document.body.appendChild(video);
+    function resize(){
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      renderer.resize(width, height)
+
+      if(texture.width/texture.height <= width/height){
+        var bgratio = texture.height / texture.width;
+        bg.width = bgFront.width = renderer.width;
+        bg.height = bgFront.height = bg.width * bgratio;
+      } else {
+        var bgratio = texture.height / texture.width;
+        bg.height = bgFront.height = renderer.height;
+        bg.width = bgFront.width = renderer.height / bgratio;
+      }
+      
+      // adjsut bg.front width and height to increase the mask displacement by percentage
+
+       bgFront.width *= 1.0;
+       bgFront.height *= 1.0;
+
+      // bgFront.width *= 1.4;
+      // bgFront.height *= 1.4;
+
+      thing.texture = whichImage();
+      thing.width = width * 0.8;
+      thing.height = ratio * thing.width;
+
+      thing.position.x = width / 2;
+      thing.position.y = height / 2;
+
+      // adjsut bg.front width and height to increase the mask displacement by percentage
+
+      bgFront.position.x = width / 2;
+      //bgFront.position.y = height / 2;
+      
+      bgFront.position.y = height / 1.2;
+
+      bg.position.x = width / 2;
+      bg.position.y = height / 2;
+    }
+
+    resize();
+
+    window.addEventListener("resize", resize, false);
+    window.addEventListener("orientationchange", resize, false);
   }
 </script>
-</html>
