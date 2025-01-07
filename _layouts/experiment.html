@@ -173,7 +173,7 @@
         isPlaying = true;
         if(!video.children[0].src.includes("?")) video.children[0].src += "?";
         else(video.children[0].src += "&");
-        console.log(video.children[0].src += "autoplay=1");
+        video.children[0].src += "autoplay=1";
         setTimeout(function(){
         img.style.opacity = button.style.opacity = 0;
         img.style.pointerEvents = "none";
