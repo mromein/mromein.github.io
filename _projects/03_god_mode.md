@@ -1,41 +1,30 @@
 ---
 layout: project
-permalink: /bag_of_worms/
-title: "Bag of Worms"
+permalink: /god_mode/
+title: "God Mode"
 created: "Ongoing"
-medium: "Theater | Motion Capture"
-root: "/assets/01_projects/bag_of_worms/"
+medium: "Theater | Video Game"
+root: "/assets/01_projects/god_mode/"
 bg-video: >
-  <iframe src="https://www.youtube.com/embed/9vNePYaHgco?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/_nO_tk1mSqY?hd=1&rel=0&modestbranding=1" allow="autoplay" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 description: >
-  An investigation into the anatomy of a famous video game character. A tyrannical disembodied head leading his friends through a series of unnerving experiments. A meditation on all the Sims we left to die on our parent’s desktop computer. 
-  <br><br>
-  Bag of Worms is an irreverent grab bag of Looney Tunes violence and recycled intellectual properties in which artist Matt Romein uses motion capture suits to project performers into a video game of his own making. As the audience watches, their grasp on what's real and what's virtual begins to slip. For a generation nurtured on a diet of simulated violence: what is their threshold for this digital onslaught, and what happens when they reach their breaking point?
+  It’s a Special Little Boy’s birthday! He’s turning 2nd grade. But all his family wants to talk about is Marcello, the newest member of the family. If he wants to have the best birthday ever, it looks like it’s up to him to make it happen.
+
+  God Mode is a live cinema theater experiment merging video game engines, facial motion capture, and digital avatars with live performance.
 
 collaborators:
-  - person: Peter Mills Weiss 
-    role: Co-Writer / Performer
-  - person: Julia Mounsey
-    role: Co-Writer / Performer
-  - person: Tim Platt
+  - person: James La Bella
+    role: Writer
+  - person: Matthew Antoci
     role: Performer
-  - person: Amy Zimmer
+  - person: Meaghan Robichaud
     role: Performer
 
 showings:
-  - text: Under The Radar ~ 2024
-  - text: MAXLive Festival ~ 2023
-    url: https://mediaartexploration.org/bag-of-worms/
-  - text: IDFA DocLab ~ 2022
-    url: https://www.idfa.nl/en/film/3f0ab2b9-26c5-4e43-831b-723223b0e960/onx-+-idfa-doclab-mocap-stage/
-
-press:
-  - text: Vulture (Impressions)
-    url: https://www.vulture.com/2024/01/critics-theater-festival-season-diary-week-2.html
-  - text: Dance Enthusiast (Impressions)
-    url: https://www.dance-enthusiast.com/features/impressions-reviews/view/MAXlive-Festival-2023-Where-Is-My-Body
-
+  - text: The Brick ~ 2025
+    url: https://www.bricktheater.com/event/new-works-2025-night-9/
+    
 documentation:
   - "01.jpg"
   - "02.jpg"
@@ -44,9 +33,5 @@ documentation:
   - "05.jpg"
   - "06.jpg"
   - "07.jpg"
-  - "08.jpg"
-  - "09.jpg"
-  - "10.jpg"
-  - "11.jpg"
-  - <iframe src="https://www.youtube.com/embed/9vNePYaHgco?hd=1&rel=0&modestbranding=1&U" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  - <iframe src="https://www.youtube.com/embed/_nO_tk1mSqY?hd=1&rel=0&modestbranding=1&U" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---
