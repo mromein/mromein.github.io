@@ -13,6 +13,7 @@ honors:
   - text: NYFA/NYSCA Artist Fellow ~ 2023
   - text: MacDowell Fellow ~ 2024
   - text: Yaddo Resident Artist ~ 2025
+  - text: Bogliasco Fellowship ~ 2025
   - text: Studio Member at Onassis ONX Studio
 
 social:
