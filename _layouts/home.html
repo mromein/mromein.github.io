@@ -8,215 +8,198 @@
   <div id="loader"><p>Loading<span>.</span><span>.</span><span>.</span></p></div>
 </body>
 <script type="text/javascript">
+  var totalVideos = 9;
+  var requiredVideos = 2;
+  var fallbackTimeoutMs = 5000;
   var loadedVideos = [];
   var loadIndicator = document.getElementById("loader");
-  var totalVideos = 9; // Set this to the total number of videos available
-  var lastPlayedIndex = -1; // Variable to keep track of the last played video index
+  var lastPlayedIndex = -1;
+  var loaderDismissed = false;
 
-  function requestVideo(num, cb){
-    var req = new XMLHttpRequest();
-    req.open("GET", "assets/bg_videos/0" + num + ".mp4", true);
-    req.responseType = "blob";
-
-    req.onload = function() {
-      if (this.status === 200) {
-        var videoBlob = this.response;
-        loadedVideos.push(URL.createObjectURL(videoBlob)); // IE10+
-        if(loadedVideos.length < totalVideos){
-          var nextNum;
-          do {
-            nextNum = Math.floor(Math.random() * totalVideos) + 1;
-          } while (nextNum === num); // Ensure the next video is different from the current one
-          requestVideo(nextNum);
-        }
-      }
-      if (cb) {
-        loadIndicator.style.display = "none";
-        cb();
-      }
-    }
-    req.onerror = function(e) {
-       console.log(e);
-    }
-
-    req.send();
+  function dismissLoader(){
+    if (loaderDismissed) return;
+    loaderDismissed = true;
+    loadIndicator.style.display = "none";
   }
 
-  var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-
-  if(!isIE11){
-    var loader = PIXI.loader;
-
-    loader.add("largeMask", "assets/large_mask.png")
-      .add("smallMask", "assets/small_mask.png");
-
-    loader.onLoad.add(function(e){
-      console.log("add loading functionality here");
-      console.log(e)
-      loadIndicator.innerHTML = "<p>LOADING<span>.</span><span>.</span><span>.</span></p>";
-    });
-
-    loader.load(function(loader, resources){
-      requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
-        loaded(loader, resources);
-      });
-    });
-
-    function loaded(loader, resources){
-
-      function whichImage(){
-        if(window.innerWidth > 1024){
-          ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
-          return resources.largeMask.texture;
+  function fetchVideo(num){
+    return new Promise(function(resolve, reject){
+      var req = new XMLHttpRequest();
+      req.open("GET", "assets/bg_videos/0" + num + ".mp4", true);
+      req.responseType = "blob";
+      req.onload = function(){
+        if (this.status === 200) {
+          resolve(URL.createObjectURL(this.response));
         } else {
-          ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
-          return resources.smallMask.texture;
+          reject(new Error("status " + this.status));
         }
-      }
-
-      var canvas = document.getElementById("bg-canvas");
-      var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, { 
-        antialias: true,
-        view: canvas,
-        autoResize: true
-      });
-
-      var bgVideo = document.createElement("video");
-
-      bgVideo.muted = true;
-      bgVideo.setAttribute('playsinline', 'playsinline');
-      bgVideo.autoplay = true;
-      bgVideo.preload = "auto"
-      bgVideo.src = loadedVideos[0];
-      lastPlayedIndex = 0; // Set the initial last played index
-
-      bgVideo.onended = function(){
-        var nextVideoIndex;
-        do {
-          nextVideoIndex = Math.floor(Math.random() * totalVideos);
-        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
-        lastPlayedIndex = nextVideoIndex; // Update the last played index
-        requestVideo(nextVideoIndex + 1, function(){
-          bgVideo.src = loadedVideos[nextVideoIndex];
-          bgVideo.oncanplay = function(){
-            bgVideo.play();
-          }
-        });
       };
+      req.onerror = reject;
+      req.send();
+    });
+  }
 
-      var stage = new PIXI.Container();
-      var texture = PIXI.Texture.fromVideo(bgVideo);
-
-      var bg = new PIXI.Sprite(texture);
-
-      bg.anchor.x = 0.5;
-      bg.anchor.y = 0.5;
-
-      bg.position.x = renderer.width / 2;
-      bg.position.y = renderer.height / 2;
-
-      stage.addChild(bg);
-
-      var bgFront = new PIXI.Sprite(texture);
-      bgFront.width *= 1.4;
-      bgFront.height *= 1.4;
-
-      bgFront.anchor.x = 0.5;
-      bgFront.anchor.y = 0.5;
-
-      bgFront.position.x = renderer.width / 2;
-      bgFront.position.y = renderer.height / 2;
-
-      stage.addChild(bgFront);
-
-      var thing = new PIXI.Sprite(whichImage());
-
-      var ratio = thing.height / thing.width;
-      thing.width = window.innerWidth * 0.8;
-      thing.height = ratio * thing.width;
-      thing.anchor.set(0.5, 0.5);
-      thing.position.x = renderer.width / 2;
-      thing.position.y = renderer.height / 2;
-
-      bgFront.mask = thing;
-      stage.addChild(thing);
-
-      animate();
-
-      function animate(){
-        renderer.render(stage);
-        requestAnimationFrame(animate);
-      }
-
-      function resize(){
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        renderer.resize(width, height)
-
-        if(texture.width/texture.height <= width/height){
-          var bgratio = texture.height / texture.width;
-          bg.width = bgFront.width = renderer.width;
-          bg.height = bgFront.height = bg.width * bgratio;
-        } else {
-          var bgratio = texture.height / texture.width;
-          bg.height = bgFront.height = renderer.height;
-          bg.width = bgFront.width = renderer.height / bgratio;
-        }
-        
-        // adjsut bg.front width and height to increase the mask displacement by percentage
-
-         bgFront.width *= 1.0;
-         bgFront.height *= 1.0;
-
-        // bgFront.width *= 1.4;
-        // bgFront.height *= 1.4;
-
-        thing.texture = whichImage();
-        thing.width = width * 0.8;
-        thing.height = ratio * thing.width;
-
-        thing.position.x = width / 2;
-        thing.position.y = height / 2;
-
-        // adjsut bg.front width and height to increase the mask displacement by percentage
-
-        bgFront.position.x = width / 2;
-        //bgFront.position.y = height / 2;
-        
-        bgFront.position.y = height / 1.2;
-
-        bg.position.x = width / 2;
-        bg.position.y = height / 2;
-      }
-
-      resize();
-
-      window.addEventListener("resize", resize, false);
-      window.addEventListener("orientationchange", resize, false);
+  function shuffledIndices(){
+    var arr = [];
+    for (var i = 1; i <= totalVideos; i++) arr.push(i);
+    for (var j = arr.length - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var tmp = arr[j]; arr[j] = arr[k]; arr[k] = tmp;
     }
-  } else if(isIE11){
-    var video = document.createElement("video");
-    requestVideo(Math.floor(Math.random() * totalVideos) + 1, function(){
-      video.src = loadedVideos[0];
-      video.oncanplay = function(){
-        video.play();
-      }
-      video.onended = function(){
-        var nextVideoIndex;
-        do {
-          nextVideoIndex = Math.floor(Math.random() * totalVideos);
-        } while (nextVideoIndex === lastPlayedIndex); // Ensure the next video is different from the last played video
-        lastPlayedIndex = nextVideoIndex; // Update the last played index
-        requestVideo(nextVideoIndex + 1, function(){
-          video.src = loadedVideos[nextVideoIndex];
-          video.oncanplay = function(){
-            video.play();
-          }
-        });
-      };
+    return arr;
+  }
 
+  var pixiLoader = PIXI.loader;
+  pixiLoader.add("largeMask", "assets/large_mask.png")
+            .add("smallMask", "assets/small_mask.png");
+
+  pixiLoader.load(function(loader, resources){
+    var order = shuffledIndices();
+    var startedPlayback = false;
+    var loadedCount = 0;
+
+    setTimeout(function(){
+      if (loadedVideos.length > 0 && !startedPlayback) {
+        startedPlayback = true;
+        startPlayback(loader, resources);
+      }
+      dismissLoader();
+    }, fallbackTimeoutMs);
+
+    order.forEach(function(num){
+      fetchVideo(num).then(function(url){
+        loadedVideos.push(url);
+        loadedCount++;
+        if (!startedPlayback && loadedCount >= requiredVideos) {
+          startedPlayback = true;
+          dismissLoader();
+          startPlayback(loader, resources);
+        }
+      }).catch(function(){});
     });
-    document.body.appendChild(video);
+  });
+
+  function startPlayback(loader, resources){
+    function whichImage(){
+      if(window.innerWidth > 1024){
+        ratio = resources.largeMask.texture.height / resources.largeMask.texture.width;
+        return resources.largeMask.texture;
+      } else {
+        ratio = resources.smallMask.texture.height / resources.smallMask.texture.width;
+        return resources.smallMask.texture;
+      }
+    }
+
+    var canvas = document.getElementById("bg-canvas");
+    var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, {
+      antialias: true,
+      view: canvas,
+      autoResize: true
+    });
+
+    var bgVideo = document.createElement("video");
+    bgVideo.muted = true;
+    bgVideo.setAttribute('playsinline', 'playsinline');
+    bgVideo.autoplay = true;
+    bgVideo.preload = "auto";
+    bgVideo.src = loadedVideos[0];
+    lastPlayedIndex = 0;
+
+    bgVideo.oncanplay = function(){
+      var p = bgVideo.play();
+      if (p && typeof p.catch === "function") p.catch(function(){});
+    };
+
+    bgVideo.onended = function(){
+      if (loadedVideos.length < 2) {
+        bgVideo.currentTime = 0;
+        bgVideo.play().catch(function(){});
+        return;
+      }
+      var nextVideoIndex;
+      do {
+        nextVideoIndex = Math.floor(Math.random() * loadedVideos.length);
+      } while (nextVideoIndex === lastPlayedIndex);
+      lastPlayedIndex = nextVideoIndex;
+      bgVideo.src = loadedVideos[nextVideoIndex];
+      bgVideo.oncanplay = function(){
+        bgVideo.play().catch(function(){});
+      };
+    };
+
+    var stage = new PIXI.Container();
+    var texture = PIXI.Texture.fromVideo(bgVideo);
+
+    var bg = new PIXI.Sprite(texture);
+    bg.anchor.x = 0.5;
+    bg.anchor.y = 0.5;
+    bg.position.x = renderer.width / 2;
+    bg.position.y = renderer.height / 2;
+    stage.addChild(bg);
+
+    var bgFront = new PIXI.Sprite(texture);
+    bgFront.width *= 1.4;
+    bgFront.height *= 1.4;
+    bgFront.anchor.x = 0.5;
+    bgFront.anchor.y = 0.5;
+    bgFront.position.x = renderer.width / 2;
+    bgFront.position.y = renderer.height / 2;
+    stage.addChild(bgFront);
+
+    var thing = new PIXI.Sprite(whichImage());
+    var ratio = thing.height / thing.width;
+    thing.width = window.innerWidth * 0.8;
+    thing.height = ratio * thing.width;
+    thing.anchor.set(0.5, 0.5);
+    thing.position.x = renderer.width / 2;
+    thing.position.y = renderer.height / 2;
+
+    bgFront.mask = thing;
+    stage.addChild(thing);
+
+    animate();
+
+    function animate(){
+      renderer.render(stage);
+      requestAnimationFrame(animate);
+    }
+
+    function resize(){
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      renderer.resize(width, height);
+
+      if(texture.width/texture.height <= width/height){
+        var bgratio = texture.height / texture.width;
+        bg.width = bgFront.width = renderer.width;
+        bg.height = bgFront.height = bg.width * bgratio;
+      } else {
+        var bgratio = texture.height / texture.width;
+        bg.height = bgFront.height = renderer.height;
+        bg.width = bgFront.width = renderer.height / bgratio;
+      }
+
+      bgFront.width *= 1.0;
+      bgFront.height *= 1.0;
+
+      thing.texture = whichImage();
+      thing.width = width * 0.8;
+      thing.height = ratio * thing.width;
+
+      thing.position.x = width / 2;
+      thing.position.y = height / 2;
+
+      bgFront.position.x = width / 2;
+      bgFront.position.y = height / 1.2;
+
+      bg.position.x = width / 2;
+      bg.position.y = height / 2;
+    }
+
+    resize();
+
+    window.addEventListener("resize", resize, false);
+    window.addEventListener("orientationchange", resize, false);
   }
 </script>
 </html>
