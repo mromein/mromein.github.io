@@ -80,6 +80,21 @@
     {% endfor %}
     {% endif %}
 
+    {% if page.grants %}
+    <h2>Grants</h2>
+    {% for grant in page.grants %}
+      <li>
+        <ul class="project-info__performance">
+        {% if grant.url %}
+          <li><u><a href="{{ grant.url }}" target="_blank">{{ grant.text }}</a></u></li>
+        {% else %}
+          <li>{{ grant.text }}</li>
+        {% endif %}
+        </ul>
+      </li>
+    {% endfor %}
+    {% endif %}
+
     {% if page.awards %}
     <h2>Awards</h2>
     {% for award in page.awards %}

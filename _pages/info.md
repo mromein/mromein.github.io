@@ -10,11 +10,9 @@ statement: >
   My practice focuses on the human body’s relationship with technology. As a hard-of-hearing individual who has relied on hearing aids throughout my life, I am fascinated by technology's ability to enhance and transform our physical forms. Through the use of code, technology, and live performance, I manipulate the body as a puppet, avatar, and object.<br><br>In my work the body becomes a site of tension—technology propels it beyond its natural limitations, yet complicates our understanding of its multifaceted identities. Employing humor and subversion, my work playfully navigates the complexities of bodies caught in the space between physical and digital worlds.
 
 honors:
-  - text: NYFA/NYSCA Artist Fellow ~ 2023
-  - text: MacDowell Fellow ~ 2024
-  - text: Yaddo Resident Artist ~ 2025
-  - text: Bogliasco Fellowship ~ 2025
-  - text: Studio Member at Onassis ONX Studio
+  - text: Franklin Furnace Grant ~ 2025
+  - text: Loghaven Fellow ~ 2026
+  - text: Bemis Center Artist Resident ~ 2026
 
 social:
   - email: <a href="mailto:matt.romein@gmail.com">matt.romein@gmail.com</a>

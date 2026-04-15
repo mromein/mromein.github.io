@@ -102,43 +102,52 @@
 
   @include laptop {
     margin: 0;
-    width: 1000px;
+    flex: 1;
+    min-width: 0;
 
     h1 {
-      margin: 10px 0;
-      font-size: 19px; 
+      margin: 44px 0 14px;
+      font-size: 22px;
+
+      &:first-child { margin-top: 0; }
     }
-  
+
     h2 {
       margin: 20px 0;
-      font-size: 17px; 
+      font-size: 22px;
+      line-height: 1.4;
     }
 
     h3 {
       margin: 20px 0;
-      font-size: 17px; 
+      font-size: 22px;
+      line-height: 1.4;
     }
 
   }
 
   @include desktop {
     margin: 0;
-    width: 100%;
+    flex: 1;
+    min-width: 0;
 
     h1 {
-      margin: 10px 0;
-      font-size: 24px; 
-    }
-  
-    h2 {
-      margin: 30px 0;
+      margin: 56px 0 18px;
       font-size: 22px;
+
+      &:first-child { margin-top: 0; }
+    }
+
+    h2 {
+      margin: 20px 0;
+      font-size: 22px;
+      line-height: 1.4;
     }
 
     h3 {
-      margin: 30px 0;
-      font-size: 22px; 
-      line-height: 13px;
+      margin: 20px 0;
+      font-size: 22px;
+      line-height: 1.4;
     }
 
     h4 {
@@ -154,5 +163,72 @@
 
   @include greater_than_tablet {
     display: block;
+  }
+}
+
+.newsletter-wrap {
+  max-width: 520px;
+  margin: 10px 10px 0;
+
+  @include laptop { margin: 20px 0 0; }
+  @include desktop { margin: 30px 0 0; }
+
+  .sib-form-message-panel {
+    font: $favorit;
+    font-size: 12px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #444;
+    color: #aaa;
+    background: transparent;
+
+    @include tablet { font-size: 22px; padding: 14px 16px; }
+    @include laptop { font-size: 17px; padding: 12px 14px; }
+    @include desktop { font-size: 22px; padding: 14px 16px; }
+  }
+
+  .sib-form-message-panel--error { border-color: #ff4949; color: #ff9999; }
+  .sib-form-message-panel--success { border-color: #13ce66; color: #7eeaaa; }
+
+  input[type="text"] {
+    width: 100%;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font: $favorit;
+    font-size: 12px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+
+    @include tablet { font-size: 22px; padding: 14px 16px; }
+    @include laptop { font-size: 13px; padding: 10px 12px; }
+    @include desktop { font-size: 16px; padding: 12px 14px; }
+
+    &::placeholder { color: #888; }
+    &:focus { border-color: white; }
+  }
+
+  .sib-form-block__button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font: $favorit;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 0;
+
+    @include tablet { font-size: 22px; padding: 14px 16px; }
+    @include laptop { font-size: 13px; padding: 10px 12px; }
+    @include desktop { font-size: 16px; padding: 12px 14px; }
+
+    &:hover { background: white; color: black; }
   }
 }
