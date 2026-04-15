@@ -65,7 +65,6 @@
       items.forEach(function(item) {
         var li = document.createElement('li');
         li.className = 'menu-item';
-        li.setAttribute('onmouseover', 'menuMouseOver(this)');
         li.innerHTML = `
           <div class="menu-item__bgimage" style="background-image: url(${item.root}preview.jpg)"></div>
           <a href="${item.permalink}">
@@ -73,6 +72,7 @@
             <h2>${item.title}</h2>
           </a>
         `;
+        li.addEventListener('mouseenter', function() { menuMouseOver(li); });
         menuList.appendChild(li);
       });
       var homeLi = document.createElement('li');
@@ -96,9 +96,11 @@
         }
         button.style.color = "#adadad";
         selectedButton = button;
+        previewTargetY = null;
         populateMenu(items);
         showMenu();
         currentMenu = menuType;
+        requestAnimationFrame(updatePreviewFromScroll);
       }
     }
 
@@ -148,8 +150,38 @@
       }
     });
 
+    var previewTargetY = null;
+    function updatePreviewFromScroll() {
+      var items = menuList.querySelectorAll('.menu-item');
+      if (!items.length) return;
+      if (previewTargetY === null && menu.scrollTop === 0) {
+        for (var j = 0; j < items.length; j++) {
+          if (items[j].querySelector('.menu-item__bgimage')) {
+            var r = items[j].getBoundingClientRect();
+            previewTargetY = r.top + r.height / 2;
+            break;
+          }
+        }
+      }
+      var target = previewTargetY !== null ? previewTargetY : window.innerHeight / 2;
+      var closest = null;
+      var closestDist = Infinity;
+      for (var i = 0; i < items.length; i++) {
+        if (!items[i].querySelector('.menu-item__bgimage')) continue;
+        var rect = items[i].getBoundingClientRect();
+        var itemCenter = rect.top + rect.height / 2;
+        var dist = Math.abs(itemCenter - target);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = items[i];
+        }
+      }
+      if (closest) menuMouseOver(closest);
+    }
+
     menu.onscroll = function(ev) {
       downArrow.style.opacity = nav.style.opacity = 1 - 12 * menu.scrollTop/(menu.scrollHeight - menu.offsetHeight); //dissapears with scrolling
+      updatePreviewFromScroll();
     };
 
     window.addEventListener("resize", displayArrow);

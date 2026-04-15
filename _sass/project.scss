@@ -36,6 +36,8 @@
   top: 53%;
   -webkit-transition: opacity 0.1s;
   transition: opacity 0.1s;
+  word-break: break-word;
+  overflow-wrap: break-word;
 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
 
@@ -69,14 +71,19 @@
   }
 
   svg {
-    width: 35px;
+    width: 50px;
     -webkit-transition: all 0.2s $cubic;
     transition: all 0.2s $cubic;
     display: block;
     margin: 90px auto 0;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
-    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35)); // Add subtle drop shadow
+    polygon { fill: #FFFFFF; }
+
+    @include greater_than_tablet {
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35));
+    }
 
     @include tablet {
       width: 50px;
@@ -90,19 +97,21 @@
       width: 90px;
     }
 
-    &:hover {
-      width: 45px;
+    @media (hover: hover) {
+      &:hover {
+        width: 45px;
 
-      @include tablet {
-        width: 65px;
-      }
+        @include tablet {
+          width: 65px;
+        }
 
-      @include laptop {
-        width: 75px;
-      }
+        @include laptop {
+          width: 75px;
+        }
 
-      @include desktop {
-        width: 115px;
+        @include desktop {
+          width: 115px;
+        }
       }
     }
   }
@@ -111,6 +120,11 @@
 .project-info {
   margin: 10px auto;
   width: 290px;
+
+  @include mobile {
+    width: calc(100vw - 40px);
+    max-width: 420px;
+  }
 
   @include tablet {
     width: 575px;
@@ -170,10 +184,8 @@
 }
 
 .project-info__performances {
-  max-height: 0;
-  overflow-y: hidden;
-  -webkit-transition: all 1s $cubic;
-  transition: all 1s $cubic;
+  max-height: none;
+  overflow-y: visible;
 
   @include tablet {
     -webkit-transition: none;
@@ -210,7 +222,7 @@
 }
 
 #info-expand {
-  margin: 25px auto 0;
+  display: none;
 
   @include tablet {
     display: none;

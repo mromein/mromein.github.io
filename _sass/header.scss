@@ -20,10 +20,21 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 }
 
 .nav-work, .nav-design, .nav-experiment, .nav-teaching, .nav-info {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: all;
   font-size: 17px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
+  min-height: 44px;
+  min-width: 44px;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, .9),
+    0 0 8px rgba(0, 0, 0, .7),
+    2px 2px 4px rgba(0, 0, 0, .6);
+
+  @include greater_than_tablet {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Original subtle shadow
+  }
 
   @include tablet {
     font-size: 29px;
@@ -229,6 +240,8 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 .menu-item {
   a {
     display: inline-block;
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
