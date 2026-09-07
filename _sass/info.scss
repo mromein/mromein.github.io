@@ -1,320 +1,322 @@
-.info {
-  max-width: 300px;
-  margin: 90px auto 0;
+// ---------------------------------------------------------------------------
+// info: the index rail
+// One container of rows. Each row = label rail (left, sticky) + content column.
+// Tokens: rail 200 / gap 64 / measure 640 / gutter 32 (24 on mobile)
+//         body 18/1.55 (17 below 900) / spacing 8 16 32 64
+// ---------------------------------------------------------------------------
 
-  @include tablet {
-    max-width: 700px;
-    margin: 140px auto 0;
+$rail: 200px;
+$gap: 64px;
+$measure: 640px;
+$rail-bp: 900px;
+
+.index {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: $rail + $gap + $measure + 64px;
+  margin: 104px auto 0;
+  padding: 0 24px 96px;
+  font-size: 17px;
+  line-height: 1.55;
+
+  @include tablet  { margin-top: 140px; }
+  @include laptop  { margin-top: 184px; }
+  @include desktop { margin-top: 240px; }
+
+  @media (min-width: $rail-bp) {
+    padding: 0 32px 128px;
+    font-size: 19px;
   }
 
-  @include laptop {
-    display: flex;
-    align-items: start; 
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 55px;
+  p { margin: 0 0 16px; }
+  p:last-child { margin-bottom: 0; }
 
-    max-width: $laptop-width * 1.45;
-    margin: 240px auto 0;
-  }
-
-  @include desktop {
-    display: flex;
-    align-items: start; 
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 55px;
-
-    max-width: $desktop-width * 1.45;
-    margin: 240px auto 0;
-  }
+  a { color: white; text-decoration: underline; text-underline-offset: 0.12em; }
 }
 
-.info-img {
+// Block anchors (the show box, the issue card) carry no underline of their own;
+// the title inside the card is the underlined element.
+.index .show, .index .issue { text-decoration: none; }
 
-  @include tablet {
-    //position: absolute;
-    //width: 348px;
-    //top: 240px;
-    //left: 150px;
-    //width: 100%;
-  }
-
-  @include laptop {
-    //position: absolute;
-    width: 42%;
-    height: auto
-    //top: 0;
-    //left: 250px;
-  }
-
-  @include desktop {
-    //position: relative;
-    //width: 800px;
-    width: 42%;
-    height: auto
-    //top: 244px;
-    //left: 50px;
-  }
+// Inline text links get a 44px hit area without changing the visual rhythm
+.links a, .issues a, .issues-all a, .contact a {
+  display: inline-block;
+  padding: 8px 0;
+  margin: -8px 0;
 }
 
-.info-text {
-  //margin: 30px 0 0;
-  //font-size: 10px; // Add or modify this line to control the font size
-  //line-height: 1.4; // Add this line to control the line spacing
+// Rows -----------------------------------------------------------------------
+
+.row {
+  display: block;
+  margin-bottom: 48px;
+
+  @media (min-width: $rail-bp) {
+    display: grid;
+    grid-template-columns: $rail minmax(0, $measure);
+    column-gap: $gap;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.rail {
+  margin-bottom: 16px;
 
   h1 {
-    margin: 20px 10px;
-    font-size: 14px;
-  }
-
-  h2 {
-    margin: 20px 10px;
-    font-size: 12px; 
-  }
-
-  h3 {
-    margin: 10px 10px;
-    font-size: 12px; 
-    line-height: 13px;
-  }
-
-
-  @include tablet {
-
-
-    h1 {
-      margin: 40px 10px;
-      font-size: 24px;
-    }
-  
-    h2 {
-      margin: 40px 10px;
-      font-size: 22px; 
-    }
-
-    h3 {
-      margin: 20px 10px;
-      font-size: 22px;
-    }
-
-  }
-
-  @include laptop {
+    font-size: 15px;
+    line-height: inherit;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     margin: 0;
-    flex: 1;
-    min-width: 0;
-
-    h1 {
-      margin: 44px 0 14px;
-      font-size: 22px;
-
-      &:first-child { margin-top: 0; }
-    }
-
-    h2 {
-      margin: 20px 0;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
-    h3 {
-      margin: 20px 0;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
   }
 
-  @include desktop {
-    margin: 0;
-    flex: 1;
-    min-width: 0;
-
-    h1 {
-      margin: 56px 0 18px;
-      font-size: 22px;
-
-      &:first-child { margin-top: 0; }
-    }
-
-    h2 {
-      margin: 20px 0;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
-    h3 {
-      margin: 20px 0;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
-    h4 {
-      margin: 30px 0;
-      font-size: 60px; 
-    }
-
+  @media (min-width: $rail-bp) {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    margin-bottom: 0;
+    // labels sit on the first body baseline
+    padding-top: calc((1.55em - 15px * 1.55) / 2);
   }
 }
 
-#dontclick {
-  display: none;
+.col {
+  min-width: 0;
+  max-width: $measure;
+}
 
-  @include greater_than_tablet {
-    display: block;
+.row-portrait .rail {
+  display: none;
+  @media (min-width: $rail-bp) { display: block; }
+}
+
+// The show box has 17px of border + padding before its 30px title line;
+// push the label down so it still sits on the first line of content.
+.row-show .rail {
+  @media (min-width: $rail-bp) {
+    padding-top: calc(17px + (30px * 1.25 - 15px * 1.55) / 2);
   }
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid #333;
+  margin: -8px 0 48px;
+
+  @media (min-width: $rail-bp) { margin: -12px 0 64px; }
+}
+
+// Portrait -------------------------------------------------------------------
+
+.portrait {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+.links {
+  a { margin-right: 32px; }
+  a:last-child { margin-right: 0; }
+}
+
+// Right now (the only box) ---------------------------------------------------
+
+.show {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid white;
+  padding: 16px 24px;
+  color: white;
+  text-decoration: none;
+
+  span { display: block; }
+  .show-link span { display: inline; }
+
+  .show-title {
+    font-size: 26px;
+    line-height: 1.25;
+    @media (min-width: $rail-bp) { font-size: 30px; }
+  }
+  .show-meta { margin-top: 8px; }
+  .show-link {
+    margin-top: 16px;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { background: white; color: black; }
+  }
+}
+
+// Newsletter -----------------------------------------------------------------
+
+.issue {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+
+  @media (min-width: 560px) {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .issue-img {
+    display: block;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    width: 112px;
+    height: auto;
+    @media (min-width: 560px) { width: 160px; }
+  }
+
+  .issue-text { display: block; flex: 1; min-width: 0; }
+
+  span { display: block; }
+
+  .issue-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .issue-title {
+    font-size: 22px;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    @media (min-width: $rail-bp) { font-size: 24px; }
+  }
+  .issue-excerpt {
+    margin-top: 8px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .issue-title { text-decoration-thickness: 2px; }
+  }
+}
+
+.issues {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+
+  li { margin: 0 0 8px; }
+  li:last-child { margin-bottom: 0; }
+  .issues-date { color: #888; margin-right: 12px; }
+}
+
+.issues-all {
+  margin: 24px 0 0 !important;
+}
+
+.signup-copy {
+  margin: 48px 0 12px !important;
+  // No issue archived yet: the copy is the first thing in the row
+  &:first-child { margin-top: 0 !important; }
 }
 
 .newsletter-wrap {
-  max-width: 520px;
-  margin: 10px 10px 0;
+  max-width: $measure;
+  margin: 0;
 
-  @include laptop { margin: 20px 0 0; }
-  @include desktop { margin: 30px 0 0; }
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
 
   .sib-form-message-panel {
     font: $favorit;
-    font-size: 12px;
-    padding: 10px 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 12px 16px;
     margin-bottom: 12px;
-    border: 1px solid #444;
-    color: #aaa;
+    border: 1px solid #333;
+    color: #888;
     background: transparent;
-
-    @include tablet { font-size: 22px; padding: 14px 16px; }
-    @include laptop { font-size: 17px; padding: 12px 14px; }
-    @include desktop { font-size: 22px; padding: 14px 16px; }
   }
 
-  .sib-form-message-panel--error { border-color: #ff4949; color: #ff9999; }
-  .sib-form-message-panel--success { border-color: #13ce66; color: #7eeaaa; }
+  .sib-form-message-panel--error { border-color: white; color: white; }
+  .sib-form-message-panel--success { border-color: white; color: white; }
 
   input[type="text"], input[type="email"] {
+    flex: 1 1 auto;
+    min-width: 0;
     width: 100%;
     background: transparent;
     border: 1px solid white;
     color: white;
     font: $favorit;
-    font-size: 12px;
-    padding: 10px 12px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    line-height: 1.4;
+    padding: 12px 16px;
+    margin: 0;
     outline: none;
     border-radius: 0;
     -webkit-appearance: none;
     box-sizing: border-box;
 
-    @include tablet { font-size: 22px; padding: 14px 16px; }
-    @include laptop { font-size: 13px; padding: 10px 12px; }
-    @include desktop { font-size: 16px; padding: 12px 14px; }
-
     &::placeholder { color: #888; }
-    &:focus { border-color: white; }
   }
 
   .sib-form-block__button {
+    flex: 0 0 auto;
     width: 100%;
     background: transparent;
     border: 1px solid white;
     color: white;
     font: $favorit;
-    font-size: 12px;
+    border-left: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    min-height: 44px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 10px 12px;
+    letter-spacing: 0.04em;
+    padding: 12px 20px;
     cursor: pointer;
     border-radius: 0;
+    -webkit-appearance: none;
+    width: auto;
+    white-space: nowrap;
 
-    @include tablet { font-size: 22px; padding: 14px 16px; }
-    @include laptop { font-size: 13px; padding: 10px 12px; }
-    @include desktop { font-size: 16px; padding: 12px 14px; }
-
-    &:hover { background: white; color: black; }
-  }
-
-}
-
-.info.newsletter-page {
-  display: block;
-  max-width: none;
-  margin: 40px auto 0;
-  padding: 0 24px;
-  box-sizing: border-box;
-
-  @include tablet {
-    max-width: 560px;
-    margin: 140px auto 0;
-    padding: 0 20px;
-  }
-
-  @include laptop {
-    display: block;
-    max-width: 520px;
-    margin: 180px auto 0;
-  }
-
-  @include desktop {
-    display: block;
-    max-width: 560px;
-    margin: 220px auto 0;
-  }
-
-  .info-text {
-    text-align: left;
-
-    h1 {
-      margin: 20px 0 14px;
-      font-size: 20px;
-    }
-
-    h2 {
-      margin: 14px 0;
-      font-size: 18px;
-    }
-
-    h3 {
-      margin: 14px 0;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    @include tablet {
-      h1 { margin: 30px 0 18px; font-size: 26px; }
-      h2 { margin: 18px 0; font-size: 22px; }
-      h3 { margin: 18px 0; font-size: 20px; line-height: 1.5; }
-    }
-  }
-
-  .newsletter-wrap {
-    max-width: none;
-    margin: 20px 0 0;
-
-    input[type="text"], input[type="email"] {
-      font-size: 16px;
-      padding: 14px 16px;
-    }
-
-    .sib-form-block__button {
-      font-size: 14px;
-      padding: 14px 16px;
-    }
-
-    .fine-print {
-      font-size: 12px;
-      margin-top: 16px;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover { background: white; color: black; }
     }
   }
 }
 
-.newsletter-wrap {
-  .fine-print {
-    font-size: 11px;
-    color: #888;
-    margin-top: 20px;
-    line-height: 1.5;
+// Honors, contact, links -----------------------------------------------------
 
-    @include tablet { font-size: 16px; }
-    @include laptop { font-size: 12px; }
-    @include desktop { font-size: 14px; }
-  }
+.contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li { margin: 0 0 8px; }
+  li:last-child { margin-bottom: 0; }
+  .contact-label { color: #888; margin-right: 12px; }
+}
+
+.row h3 {
+  margin: 0 0 8px;
+  &:last-of-type { margin-bottom: 0; }
+}
+
+.dontclick { display: none; }
+
+// Focus + motion -------------------------------------------------------------
+
+.index a:focus-visible,
+.index input:focus-visible,
+.index button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index * { transition: none !important; }
 }

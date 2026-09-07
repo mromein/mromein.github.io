@@ -6,39 +6,94 @@
 
 <body>
 {% include header.html %}
-<article class="info">
-  <img class="info-img" src="{{ site.url }}/assets/headshot.jpg">
-  <section class="info-text">
-    <h1><u>BIO</u></h1>
-      <h2>{{ page.bio }}</h2>
-    <h1><u>ARTIST STATEMENT</u></h1>
-      <h2>{{ page.statement }}</h2>
+
+{% assign issues = site.newsletters | sort: "date" | reverse %}
+{% assign latest = issues.first %}
+{% assign now_s = site.time | date: "%s" | plus: 0 %}
+{% assign live_show = nil %}
+{% for issue in issues %}
+  {% if issue.show and issue.show.last_date %}
+    {% assign last_s = issue.show.last_date | date: "%s" | plus: 86400 %}
+    {% if last_s >= now_s %}{% assign live_show = issue %}{% break %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+<main class="index">
+
+  <section class="row row-portrait">
+    <div class="rail" aria-hidden="true"></div>
+    <div class="col">
+      <img class="portrait" src="{{ site.url }}/assets/headshot.jpg" alt="Matt Romein" width="2970" height="2958">
+    </div>
   </section>
-  <section class="info-text">
-    <h1><u>RECENT HONORS</u></h1>
-    {% for honor in page.honors %}
-      <h3>• {{ honor.text }}</h3>
-    {% endfor %}
-    <h1><u>SOCIAL</u></h1>
-    {%for social in page.social%}
-      <h3>Contact: <u>{{ social.email }}</u></h3>
-      <h3>Instagram: <u>{{ social.instagram }}</u></h3>
-    {% endfor %}
-    <h1><u>LINKS</u></h1>
-      <h3><-- &emsp;<u><a href="{{ site.url }}/cv">LINK TO CV</a></u> &emsp;--></h3>
-      <h3><-- &emsp;<u><a href="{{ site.url }}/teaching">LINK TO TEACHING</a></u> &emsp;--></h3>
-    <h1><u>NEWSLETTER</u></h1>
-      <h3>Quarterly updates on upcoming shows.</h3>
+
+  <section class="row">
+    <div class="rail"><h1><u>BIO</u></h1></div>
+    <div class="col">
+      <p>{{ page.bio }}</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="rail"><h1><u>LINKS</u></h1></div>
+    <div class="col">
+      <p class="links"><a href="{{ site.url }}/cv">CV</a><a href="{{ site.url }}/teaching">Teaching</a></p>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  {% if live_show %}
+  {% assign first_s = live_show.show.first_date | date: "%s" | plus: 0 %}
+  <section class="row row-show">
+    <div class="rail"><h1><u>{% if first_s <= now_s %}ON NOW{% else %}COMING UP{% endif %}</u></h1></div>
+    <div class="col">
+      <a class="show" href="{{ live_show.show.tickets | default: live_show.url | prepend: site.url }}"{% if live_show.show.tickets %} target="_blank" rel="noopener"{% endif %}>
+        <span class="show-title">{{ live_show.show.title }}</span>
+        <span class="show-meta">{{ live_show.show.dates }}{% if live_show.show.venue %}<br>{{ live_show.show.venue }}{% endif %}</span>
+        {% if live_show.show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
+      </a>
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="row">
+    <div class="rail"><h1><u>NEWSLETTER</u></h1></div>
+    <div class="col">
+      {% if latest %}
+      {% assign show_logo = false %}
+      {% if latest.preview %}{% assign show_logo = true %}{% endif %}
+      {% if live_show and live_show.url == latest.url %}{% assign show_logo = false %}{% endif %}
+      <a class="issue" href="{{ latest.url | prepend: site.url }}">
+        {% if show_logo %}<img class="issue-img" src="{{ latest.preview | prepend: site.url }}" alt="" width="1080" height="765">{% endif %}
+        <span class="issue-text">
+          <span class="issue-date">{{ latest.date | date: "%B %-d, %Y" }}</span>
+          <span class="issue-title">{{ latest.title }}</span>
+          {% if latest.excerpt_text %}<span class="issue-excerpt">{{ latest.excerpt_text }}</span>{% endif %}
+        </span>
+      </a>
+
+      {% if issues.size > 1 %}
+      <ul class="issues">
+        {% for issue in issues offset: 1 limit: 3 %}
+        <li><span class="issues-date">{{ issue.date | date: "%b %-d, %Y" }}</span><a href="{{ issue.url | prepend: site.url }}">{{ issue.title }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p class="issues-all"><a href="{{ site.url }}/newsletter">Read past newsletters</a></p>
+      {% endif %}
+
+      <p class="signup-copy">{% if latest %}Get the next one in your inbox. A few times a year.{% else %}Show announcements and work in progress, a few times a year.{% endif %}</p>
       <div class="newsletter-wrap">
         <form id="newsletter-form" method="POST" target="newsletter-sink"
           action="https://c8b844d9.sibforms.com/serve/MUIFAL589N47-1LFp6mGprOoHKIX4O7T3xShqud3oQnMuVBruikS9t24jP3cP_vpAEUT0UbJrez3f2z3F3WQFHzfP9sxUHt8YteOQ18GGMN16XUvlIfsKCSgeAON2HNbT1lQdGc-Y2SQdPa5KHg3O5cM4udGVj5njQbp6bJJEYySoO36RURtvSh8DCIu-gXb9sM95fWx0bQcyHSb9w=="
           data-type="subscription">
-          <input type="email" id="EMAIL" name="EMAIL" placeholder="Enter your email address" required />
+          <input type="email" id="EMAIL" name="EMAIL" placeholder="Your email" aria-label="Email address" required />
           <button class="sib-form-block__button" type="submit">Subscribe</button>
           <input type="text" name="email_address_check" value="" style="display:none;">
           <input type="hidden" name="locale" value="en">
         </form>
-        <div id="newsletter-success" class="sib-form-message-panel sib-form-message-panel--success" style="display:none;">
+        <div id="newsletter-success" class="sib-form-message-panel sib-form-message-panel--success" role="status" style="display:none;">
           Thanks for subscribing — check your inbox for a confirmation.
         </div>
         <iframe name="newsletter-sink" style="display:none;"></iframe>
@@ -56,11 +111,24 @@
           });
         })();
       </script>
-    <br>
-   
-    <!-- <h3><a id="dontclick">Please don't click!</a></h3> -->
+    </div>
   </section>
-</article>
+
+  <section class="row">
+    <div class="rail"><h1><u>CONTACT</u></h1></div>
+    <div class="col">
+      {% for social in page.social %}
+      <ul class="contact">
+        <li><span class="contact-label">Email</span>{{ social.email }}</li>
+        <li><span class="contact-label">Instagram</span>{{ social.instagram }}</li>
+        {% if social.youtube %}<li><span class="contact-label">YouTube</span>{{ social.youtube }}</li>{% endif %}
+      </ul>
+      {% endfor %}
+      <a id="dontclick" class="dontclick" aria-hidden="true" tabindex="-1"></a>
+    </div>
+  </section>
+
+</main>
 </body>
 
 <footer>
@@ -80,8 +148,9 @@
   </style>
   <script type="text/javascript">
   var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if(!isIE11){
+  if(!isIE11 && !reduceMotion){
     function ChromaFilter() {
       var vertexShader = null;
       var fragmentShader = "" +

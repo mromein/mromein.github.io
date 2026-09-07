@@ -4,12 +4,37 @@
 <!-- {% capture style %}{% include newsletter.scss %}{% endcapture %} -->
 {% include head.html %}
 
-<body>
-<article class="info newsletter-page">
+<body class="newsletter-issue">
+<style type="text/css">
+  /* Email-client rules the issue markup relies on (mirrors the email's own <style>). */
+  .newsletter-issue table { border-collapse: collapse; }
+  .newsletter-issue .issue-body img { border: 0; display: block; }
+  .newsletter-issue .issue-body a[href=""] { display: none; }
+  @media only screen and (max-width: 600px) {
+    .newsletter-issue .outer { width: 100% !important; }
+    .newsletter-issue .block { padding: 24px 24px !important; }
+    .newsletter-issue .header { padding: 24px !important; }
+    .newsletter-issue .footer { padding: 24px !important; }
+  }
+</style>
+
+<nav class="issue-nav">
+  <a href="{{ site.url }}">matt-romein.com</a>
+  <a href="{{ site.url }}/newsletter">&larr; all issues</a>
+</nav>
+
+<div class="issue-meta">
+  <p class="issue-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+  <h1>{{ page.title }}</h1>
+</div>
+
+<div class="issue-body">
+{{ content }}
+</div>
+
+<article class="info newsletter-page issue-subscribe">
   <section class="info-text">
-    <h1><u>NEWSLETTER</u></h1>
-    <h2>Matt Romein</h2>
-    <h3>Quarterly updates on projects, works in progress, and behind the scenes — plus separate announcements when specific shows are coming up.</h3>
+    <h1><u>GET THE NEXT ONE</u></h1>
     <div class="newsletter-wrap">
       <form id="newsletter-form" method="POST" target="newsletter-sink"
         action="https://c8b844d9.sibforms.com/serve/MUIFAL589N47-1LFp6mGprOoHKIX4O7T3xShqud3oQnMuVBruikS9t24jP3cP_vpAEUT0UbJrez3f2z3F3WQFHzfP9sxUHt8YteOQ18GGMN16XUvlIfsKCSgeAON2HNbT1lQdGc-Y2SQdPa5KHg3O5cM4udGVj5njQbp6bJJEYySoO36RURtvSh8DCIu-gXb9sM95fWx0bQcyHSb9w=="
@@ -22,23 +47,9 @@
       <div id="newsletter-success" class="sib-form-message-panel sib-form-message-panel--success" style="display:none;">
         Thanks for subscribing — check your inbox for a confirmation.
       </div>
-      <p class="fine-print">Sent quarterly. Unsubscribe any time.</p>
+      <p class="fine-print">A few times a year. Unsubscribe any time.</p>
       <iframe name="newsletter-sink" style="display:none;"></iframe>
     </div>
-    {% assign issues = site.newsletters | sort: "date" | reverse %}
-    {% if issues.size > 0 %}
-    <h1 class="past-issues-heading"><u>PAST ISSUES</u></h1>
-    <ul class="past-issues">
-      {% for issue in issues %}
-      <li>
-        <a href="{{ issue.url | prepend: site.url }}">
-          <span class="past-issue-date">{{ issue.date | date: "%b %-d, %Y" }}</span>
-          <span class="past-issue-title">{{ issue.title }}</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
     <script>
       (function(){
         var form = document.getElementById('newsletter-form');

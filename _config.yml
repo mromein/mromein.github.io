@@ -22,6 +22,10 @@ collections:
     output: true  # Enable output for the designs collection
   experiments:
     output: true  # Enable output for the experiments collection
+  newsletters:
+    output: true  # Archived newsletter issues, served at /newsletter/<filename>
+    permalink: /newsletter/:name
+future: true  # Don't drop an issue archived the same day it sends (Jekyll skips future dates by default)
 
 sass:
   style: compressed  # The style for Sass output (compressed, expanded, etc.)
