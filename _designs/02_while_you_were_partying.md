@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /while_you_were_partying/
 title: "While You Were Partying"
 created: "2021"

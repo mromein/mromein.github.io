@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /maquette/
 title: "Maquette"
 created: "2023"
@@ -15,7 +15,8 @@ artists:
     url: https://lisajamhoury.com/maquette
 
 role:
-  - Unreal Engine Developer<br>- Motion Capture & Avatars
+  - Unreal Engine Developer
+  - Motion Capture & Avatars
 
 showings:
   - text: MAXLive Festival ~ 2023
@@ -33,5 +34,4 @@ documentation:
   - "04.jpg"
   - "05.jpg"
   - "06.jpg"
-  - <iframe src="https://player.vimeo.com/video/1018321472" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

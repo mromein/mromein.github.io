@@ -12,11 +12,10 @@
       </ul>
     </div>
     <div class="main-nav" id="main-nav">
-      <a><h1 class="nav-work noselect" id="work-button">projects</h1></a>
-      <a><h1 class="nav-design noselect" id="design-button">design</h1></a>
-      <a><h1 class="nav-experiment noselect" id="experiment-button">experiments</h1></a>
-      <!-- </1><a href="{{ site.url }}/teaching" ><h1 class="nav-teaching noselect">teaching</h1></a> -->
-      <a href="{{ site.url }}/info" ><h1 class="nav-info noselect">info</h1></a>
+      <a><span class="nav-work noselect" id="work-button" role="button" tabindex="0">projects</span></a>
+      <a><span class="nav-design noselect" id="design-button" role="button" tabindex="0">design</span></a>
+      <a><span class="nav-experiment noselect" id="experiment-button" role="button" tabindex="0">experiments</span></a>
+      <a href="{{ site.url }}/info" ><span class="nav-info noselect">info</span></a>
     </div>
   </nav>
   <script type="text/javascript">
@@ -65,13 +64,13 @@
       items.forEach(function(item) {
         var li = document.createElement('li');
         li.className = 'menu-item';
-        li.innerHTML = `
-          <div class="menu-item__bgimage" style="background-image: url(${item.root}preview.jpg)"></div>
-          <a href="${item.permalink}">
-            <img class="menu-item__image" src="${item.root}preview.jpg">
-            <h2>${item.title}</h2>
-          </a>
-        `;
+        var showThumb = window.innerWidth < 1024;
+        li.innerHTML =
+          '<div class="menu-item__bgimage" data-bg="' + item.root + 'preview-1600.jpg"></div>' +
+          '<a href="' + item.permalink + '">' +
+            (showThumb ? '<img class="menu-item__image" src="' + item.root + 'preview-800.jpg" alt="" loading="lazy" width="800" height="533">' : '') +
+            '<h2>' + item.title + '</h2>' +
+          '</a>';
         li.addEventListener('mouseenter', function() { menuMouseOver(li); });
         menuList.appendChild(li);
       });
@@ -143,6 +142,10 @@
       handleMenuClick(experimentButton, 'experiment', experiments);
     });
 
+    [workButton, designButton, experimentButton].forEach(function(b){
+      b.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") { e.preventDefault(); b.click(); } });
+    });
+
     window.addEventListener("keydown", function(e){
       if(e.keyCode == 27){
         hideMenu();
@@ -188,10 +191,11 @@
 
     var bgs = document.getElementsByClassName("menu-item__bgimage");
     function menuMouseOver(el){
-      for(var i = 0; i < bgs.length; i ++){
-        bgs[i].style.opacity = 0;
-      }
-      el.getElementsByClassName("menu-item__bgimage")[0].style.opacity = 1;
+      for (var i = 0; i < bgs.length; i++) bgs[i].style.opacity = 0;
+      var bg = el.getElementsByClassName("menu-item__bgimage")[0];
+      if (!bg) return;
+      if (!bg.style.backgroundImage) bg.style.backgroundImage = "url(" + bg.getAttribute("data-bg") + ")";
+      bg.style.opacity = 1;
     }
   </script>
 </header>

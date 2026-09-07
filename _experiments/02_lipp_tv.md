@@ -1,5 +1,5 @@
 ---
-layout: experiment
+layout: project
 permalink: /lipp_tv/
 title: "LIPP TV"
 created: "2020"
@@ -25,7 +25,7 @@ description: >
 role: Teacher / Director
 
 links:
-  - text: LIPP TV ~ Homepage
+  - text: LIPP TV
     url: https://lipp.tv/
   - text: Season 1 [Full Stream]
     url: https://twitch.tv/videos/619925172
@@ -37,7 +37,6 @@ documentation:
   - "02.jpg"
   - "03.jpg"
   - "04.jpg"
-  - <iframe src="https://www.youtube.com/embed/J8XrJ3VEHBY?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://www.youtube.com/embed/8kpmpCvjsos?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://www.youtube.com/embed/G5i1Sy9Hxu0?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

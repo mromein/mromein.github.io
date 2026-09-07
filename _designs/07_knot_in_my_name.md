@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /knot_in_my_name/
 title: "Knot In My Name"
 created: "2018"

@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /king/
 title: "King"
 created: "TBD"
@@ -22,5 +22,4 @@ showings:
 - text: The Kitchen ~ 2013
 
 documentation:
-  - <iframe src="https://www.youtube.com/embed/-73Sh41h9Yc?hd=1&rel=0&modestbranding=1" width="640" height="660" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

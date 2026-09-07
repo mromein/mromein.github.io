@@ -1,5 +1,5 @@
 ---
-layout: experiment
+layout: project
 permalink: /vr_doorbell/
 title: "VR Doorbell"
 created: "2017"
@@ -25,5 +25,4 @@ credits:
   - Sean McIntyre
 
 documentation:
-  - <iframe src="https://player.vimeo.com/video/206441970" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

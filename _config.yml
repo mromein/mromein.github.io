@@ -33,6 +33,11 @@ sass:
 exclude:
   - Gemfile  # Exclude the Gemfile from the build
   - Gemfile.lock  # Exclude the Gemfile.lock from the build
+  - docs  # design specs and plans, not site content
+  - bin  # asset build scripts
+  - md
+  - package.json
+  - clearCache.js
 
 plugins:
   - jekyll-sitemap  # Plugins to use (e.g., jekyll-sitemap)

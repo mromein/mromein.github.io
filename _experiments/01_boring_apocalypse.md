@@ -1,5 +1,5 @@
 ---
-layout: experiment
+layout: project
 permalink: /boring_apocalypse/
 title: "Boring Apocalypse"
 created: "2024"
@@ -19,5 +19,4 @@ credits:
   - Tim Platt ~ Performer
 
 documentation:  
-  - <iframe src="https://www.youtube.com/embed/8ny8dxcPFag?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

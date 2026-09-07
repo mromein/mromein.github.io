@@ -1,0 +1,86 @@
+{% assign p = include.p %}
+<section class="project-info" id="project-info">
+
+  <div class="row row-desc">
+    <div class="rail"><h2>Description</h2></div>
+    <div class="col">{{ p.description | markdownify }}</div>
+  </div>
+
+  {% if p.created %}
+  <div class="row row-fact">
+    <div class="rail"><h2>Created</h2></div>
+    <div class="col"><p>{{ p.created }}</p></div>
+  </div>
+  {% endif %}
+
+  {% if p.medium %}
+  <div class="row row-fact">
+    <div class="rail"><h2>Medium</h2></div>
+    <div class="col"><p>{{ p.medium }}</p></div>
+  </div>
+  {% endif %}
+
+  {% if p.role %}
+  <div class="row row-fact">
+    <div class="rail"><h2>Role</h2></div>
+    <div class="col"><p>{{ p.role | join: " / " }}</p></div>
+  </div>
+  {% endif %}
+
+  {% if p.artists %}
+  <div class="row">
+    <div class="rail"><h2>Lead artist{% if p.artists.size > 1 %}s{% endif %}</h2></div>
+    <div class="col">{% include project-credits.html items=p.artists kind="people" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.collaborators %}
+  <div class="row">
+    <div class="rail"><h2>Collaborators</h2></div>
+    <div class="col">{% include project-credits.html items=p.collaborators kind="people" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.credits %}
+  <div class="row">
+    <div class="rail"><h2>Credits</h2></div>
+    <div class="col">{% include project-credits.html items=p.credits kind="strings" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.showings %}
+  <div class="row">
+    <div class="rail"><h2>Select showings</h2></div>
+    <div class="col">{% include project-credits.html items=p.showings kind="events" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.grants %}
+  <div class="row">
+    <div class="rail"><h2>Grants</h2></div>
+    <div class="col">{% include project-credits.html items=p.grants kind="events" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.awards %}
+  <div class="row">
+    <div class="rail"><h2>Awards</h2></div>
+    <div class="col">{% include project-credits.html items=p.awards kind="events" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.press %}
+  <div class="row">
+    <div class="rail"><h2>Press</h2></div>
+    <div class="col">{% include project-credits.html items=p.press kind="events" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.links %}
+  <div class="row">
+    <div class="rail"><h2>Links</h2></div>
+    <div class="col">{% include project-credits.html items=p.links kind="events" %}</div>
+  </div>
+  {% endif %}
+
+</section>

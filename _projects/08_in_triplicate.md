@@ -14,10 +14,10 @@ description: >
   Using a live camera and a live microphone, quick samples of sound and video can be chopped up and distorted using granular synthesis and slit-scan techniques.
 
 showings:
-  - text: Roulette - 2019
+  - text: Roulette ~ 2019
   - text: CATCH ~ 2018
-  - text: Mana Contemporary - 2017
-  - text: SXSW - 2016
+  - text: Mana Contemporary ~ 2017
+  - text: SXSW ~ 2016
   - text: 3-Legged Dog ~ 2016
   - text: The Bellhouse ~ 2015
 

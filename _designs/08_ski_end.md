@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /ski_end/
 title: "Ski End"
 created: "2017"

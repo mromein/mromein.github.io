@@ -1,434 +1,332 @@
-.project-bgvideo {
+// ---------------------------------------------------------------------------
+// project pages: hero / info (rail or columns) / media grid / foot
+// Tokens shared with the info page: rail 200 / gap 64 / measure 640
+// body 17/1.55 (19 ≥900) / labels 15 caps .04em / grey #888 / rule #333
+// ---------------------------------------------------------------------------
+
+$rail: 200px;
+$gap: 64px;
+$measure: 640px;
+$rail-bp: 900px;
+$grey: #888;
+$rule: #333;
+
+// Hero -----------------------------------------------------------------------
+
+.project-hero {
+  position: relative;
   width: 100%;
   height: 100vh;
-  position: relative;
-
 
   iframe {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: 0;
   }
 }
 
-.project-bgvideo__poster {
+.project-hero__poster {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background-size: cover;
   background-position: center;
-  -webkit-box-shadow: inset 0 0 0 1000px rgba(0,0,0,.12);
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.12);
-
-  -webkit-transition: opacity 0.6s $cubic;
-  transition: opacity 0.6s $cubic;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .12);
+  transition: opacity .6s $cubic;
 }
 
-.project-title__wrapper {
-  width: 100%;
+.project-hero__title {
   position: absolute;
+  left: 50%; top: 53%;
   transform: translate(-50%, -50%);
-  left: 50%;
-  top: 53%;
-  -webkit-transition: opacity 0.1s;
-  transition: opacity 0.1s;
+  width: 100%;
+  text-align: center;
   word-break: break-word;
   overflow-wrap: break-word;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, .35);
 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, .35); // Add subtle drop shadow
-
-  @include tablet {
-    max-width: 585px;
-  }
-
-  @include laptop {
-    max-width: 750px;
-  }
-
-  @include desktop {
-    max-width: 1850px;
-  }
+  @include tablet  { max-width: 585px; }
+  @include laptop  { max-width: 750px; }
+  @include desktop { max-width: 1850px; }
 
   h1 {
     text-transform: uppercase;
-    text-align: center;
-
-    @include tablet {
-      font-size: 100px;
-    }
-
-    @include laptop {
-      font-size: 100px;
-    }
-
-    @include desktop {
-      font-size: 144px;
-    }
-  }
-
-  svg {
-    width: 50px;
-    -webkit-transition: all 0.2s $cubic;
-    transition: all 0.2s $cubic;
-    display: block;
-    margin: 90px auto 0;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-
-    polygon { fill: #FFFFFF; }
-
-    @include greater_than_tablet {
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35));
-    }
-
-    @include tablet {
-      width: 50px;
-    }
-
-    @include laptop {
-      width: 60px;
-    }
-
-    @include desktop {
-      width: 90px;
-    }
-
-    @media (hover: hover) {
-      &:hover {
-        width: 45px;
-
-        @include tablet {
-          width: 65px;
-        }
-
-        @include laptop {
-          width: 75px;
-        }
-
-        @include desktop {
-          width: 115px;
-        }
-      }
-    }
+    @include tablet  { font-size: 100px; }
+    @include laptop  { font-size: 100px; }
+    @include desktop { font-size: 144px; }
   }
 }
 
+.project-hero__play {
+  display: block;
+  margin: 90px auto 0;
+  padding: 0;
+  width: 50px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: width .2s $cubic;
+
+  svg { display: block; width: 100%; height: auto; }
+  polygon { fill: #fff; }
+
+  @include greater_than_tablet { filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35)); }
+  @include laptop  { width: 60px; }
+  @include desktop { width: 90px; }
+
+  @media (hover: hover) {
+    &:hover { width: 45px; }
+    @include tablet  { &:hover { width: 65px; } }
+    @include laptop  { &:hover { width: 75px; } }
+    @include desktop { &:hover { width: 115px; } }
+  }
+}
+
+// Foot -----------------------------------------------------------------------
+
+.project-foot {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 96px auto 96px;
+  @media (min-width: $rail-bp) { margin: 128px auto 128px; }
+
+  a {
+    display: inline-block;
+    min-height: 44px;
+    font-size: 30px;
+    @include tablet  { font-size: 38px; }
+    @include laptop  { font-size: 50px; }
+    @include desktop { font-size: 74px; }
+  }
+}
+
+// Info: shared ----------------------------------------------------------------
+
 .project-info {
-  margin: 10px auto;
-  width: 290px;
-
-  @include mobile {
-    width: calc(100vw - 40px);
-    max-width: 420px;
-  }
-
-  @include tablet {
-    width: 575px;
-    margin: 0 auto;
-  }
-
-  @include laptop {
-    width: 950px;
-  }
-
-  @include desktop {
-    width: 1300px;
-  }
+  box-sizing: border-box;
+  margin: 96px auto 0;
+  padding: 0 24px;
+  font-size: 17px;
+  line-height: 1.55;
+  @media (min-width: $rail-bp) { padding: 0 32px; font-size: 19px; }
 
   h2 {
     font-size: 15px;
-    text-decoration: underline;
-    margin: 25px auto 0;
+    line-height: inherit;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin: 0;
   }
+  p { margin: 0 0 16px; }
+  p:last-child { margin-bottom: 0; }
+  a { color: white; text-decoration: underline; text-underline-offset: .12em; }
+  a:hover { text-decoration-thickness: 2px; }
+}
 
-  p {
-    margin: 25px auto 0;
+.credits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 24px;
+  row-gap: 8px;
+
+  li { display: contents; }
+  .credits__name { min-width: 0; }
+  .credits__meta { color: $grey; }
+
+  // People: name left, role right. Events: year left (fixed narrow), venue right.
+  &.credits--events { grid-template-columns: 4.5em minmax(0, 1fr); }
+
+  @media (max-width: 479px) {
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    li { display: block; }
+    .credits__meta { display: block; margin-top: 2px; }
+    .credits__meta:empty { display: none; }
+    &.credits--events .credits__meta:not(:empty) { display: inline; margin: 0 12px 0 0; }
   }
 }
 
-.project-info__details {
+// Info: variant A, the rail -------------------------------------------------------
 
-  @include tablet {
-    display: flex;
-    justify-content: space-between;
-  }
+.project-info {
+  max-width: $rail + $gap + $measure + 64px;
 
-  @include laptop {
-    display: flex;
-    justify-content: space-between;
+  .row {
+    display: block;
+    margin-bottom: 32px;
+    @media (min-width: $rail-bp) {
+      display: grid;
+      grid-template-columns: $rail minmax(0, $measure);
+      column-gap: $gap;
+      align-items: start;
+    }
+    &:last-child { margin-bottom: 0; }
   }
+  .row-desc { margin-bottom: 48px; @media (min-width: $rail-bp) { margin-bottom: 64px; } }
+  .row-fact + .row-fact { margin-top: -16px; }
 
-  @include desktop {
-    display: flex;
-    justify-content: space-between;
+  .rail {
+    margin-bottom: 8px;
+    @media (min-width: $rail-bp) {
+      position: sticky;
+      top: 32px;
+      margin-bottom: 0;
+      padding-top: calc((1.55em - 15px * 1.55) / 2);
+    }
   }
+  .col { min-width: 0; }
 }
 
-.project-info__meta {
-
-  @include tablet {
-    width: 300px;
-  }
-
-  @include laptop {
-    width: 282px;
-  }
-
-  @include desktop {
-    width: 700px;
-  }
-}
-
-.project-info__performances {
-  max-height: none;
-  overflow-y: visible;
-
-  @include tablet {
-    -webkit-transition: none;
-    transition: none;
-    max-height: none;
-    overflow-y: auto;
-    width: 212px;
-  }
-
-  @include laptop {
-    -webkit-transition: none;
-    transition: none;
-    max-height: none;
-    overflow-y: auto;
-    width: 282px;
-  }
-
-  @include desktop {
-    -webkit-transition: none;
-    transition: none;
-    max-height: none;
-    overflow-y: auto;
-    width: 416px;
-  }
-}
-
-.project-info__performance{
-  margin: 10px auto 0;
-
-  //make sure to update this for all screen sizes
-  @include desktop {
-    margin: 10px auto 0;
-  }
-}
-
-#info-expand {
-  display: none;
-
-  @include tablet {
-    display: none;
-  }
-
-  @include laptop {
-    display: none;
-  }
-
-  @include desktop {
-    display: none;
-  }
-}
+// Media grid -----------------------------------------------------------------
 
 .project-media {
+  box-sizing: border-box;
+  margin: 64px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
 
-  @include tablet {
-    margin: 135px auto 0;
-  }
+  @media (min-width: 600px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: $rail-bp) { padding: 0 32px; gap: 16px; margin-top: 96px; }
 
-  iframe {
-    width: 100%;
-    margin: 36px auto 0;
+  // Width matches the info block above it so edges align.
+  max-width: $rail + $gap + $measure + 64px;
+}
+
+.project-media__item {
+  min-width: 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #111;
+
+  &:first-child { grid-column: 1 / -1; }
+  &--wide { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+
+  img, video, iframe {
     display: block;
-
-    @include tablet {
-      width: 500px;
-      margin: 60px auto 0;
-    }
-
-    @include laptop {
-      width: 665px;
-      margin: 90px auto 0;
-    }
-
-    @include desktop {
-      width: 980px;
-      margin: 125px auto 0;
-    }
-  }
-
-  img {
     width: 100%;
-    margin: 36px auto 0;
-    display: block;
-
-    @include tablet {
-      width: 500px;
-      margin: 60px auto 0;
-    }
-
-    @include laptop {
-      width: 665px;
-      margin: 90px auto 0;
-    }
-
-    @include desktop {
-      width: 980px;
-      margin: 125px auto 0;
-    }
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+    margin: 0;
   }
 }
 
-.project-media__extra {
-  max-height: 0;
-  overflow-y: hidden;
-  -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
-  transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
+.project-info + .project-media {
+  border-top: 1px solid $rule;
+  padding-top: 32px;
+  @media (min-width: $rail-bp) { padding-top: 64px; }
 }
 
-.project-seemore {
-  text-align: center;
+// Lightbox --------------------------------------------------------------------
+
+.project-media__zoom {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  img { cursor: zoom-in; }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, .96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+
+  &[hidden] { display: none; }
+
+  &.is-loading::after {
+    content: "Loading\2026";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: $grey;
+  }
+}
+
+.lightbox__img {
+  max-width: calc(100vw - 96px);
+  max-height: calc(100vh - 96px);
+  width: auto;
+  height: auto;
+  display: block;
+  box-shadow: none;
+  cursor: default;
+  transition: opacity .2s $cubic;
+}
+
+.lightbox.is-loading .lightbox__img { opacity: 0; }
+
+.lightbox__close,
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: 0;
+  color: #fff;
   cursor: pointer;
-  margin: 70px auto 0;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @include tablet {
-    margin: 90px auto 0;
-  }
-
-  @include laptop {
-    margin: 115px auto 0;
-  }
-
-  @include desktop {
-    margin: 160px auto 0;
-  }
-
-  span {
-    font-size: 30px;
-
-    @include tablet {
-      font-size: 38px;
-    }
-
-    @include laptop {
-      font-size: 50px;
-    }
-
-    @include desktop {
-      font-size: 75px;
-    }
-  }
+  &[hidden] { display: none; }
 }
 
-.project-seemore__arrow {
-  display: inline-block;
-  width: 30px;
-  margin: 0 0 0 16px;
+.lightbox__close {
+  top: 16px;
+  right: 16px;
+  font: $favorit;
+  font-size: 30px;
+  line-height: 1;
 
-  @include tablet {
-    width: 35px;
-  }
-
-  @include laptop {
-    width: 45px;
-  }
-
-  @include desktop {
-    width: 70px;
-  }
-
-  svg {
-    transform: rotate(270deg);
-    width: 100%;
-    height: auto;
-    -webkit-transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
-    transition: all 1s $cubic;//, -webkit-transform 0.5s $cubic;
-
-    #Fill-6 {
-      visibility: hidden;
-    }
-  }
-
-  .rotated {
-    transform: rotate(90deg);
-  }
+  @media (min-width: $rail-bp) { top: 32px; right: 32px; }
 }
 
+.lightbox__prev,
+.lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .35));
 
-.project-menu__wrapper {
-  width: 212px;
-  margin: 0 auto 50px;
-  text-align: center;
-  text-transform: uppercase;
+  svg { display: block; width: 22px; height: auto; }
+  polygon { fill: #fff; }
 
-  @include tablet {
-    width: 535px;
-    margin: 125px auto 90px;
-    font-size: 35px;
-  }
-
-  @include laptop {
-    width: 800px;
-    margin: 180px auto 100px;
-  }
-
-  @include desktop {
-    width: 1050px;
-    margin: 260px auto 300px;
-  }
-
-  li {
-    margin: 48px auto 0;
-
-    @include tablet {
-      margin: 60px auto 0;
-    }
-
-    @include laptop {
-      margin: 100px auto 0;
-    }
-
-    @include desktop {
-      margin: 130px auto 0;
-    }
-
-    h2 {
-      @include tablet {
-        font-size: 38px;
-      }
-
-      @include laptop {
-        font-size: 50px;
-      }
-
-      @include desktop {
-        font-size: 74px;
-      }
-    }
-  }
+  @media (max-width: 599px) { display: none; }
+  @media (min-width: $rail-bp) { width: 44px; height: 44px; }
 }
 
-.expanded {
-  max-height: 3500px;
-  -webkit-transition: all 1s $cubic;
-  transition: all 1s $cubic;
+// The shared arrow glyph points left as drawn.
+.lightbox__prev {
+  left: 16px;
+  @media (min-width: $rail-bp) { left: 32px; }
+}
 
-  @include tablet {
-    max-height: 5600px;
-  }
+.lightbox__next {
+  right: 16px;
+  svg { transform: rotate(180deg); }
+  @media (min-width: $rail-bp) { right: 32px; }
+}
 
-  @include laptop{
-    max-height: 7550px;
-  }
+body.lightbox-open { overflow: hidden; }
 
-  @include desktop {
-    max-height: 11050px;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__img { transition: none; }
 }

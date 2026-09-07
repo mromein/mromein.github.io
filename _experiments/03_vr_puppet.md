@@ -1,5 +1,5 @@
 ---
-layout: experiment
+layout: project
 permalink: /vr_puppet/
 title: "VR Puppet"
 created: "2024"
@@ -30,9 +30,8 @@ credits:
   - Yasmin Pascall ~ VR Puppeteer
   - Rahmell Peebles ~ Performer
   - Sebastian Arroyo ~ Performer
-  - Stage Manager ~ Erica Schnitzer
+  - Erica Schnitzer ~ Stage Manager
   - Benita de Wit ~ Dramaturg
 
 documentation:
-  - <iframe src="https://www.youtube.com/embed/vu7xoB-AAj8?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

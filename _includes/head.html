@@ -1,7 +1,6 @@
 <head>
   <meta charset="utf-8" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{% if page.description %}{{ page.description }}{{ site.description }}{% else %}{{ site.description }}{% endif %}" />
   <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
@@ -27,48 +26,23 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{ site.url }}/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
+  {% if page.layout == "home" %}
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <script defer id="pixi-script" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
+  {% elsif page.layout == "info" %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.0/pixi.min.js"></script>
+  {% endif %}
+  <link rel="preload" href="{{ 'assets/fonts/favorit-regular.woff' | absolute_url }}" as="font" type="font/woff" crossorigin>
+  {% if page.layout == "project" %}
+  <link rel="preload" as="image" href="{{ page.root | absolute_url }}preview-1600.jpg">
+  {% endif %}
   <style type="text/css">
     @font-face {
       font-family: "favorit";
-      src: local("☺︎"),
-        url("{{ 'assets/fonts/favorit-regular.woff2' | absolute_url }}") format("woff2"),
-        url("{{ 'assets/fonts/favorit-regular.woff' | absolute_url }}") format("woff"),
-        url("{{ 'assets/fonts/favorit-regular.otf' | absolute_url }}") format("opentype"),
-        url("{{ 'assets/fonts/favorit-regular.eot' | absolute_url }}"),
-        url("{{ 'assets/fonts/favorit-regular.eot' | absolute_url }}?#iefix") format("embedded-opentype"),
-        url("{{ 'assets/fonts/favorit-regular.ttf' | absolute_url }}") format("truetype");
+      src: url("{{ 'assets/fonts/favorit-regular.woff' | absolute_url }}") format("woff"),
+           url("{{ 'assets/fonts/favorit-regular.otf' | absolute_url }}") format("opentype");
+      font-display: swap;
     }
   </style>
   <style type="text/css">{{ style | scssify }}</style>
-  <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-  try {
-  _gaq.push(['_setAccount','UA-12345-1']); 
-  _gaq.push(['_setSessionCookieTimeout',900000]); 
-  _gaq.push(['_setVisitorCookieTimeout',31536000000]); 
-  _gaq.push(['_setDomainName','matt-romein.com']);
-  _gaq.push(['_addIgnoredOrganic','matt-romein.com']);
-  _gaq.push(['_trackPageview']);
-  } catch(err) {}</script>
-  <script type="text/javascript">
-    //string includes polyfill
-    if (!String.prototype.includes) {
-      String.prototype.includes = function(search, start) {
-        'use strict';
-        if (typeof start !== 'number') {
-          start = 0;
-        }
-        
-        if (start + search.length > this.length) {
-          return false;
-        } else {
-          return this.indexOf(search, start) !== -1;
-        }
-      };
-    }
-  </script>
 </head>

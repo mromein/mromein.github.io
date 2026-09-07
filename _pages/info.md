@@ -9,6 +9,15 @@ bio: >
 statement: >
   My practice focuses on the human body’s relationship with technology. As a hard-of-hearing individual who has relied on hearing aids throughout my life, I am fascinated by technology's ability to enhance and transform our physical forms. Through the use of code, technology, and live performance, I manipulate the body as a puppet, avatar, and object.<br><br>In my work the body becomes a site of tension—technology propels it beyond its natural limitations, yet complicates our understanding of its multifaceted identities. Employing humor and subversion, my work playfully navigates the complexities of bodies caught in the space between physical and digital worlds.
 
+show:
+  title: MILKMAN ZERO
+  dates: "December 3–13, 2026"
+  venue: "Mitu580, Brooklyn"
+  first_date: 2026-12-03
+  last_date: 2026-12-13
+  tickets: https://matt-romein.com/tickets
+  logo: /assets/images/newsletter/milkman-zero-logo.png
+
 honors:
   - text: Franklin Furnace Grant ~ 2025
   - text: Loghaven Fellow ~ 2026

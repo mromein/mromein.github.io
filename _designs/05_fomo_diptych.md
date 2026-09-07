@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /fomo_diptych/
 title: "FOMO:DIPTYCH"
 created: "2022"
@@ -25,5 +25,4 @@ documentation:
   - "02.jpg"
   - "03.jpg"
   - "04.jpg"
-  - <iframe src="https://player.vimeo.com/video/761616731" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

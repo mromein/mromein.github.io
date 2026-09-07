@@ -44,5 +44,4 @@ documentation:
   - "08.jpg"
   - "09.jpg"
   - "10.jpg"
-  - <iframe src="https://www.youtube.com/embed/wXbqrouw4I0?hd=1&rel=0&modestbranding=1" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

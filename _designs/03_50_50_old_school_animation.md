@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /50_50_old_school_animation/
 title: "[50/50] old school animation"
 created: "2018"
@@ -31,5 +31,4 @@ documentation:
   - "01.jpg"
   - "02.jpg"
   - "03.jpg"
-  - <iframe src="https://www.youtube.com/embed/JN_jDr9Gf9Q?hd=1&rel=0&modestbranding=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

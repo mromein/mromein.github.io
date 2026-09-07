@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /protec_attac/
 title: "Protec/Attac"
 created: "2022"
@@ -36,5 +36,4 @@ documentation:
   - "04.jpg"
   - "05.jpg"
   - "06.jpg"
-  - <iframe src="https://www.youtube.com/embed/bf8TFdKXktw?hd=1&rel=0&modestbranding=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

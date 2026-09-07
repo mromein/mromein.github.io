@@ -1,5 +1,5 @@
 ---
-layout: experiment
+layout: project
 permalink: /tripping_the_rift/
 title: "Tripping The Rift"
 created: "2015"
@@ -15,5 +15,4 @@ role:
  - Creator
 
 documentation:
-  - <iframe src="https://player.vimeo.com/video/126130699" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

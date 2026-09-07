@@ -14,11 +14,11 @@ description: >
   Research into 3D scanning and motion capture as a choreographic structure for live performance and dance. Scanned bodies are controlled in real-time using motion capture suits and digitally manipulated to create impossible movements.
 
 documentation:
-  - "01.gif"
-  - "02.gif"
-  - "03.gif"
-  - "04.gif"
-  - "05.gif"
+  - "01.mp4"
+  - "02.mp4"
+  - "03.mp4"
+  - "04.mp4"
+  - "05.mp4"
   - <iframe src="https://player.vimeo.com/video/169132287" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://player.vimeo.com/video/166522178" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://player.vimeo.com/video/166522236" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

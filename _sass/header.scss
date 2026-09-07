@@ -11,15 +11,11 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   opacity: 1;
   z-index: 101;
 
-  -webkit-transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
-  transition: all 0.2s $cubic;//, -webkit-transform 0.5s $cubic;
+  -webkit-transition: opacity 0.2s $cubic;
+  transition: opacity 0.2s $cubic;
 }
 
-.nav-hidden {
-  opacity: 0;
-}
-
-.nav-work, .nav-design, .nav-experiment, .nav-teaching, .nav-info {
+.nav-work, .nav-design, .nav-experiment, .nav-info {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -53,11 +49,7 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   cursor: pointer;
 }
 
-.nav-home {
-  display: none;
-}
-
-.nav-work, .nav-home {
+.nav-work {
   margin: 30px 0 0 23px;
 
   @include tablet {
@@ -105,23 +97,6 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   }
 }
 
-
-.nav-teaching {
-  margin: 30px 0 0 0;
-
-  @include tablet {
-    margin: 50px 0 0 0;
-  }
-
-  @include laptop {
-    margin: 65px 0 0 0;
-  }
-
-  @include desktop {
-    margin: 80px 60px 0 0;
-  }
-}
-
 .nav-info {
   margin: 30px 23px 0 0;
 
@@ -147,6 +122,7 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch; //adds physics on scroll
   opacity: 1;
+  visibility: visible;
   width: 100%;
   z-index: 100;
 
@@ -159,8 +135,8 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
     display: none; 
   }
 
-  -webkit-transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
-  transition: all 0.6s $cubic, -webkit-transform 0.5s $cubic;
+  -webkit-transition: opacity 0.6s $cubic, max-height 0s, visibility 0s;
+  transition: opacity 0.6s $cubic, max-height 0s, visibility 0s;
 }
 
 .menu {
@@ -283,6 +259,10 @@ $cubic: cubic-bezier(0.4, 0.01, 0.165, 0.99);
 .menu-invisible {
   max-height: 0;
   opacity: 0;
+  visibility: hidden;
+
+  -webkit-transition: opacity 0.6s $cubic, max-height 0s 0.6s, visibility 0s 0.6s;
+  transition: opacity 0.6s $cubic, max-height 0s 0.6s, visibility 0s 0.6s;
 }
 
 @keyframes example {

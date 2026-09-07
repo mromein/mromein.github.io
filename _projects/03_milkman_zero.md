@@ -29,5 +29,4 @@ documentation:
   - "03.jpg"
   - "04.jpg"
   - "05.jpg"
-  - <iframe src="https://www.youtube.com/embed/A8p2_tTiZi0?hd=1&rel=0&modestbranding=1&U" width="640" height="560" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ---

@@ -83,3 +83,10 @@ p:last-of-type {
 ::-webkit-scrollbar { 
     display: none; 
 }
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 3px;
+}

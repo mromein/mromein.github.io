@@ -1,0 +1,34 @@
+{%- comment -%}
+items: array. kind:
+  "people"  → objects {person, role, url}         (collaborators, artists)
+  "events"  → objects {text, url}, text "Venue ~ Year" (showings, grants, awards, press, links)
+  "strings" → plain strings "Name ~ Role"          (experiment credits)
+Renders a two-column list: events put the year first (grey), people put the role second (grey).
+{%- endcomment -%}
+<ul class="credits credits--{{ include.kind }}">
+{%- for item in include.items -%}
+  {%- assign name = nil -%}{%- assign meta = nil -%}{%- assign url = nil -%}
+  {%- if include.kind == "people" -%}
+    {%- assign name = item.person -%}{%- assign meta = item.role -%}{%- assign url = item.url -%}
+  {%- elsif include.kind == "strings" -%}
+    {%- assign parts = item | split: " ~ " -%}
+    {%- assign name = parts[0] -%}
+    {%- if parts.size > 1 -%}{%- assign meta = parts[1] -%}{%- endif -%}
+  {%- else -%}
+    {%- assign parts = item.text | split: " ~ " -%}
+    {%- if parts.size > 1 -%}
+      {%- assign meta = parts | last -%}
+      {%- assign name = parts | pop | join: " ~ " -%}
+    {%- else -%}
+      {%- assign name = item.text -%}
+    {%- endif -%}
+    {%- assign url = item.url -%}
+  {%- endif -%}
+  <li>
+    {%- comment -%} Both spans are always emitted (meta may be empty) so the two-column grid stays aligned. {%- endcomment -%}
+    {%- if include.kind == "events" %}<span class="credits__meta">{{ meta }}</span>{% endif -%}
+    <span class="credits__name">{% if url %}<a href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ name }}</a>{% else %}{{ name }}{% endif %}</span>
+    {%- if include.kind != "events" %}<span class="credits__meta">{{ meta }}</span>{% endif -%}
+  </li>
+{%- endfor -%}
+</ul>

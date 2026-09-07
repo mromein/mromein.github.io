@@ -1,251 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 {% capture style %}{% include project.scss %}{% endcapture %}
 {% include head.html %}
-<body>
+<body class="project-page">
 {% include header.html %}
+{% assign p = page %}
 
-<section class="project-bgvideo" id="project-bgvideo">
-  {{ page.bg-video }}
-  <div class="project-bgvideo__poster" id="project-bgvideo__poster" style="background-image: url({{ page.root | absolute_url }}preview.jpg)">
-    <div class="project-title__wrapper">
-      <h1>{{ page.title }}</h1>
-      {% if page.bg-video %} {% include playarrow.svg %} {% endif %}
-    </div>
-  </div>
-</section>
-<section class="project-info">
-  <h1 class="hidden">Project Info</h1>
-  <ul class="project-info__details">
-    <div class="project-info__meta">
-    <li>
-      <h2>Title</h2>
-      <p>{{ page.title }}</p>
-    </li>
-    <li>
-      <h2>Medium</h2>
-      <p>{{ page.medium }}</p>
-    </li>
-    <li>
-      <h2>Description</h2>
-      <p>{{ page.description | markdownify }}</p>
-    </li>
-    </div>
+{% include project-hero.html p=p %}
+{% include project-info.html p=p %}
+{% include project-media.html p=p %}
+{% include project-foot.html %}
 
-    <ul class="project-info__performances" id="project-performances">
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer"><button class="lightbox__close" type="button" aria-label="Close">&times;</button><button class="lightbox__prev" type="button" aria-label="Previous image">{% include arrow.svg %}</button><img class="lightbox__img" alt=""><button class="lightbox__next" type="button" aria-label="Next image">{% include arrow.svg %}</button></div>
 
-    <li>
-    <h2>Created</h2>
-    <p>{{ page.created }}</p>
-    </li>
-
-    {% if page.collaborators %}
-    <h2>Collaborators</h2>
-    {% for collaborator in page.collaborators %}
-      <li>
-        <ul class="project-info__performance">
-          {% if collaborator.url %}
-            <li><u><a href="{{ collaborator.url }}" target="_blank">{{ collaborator.person }}</a></u> ~ {{ collaborator.role }}</li>
-          {% else %}
-            <li>{{ collaborator.person }} ~ {{ collaborator.role }}</li>
-          {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if page.showings %}
-    <h2>Select Showings</h2>
-    {% for showing in page.showings %}
-      <li>
-        <ul class="project-info__performance">
-          {% if showing.url %}
-            <li><u><a href="{{ showing.url }}" target="_blank">{{ showing.text }}</a></u></li>
-          {% else %}
-            <li>{{ showing.text }}</li>
-          {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if page.links %}
-    <h2>Links</h2>
-    {% for link in page.links %}
-      <li>
-        <ul class="project-info__performance">
-        <li><u><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></u></li>
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if page.grants %}
-    <h2>Grants</h2>
-    {% for grant in page.grants %}
-      <li>
-        <ul class="project-info__performance">
-        {% if grant.url %}
-          <li><u><a href="{{ grant.url }}" target="_blank">{{ grant.text }}</a></u></li>
-        {% else %}
-          <li>{{ grant.text }}</li>
-        {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if page.awards %}
-    <h2>Awards</h2>
-    {% for award in page.awards %}
-      <li>
-        <ul class="project-info__performance">
-        {% if award.url %}
-          <li><u><a href="{{ award.url }}" target="_blank">{{ award.text }}</a></u></li>
-        {% else %}
-          <li>{{ award.text }}</li>
-        {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    {% if page.press %}
-    <h2>Press</h2>
-    {% for press in page.press %}
-      <li>
-        <ul class="project-info__performance">
-        {% if press.url %}
-          <li><u><a href="{{ press.url }}" target="_blank">{{ press.text }}</a></u></li>
-        {% else %}
-          <li>{{ press.text }}</li>
-        {% endif %}
-        </ul>
-      </li>
-    {% endfor %}
-    {% endif %}
-
-    </ul>
-    <li id="info-expand">Read more...</li>
-  </ul>
-</section>
-<section class="project-media">
-  {% for content in page.documentation limit: 5 %}
-    {% capture content_type %}{{ content | downcase }}{% endcapture %}
-    {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
-      <img src="{{ page.root | absolute_url }}{{ content }}">
-    {% else %}
-      {{ content }}
-    {% endif %}
-  {% endfor %}
-
-  {% if page.documentation.size > 5 %}
-  <div class="project-media__extra" id="media-extra">
-    {% for content in page.documentation offset: 5 %}
-      {% capture content_type %}{{ content | downcase }}{% endcapture %}
-      {% if content_type contains '.jpeg' or content_type contains '.jpg' or content_type contains '.png' or content_type contains '.gif' %}
-        <img src="{{ page.root | absolute_url }}{{ content }}">
-      {% else %}
-        {{ content }}
-      {% endif %}
-    {% endfor %}
-  </div>
-  <div class="project-seemore" id="see-more">
-    <span>See more</span>
-      <div class="project-seemore__arrow">
-    {% include arrow.svg %}
-      </div>
-    </div>
-  {% endif %}
-</section>
-<section class="project-menu__wrapper">
- <ul class="project-menu">
-    <!-- {% for project in site.projects reversed %}
-    <li>
-      <a href="{{ project.permalink | absolute_url }}">
-        <h2>{{ project.title }}</h2>
-      </a>
-    </li>
-    {% endfor %} -->
-    <li>
-      <a href="{{ site.url }}">
-        <h2>HOME</h2>
-      </a>
-    </li>
-  </ul>
-</section>
-
-</body>
 <script type="text/javascript">
-  (function(){
-    var button = document.getElementById("project-bgvideo__play");
-    var video = document.getElementById("project-bgvideo");
-    var img = document.getElementById("project-bgvideo__poster");
-    var isPlaying = false;
+(function(){
+  // Hero: swap the poster for the embed on play. The iframe ships with data-src so no player bytes load until then.
+  var play = document.getElementById("project-hero__play");
+  var hero = document.getElementById("project-hero");
+  var poster = document.getElementById("project-hero__poster");
+  var frame = hero ? hero.querySelector("iframe") : null;
+  if (play && frame) {
+    play.addEventListener("click", function(e){
+      e.preventDefault();
+      var src = frame.getAttribute("data-src") || "";
+      src += (src.indexOf("?") === -1 ? "?" : "&") + "autoplay=1";
+      frame.setAttribute("src", src);
+      frame.removeAttribute("data-src");
+      setTimeout(function(){
+        poster.style.opacity = 0;
+        poster.style.pointerEvents = "none";
+      }, 500);
+    });
+  }
 
-    if(video.children[0].tagName.toLowerCase() === "iframe"){
-      button.onclick = function(e){
-        e.preventDefault();
-        isPlaying = true;
-        if(!video.children[0].src.includes("?")) video.children[0].src += "?";
-        else(video.children[0].src += "&");
-        video.children[0].src += "autoplay=1";
-        setTimeout(function(){
-        img.style.opacity = button.style.opacity = 0;
-        img.style.pointerEvents = "none";
-        }, 500)
-      }
+  // Desktop only: fade the nav after half a second of no input (unchanged behaviour).
+  var nav = document.getElementById("main-nav");
+  var isTouch = /iPad|Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  var timer, navVisible = true;
+  function hideNav(){ if (!isTouch && navVisible) { navVisible = false; nav.style.opacity = 0; } }
+  function resetTimer(){
+    clearTimeout(timer);
+    if (!navVisible) { navVisible = true; nav.style.opacity = 1; }
+    timer = setTimeout(hideNav, 500);
+  }
+  ["load","mousemove","mousedown","touchstart","click","scroll","keypress"].forEach(function(ev){
+    window.addEventListener(ev, resetTimer, { passive: true });
+  });
+
+  // Converted GIFs: play only while on screen.
+  var loops = document.querySelectorAll(".project-media__video");
+  if ("IntersectionObserver" in window && loops.length) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var v = en.target;
+        if (en.isIntersecting) { v.play().catch(function(){}); } else { v.pause(); }
+      });
+    }, { rootMargin: "200px 0px" });
+    loops.forEach(function(v){ io.observe(v); });
+  }
+
+  // Lightbox: click a grid image to load the full-resolution original.
+  var zooms = Array.prototype.slice.call(document.querySelectorAll(".project-media__zoom"));
+  var box = document.getElementById("lightbox");
+  if (box && zooms.length) {
+    var boxImg = box.querySelector(".lightbox__img");
+    var btnClose = box.querySelector(".lightbox__close");
+    var btnPrev = box.querySelector(".lightbox__prev");
+    var btnNext = box.querySelector(".lightbox__next");
+    var focusable = [btnClose, btnPrev, btnNext];
+    var index = -1;
+    var lastFocus = null;
+
+    if (zooms.length < 2) {
+      btnPrev.hidden = true;
+      btnNext.hidden = true;
     }
 
-    var nav = document.getElementById("main-nav");
-    var t;
-    window.addEventListener("load", resetTimer);
-    window.addEventListener("mousemove", resetTimer);
-    window.addEventListener("mousedown", resetTimer);
-    window.addEventListener("touchstart", resetTimer);
-    window.addEventListener("click", resetTimer);
-    window.addEventListener("scroll", resetTimer);
-    window.addEventListener("keypress", resetTimer);
-
-    function hideNav() {
-      if (/iPad|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      // Code to execute only on non-mobile devices
-      } 
-      else {
-        nav.style.opacity = 0
-      }
-
-      // nav.style.opacity = 0;
-      // if(isPlaying){
-      //   nav.style.opacity = 0;
-      // }
-      
+    function preloadNext(){
+      if (index < 0 || zooms.length < 2) { return; }
+      var n = (index + 1) % zooms.length;
+      var pre = new Image();
+      pre.src = zooms[n].getAttribute("href");
     }
 
-    function resetTimer() {
-        clearTimeout(t);
-        nav.style.opacity = 1;
-        t = setTimeout(hideNav, 500)
-        // 1000 milisec = 1 sec
+    function show(i){
+      index = (i + zooms.length) % zooms.length;
+      box.classList.add("is-loading");
+      boxImg.src = zooms[index].getAttribute("href");
+      var alt = zooms[index].querySelector("img");
+      boxImg.alt = alt ? alt.getAttribute("alt") || "" : "";
     }
 
-    var expand = document.getElementById("info-expand");
-    var performances = document.getElementById("project-performances");
-
-    expand.addEventListener("click", function(){
-      expand.innerText = (expand.innerText == "Read more...") ? "Read less..." : "Read more...";
-      performances.classList.toggle("expanded");
+    boxImg.addEventListener("load", function(){
+      box.classList.remove("is-loading");
+      preloadNext();
     });
 
-    var seeMore = document.getElementById("see-more");
-    var extraMedia = document.getElementById("media-extra");
-    var arrow = seeMore.getElementsByTagName("svg")[0];
+    boxImg.addEventListener("error", function(){
+      box.classList.remove("is-loading");
+    });
 
-    seeMore.addEventListener("click", function(){
-      extraMedia.classList.toggle("expanded");
-      seeMore.firstElementChild.innerText = (seeMore.firstElementChild.innerText == "See more") ? "See less" : "See more";
-      arrow.classList.toggle("rotated");
-    })
-  })();
+    function open(i, source){
+      lastFocus = source || document.activeElement;
+      show(i);
+      box.hidden = false;
+      document.body.classList.add("lightbox-open");
+      btnClose.focus();
+    }
+
+    function close(){
+      box.hidden = true;
+      box.classList.remove("is-loading");
+      document.body.classList.remove("lightbox-open");
+      boxImg.removeAttribute("src");
+      if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+      lastFocus = null;
+      index = -1;
+    }
+
+    zooms.forEach(function(a, i){
+      a.addEventListener("click", function(e){
+        e.preventDefault();
+        open(i, a);
+      });
+    });
+
+    btnClose.addEventListener("click", function(e){ e.preventDefault(); close(); });
+    btnPrev.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); show(index - 1); });
+    btnNext.addEventListener("click", function(e){ e.preventDefault(); e.stopPropagation(); show(index + 1); });
+
+    // Backdrop closes; on narrow screens (no arrow buttons) tapping the image advances.
+    box.addEventListener("click", function(e){
+      if (e.target === boxImg) {
+        if (window.matchMedia && window.matchMedia("(max-width: 599px)").matches && zooms.length > 1) { show(index + 1); }
+        return;
+      }
+      if (e.target === box) { close(); }
+    });
+
+    document.addEventListener("keydown", function(e){
+      if (box.hidden) { return; }
+      if (e.key === "Escape") { e.preventDefault(); close(); return; }
+      if (e.key === "ArrowLeft" && zooms.length > 1) { e.preventDefault(); show(index - 1); return; }
+      if (e.key === "ArrowRight" && zooms.length > 1) { e.preventDefault(); show(index + 1); return; }
+      if (e.key === "Tab") {
+        var ring = focusable.filter(function(el){ return !el.hidden && el.offsetParent !== null; });
+        var at = ring.indexOf(document.activeElement);
+        var next = e.shiftKey ? at - 1 : at + 1;
+        if (at === -1) { next = 0; }
+        next = (next + ring.length) % ring.length;
+        e.preventDefault();
+        ring[next].focus();
+      }
+    });
+
+    // Swipe to move between images.
+    var touchX = null;
+    box.addEventListener("touchstart", function(e){
+      touchX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    box.addEventListener("touchend", function(e){
+      if (touchX === null || zooms.length < 2) { return; }
+      var dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 40) { show(dx < 0 ? index + 1 : index - 1); }
+    }, { passive: true });
+  }
+})();
 </script>
+</body>
 </html>

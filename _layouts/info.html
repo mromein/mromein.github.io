@@ -18,6 +18,17 @@
   {% endif %}
 {% endfor %}
 
+{% assign show = nil %}
+{% assign show_href = nil %}
+{% if page.show and page.show.last_date %}
+  {% assign page_last_s = page.show.last_date | date: "%s" | plus: 86400 %}
+  {% if page_last_s >= now_s %}{% assign show = page.show %}{% endif %}
+{% endif %}
+{% if show == nil and live_show %}
+  {% assign show = live_show.show %}
+  {% assign show_href = live_show.url %}
+{% endif %}
+
 <main class="index">
 
   <section class="row row-portrait">
@@ -43,17 +54,17 @@
 
   <hr class="rule">
 
-  {% if live_show %}
-  {% assign first_s = live_show.show.first_date | date: "%s" | plus: 0 %}
+  {% if show %}
+  {% assign first_s = show.first_date | date: "%s" | plus: 0 %}
   <section class="row row-show">
     <div class="rail"><h1><u>{% if first_s <= now_s %}ON NOW{% else %}COMING UP{% endif %}</u></h1></div>
     <div class="col">
-      {% assign show_logo = live_show.show.logo | default: live_show.preview %}
-      <a class="show{% if show_logo %} has-logo{% endif %}" href="{{ live_show.show.tickets | default: live_show.url | prepend: site.url }}"{% if live_show.show.tickets %} target="_blank" rel="noopener"{% endif %}>
+      {% assign show_logo = show.logo %}{% if show_logo == nil and live_show %}{% assign show_logo = live_show.preview %}{% endif %}
+      <a class="show{% if show_logo %} has-logo{% endif %}" href="{% if show.tickets %}{{ show.tickets }}{% elsif show_href %}{{ show_href | prepend: site.url }}{% else %}{{ site.url }}/newsletter{% endif %}"{% if show.tickets %} target="_blank" rel="noopener noreferrer"{% endif %}>
         <span class="show-text">
-          <span class="show-title">{{ live_show.show.title }}</span>
-          <span class="show-meta">{{ live_show.show.dates }}{% if live_show.show.venue %}<br>{{ live_show.show.venue }}{% endif %}</span>
-          {% if live_show.show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
+          <span class="show-title">{{ show.title }}</span>
+          <span class="show-meta">{{ show.dates }}{% if show.venue %}<br>{{ show.venue }}{% endif %}</span>
+          {% if show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
         </span>
         {% if show_logo %}<img class="show-logo" src="{{ show_logo | prepend: site.url }}" alt="">{% endif %}
       </a>

@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /turning_towards_a_radical_listening/
 title: "Turning Towards A Radical Listening"
 created: "2019"

@@ -1,5 +1,5 @@
 ---
-layout: design
+layout: project
 permalink: /hand_foot_fizzle_face/
 title: "Hand Foot Fizzle Face"
 created: "2015"

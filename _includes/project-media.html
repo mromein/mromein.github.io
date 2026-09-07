@@ -1,0 +1,36 @@
+{% assign p = include.p %}
+{% assign root = p.root | absolute_url %}
+{% if p.documentation and p.documentation.size > 0 %}
+<section class="project-media">
+{% for item in p.documentation %}
+  {% assign lower = item | downcase %}
+  {% if forloop.first %}
+    {% assign sizes = "(min-width: 1300px) 1200px, (min-width: 900px) calc(100vw - 64px), 100vw" %}
+  {% else %}
+    {% assign sizes = "(min-width: 1300px) 600px, (min-width: 900px) calc(50vw - 40px), (min-width: 600px) 50vw, 100vw" %}
+  {% endif %}
+  {% if lower contains "<iframe" %}
+    {% capture frame_open %}<iframe loading="lazy" title="{{ p.title | escape }} video" {% endcapture %}
+    <div class="project-media__item project-media__item--wide">{{ item | replace: "<iframe ", frame_open }}</div>
+  {% elsif lower contains "<" %}
+    <div class="project-media__item project-media__item--wide">{{ item }}</div>
+  {% else %}
+    {% assign ext = lower | split: "." | last %}
+    {% assign base = item | split: "." | first %}
+    {% if ext == "mp4" %}
+    <div class="project-media__item">
+      <video class="project-media__video" muted loop playsinline preload="none" poster="{{ root }}{{ base }}-poster.jpg" src="{{ root }}{{ item }}" aria-label="{{ p.title | escape }} documentation clip"></video>
+    </div>
+    {% elsif ext == "jpg" or ext == "jpeg" %}
+    <div class="project-media__item">
+      <a class="project-media__zoom" href="{{ root }}{{ item }}" aria-label="Enlarge image {{ forloop.index }}"><img src="{{ root }}{{ base }}-800.jpg" srcset="{{ root }}{{ base }}-800.jpg 800w, {{ root }}{{ base }}-1600.jpg 1600w" sizes="{{ sizes }}" loading="lazy" decoding="async" alt=""></a>
+    </div>
+    {% else %}
+    <div class="project-media__item">
+      <img src="{{ root }}{{ item }}" loading="lazy" decoding="async" alt="">
+    </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</section>
+{% endif %}

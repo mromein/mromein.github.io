@@ -29,7 +29,6 @@ documentation:
   - "06.jpg"
   - "07.jpg"
   - "08.jpg"
-  - <iframe src="https://player.vimeo.com/video/270484326" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://player.vimeo.com/video/271406078" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://player.vimeo.com/video/384612466" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   - <iframe src="https://player.vimeo.com/video/89408463" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
