@@ -2,11 +2,12 @@
   <meta charset="utf-8" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="{% if page.description %}{{ page.description }}{{ site.description }}{% else %}{{ site.description }}{% endif %}" />
+  {% capture meta_description %}{% if page.description %}{{ page.description | strip_html | strip_newlines | strip }}{% else %}{{ site.description | strip_newlines | strip }}{% endif %}{% endcapture %}
+  <meta name="description" content="{{ meta_description | escape }}" />
   <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{{ site.title }} | {{ page.title }}" />
-  <meta property="og:description" content="{% if page.description %}{{ page.description }}{{ site.description }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:description" content="{{ meta_description | escape }}" />
   <meta property="og:image" content="{{ site.logo | prepend: site.url }}" />
   <title>{{ site.title }}{% if page.title %} | {{ page.title }}{% endif %}</title>
   <link rel="apple-touch-icon" sizes="57x57" href="{{ site.url }}/assets/favicon/apple-icon-57x57.png">

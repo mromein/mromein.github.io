@@ -82,6 +82,31 @@ $rule: #333;
   }
 }
 
+.project-hero__cta {
+  display: inline-block;
+  margin: 90px auto 0;
+  padding: 12px 24px;
+  min-height: 44px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  color: white;
+  font-size: 15px;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-shadow: none;
+  background: rgba(0, 0, 0, .25);
+  transition: background .2s $cubic, color .2s $cubic;
+
+  @include laptop  { font-size: 17px; padding: 14px 32px; }
+  @include desktop { font-size: 19px; padding: 16px 40px; }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { background: white; color: black; }
+  }
+}
+
 // Foot -----------------------------------------------------------------------
 
 .project-foot {
@@ -167,6 +192,15 @@ $rule: #333;
   }
   .row-desc { margin-bottom: 48px; @media (min-width: $rail-bp) { margin-bottom: 64px; } }
   .row-fact + .row-fact { margin-top: -16px; }
+
+  .row-show { margin-bottom: 48px; @media (min-width: $rail-bp) { margin-bottom: 64px; } }
+  // The show box has 17px of border + padding before its 30px title line;
+  // push the label down so it still sits on the first line of content.
+  .row-show .rail {
+    @media (min-width: $rail-bp) { padding-top: calc(17px + (30px * 1.25 - 15px * 1.55) / 2); }
+  }
+  .show { text-decoration: none; }
+  .show .show-link u { text-decoration: underline; text-underline-offset: .12em; }
 
   .rail {
     margin-bottom: 8px;

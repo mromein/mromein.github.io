@@ -1,11 +1,13 @@
 {% assign p = include.p %}
 {% assign hero_root = p.root | absolute_url %}
 <section class="project-hero" id="project-hero">
-  {% if p.bg-video %}{% capture hero_open %}<iframe title="{{ p.title | escape }} video" {% endcapture %}{{ p.bg-video | replace: ' src="', ' data-src="' | replace: '<iframe ', hero_open }}{% endif %}
+  {% if p.bg-video and p.hero-link == nil %}{% capture hero_open %}<iframe title="{{ p.title | escape }} video" {% endcapture %}{{ p.bg-video | replace: ' src="', ' data-src="' | replace: '<iframe ', hero_open }}{% endif %}
   <div class="project-hero__poster" id="project-hero__poster" style="background-image: url('{{ hero_root }}preview-1600.jpg')">
     <div class="project-hero__title">
       <h1>{{ p.title }}</h1>
-      {% if p.bg-video %}
+      {% if p.hero-link %}
+      <a class="project-hero__cta" href="{{ p.hero-link.url }}" target="_blank" rel="noopener noreferrer">{{ p.hero-link.label | default: "Tickets" }}</a>
+      {% elsif p.bg-video %}
       <button class="project-hero__play" id="project-hero__play" type="button" aria-label="Play video">{% include playarrow.svg %}</button>
       {% endif %}
     </div>

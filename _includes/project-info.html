@@ -1,6 +1,31 @@
 {% assign p = include.p %}
 <section class="project-info" id="project-info">
 
+  {% if p.show_banner %}
+    {% assign info_page = site.pages | where: "permalink", "/info" | first %}
+    {% assign show = info_page.show %}
+    {% if show and show.last_date %}
+      {% assign now_s = site.time | date: "%s" | plus: 0 %}
+      {% assign last_s = show.last_date | date: "%s" | plus: 86400 %}
+      {% assign first_s = show.first_date | date: "%s" | plus: 0 %}
+      {% if last_s >= now_s %}
+  <div class="row row-show">
+    <div class="rail"><h2>{% if first_s <= now_s %}On now{% else %}Coming up{% endif %}</h2></div>
+    <div class="col">
+      <a class="show{% if show.logo %} has-logo{% endif %}" href="{{ show.tickets | default: '/info' }}"{% if show.tickets %} target="_blank" rel="noopener noreferrer"{% endif %}>
+        <span class="show-text">
+          <span class="show-title">{{ show.title }}</span>
+          <span class="show-meta">{{ show.dates }}{% if show.venue %}<br>{{ show.venue }}{% endif %}</span>
+          {% if show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
+        </span>
+        {% if show.logo %}<img class="show-logo" src="{{ show.logo | prepend: site.url }}" alt="">{% endif %}
+      </a>
+    </div>
+  </div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
   <div class="row row-desc">
     <div class="rail"><h2>Description</h2></div>
     <div class="col">{{ p.description | markdownify }}</div>
@@ -59,6 +84,13 @@
   <div class="row">
     <div class="rail"><h2>Grants</h2></div>
     <div class="col">{% include project-credits.html items=p.grants kind="events" %}</div>
+  </div>
+  {% endif %}
+
+  {% if p.support %}
+  <div class="row">
+    <div class="rail"><h2>Support</h2></div>
+    <div class="col">{% include project-credits.html items=p.support kind="events" %}</div>
   </div>
   {% endif %}
 

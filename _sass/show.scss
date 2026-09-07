@@ -1,0 +1,55 @@
+// The show box: title, dates, venue, TICKETS, optional logo. Used by the info
+// page (COMING UP / ON NOW row) and by project pages that set `show_banner: true`.
+// Needs $rail-bp (defined by the importing stylesheet).
+
+.show {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid white;
+  padding: 16px 24px;
+  color: white;
+  text-decoration: none;
+
+  span { display: block; }
+  .show-link span { display: inline; }
+
+  // Logo beside the text (from show.logo, falling back to the issue preview)
+  &.has-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 560px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+  }
+  .show-text { flex: 1 1 auto; min-width: 0; }
+  .show-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 150px;
+    height: auto;
+    order: -1;
+    @media (min-width: 560px) { width: 200px; order: 0; }
+  }
+
+  .show-title {
+    font-size: 26px;
+    line-height: 1.25;
+    @media (min-width: $rail-bp) { font-size: 30px; }
+  }
+  .show-meta { margin-top: 8px; }
+  .show-link {
+    margin-top: 16px;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { background: white; color: black; }
+    &:hover .show-logo { filter: invert(1); }
+  }
+}
+
