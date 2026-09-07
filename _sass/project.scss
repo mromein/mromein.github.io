@@ -164,10 +164,13 @@ $rule: #333;
   // People: name left, role right. Events: year left (fixed narrow), venue right.
   &.credits--events { grid-template-columns: 4.5em minmax(0, 1fr); }
 
+  // Phones: one entry per line. The events rule above has higher specificity
+  // than a bare .credits, so both selectors are named here or the 4.5em year
+  // column survives and squashes every other entry into it.
   @media (max-width: 479px) {
-    grid-template-columns: 1fr;
-    row-gap: 12px;
-    li { display: block; }
+    &, &.credits--events { display: block; }
+    li { display: block; margin: 0 0 12px; }
+    li:last-child { margin-bottom: 0; }
     .credits__meta { display: block; margin-top: 2px; }
     .credits__meta:empty { display: none; }
     &.credits--events .credits__meta:not(:empty) { display: inline; margin: 0 12px 0 0; }
