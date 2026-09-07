@@ -48,10 +48,14 @@
   <section class="row row-show">
     <div class="rail"><h1><u>{% if first_s <= now_s %}ON NOW{% else %}COMING UP{% endif %}</u></h1></div>
     <div class="col">
-      <a class="show" href="{{ live_show.show.tickets | default: live_show.url | prepend: site.url }}"{% if live_show.show.tickets %} target="_blank" rel="noopener"{% endif %}>
-        <span class="show-title">{{ live_show.show.title }}</span>
-        <span class="show-meta">{{ live_show.show.dates }}{% if live_show.show.venue %}<br>{{ live_show.show.venue }}{% endif %}</span>
-        {% if live_show.show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
+      {% assign show_logo = live_show.show.logo | default: live_show.preview %}
+      <a class="show{% if show_logo %} has-logo{% endif %}" href="{{ live_show.show.tickets | default: live_show.url | prepend: site.url }}"{% if live_show.show.tickets %} target="_blank" rel="noopener"{% endif %}>
+        <span class="show-text">
+          <span class="show-title">{{ live_show.show.title }}</span>
+          <span class="show-meta">{{ live_show.show.dates }}{% if live_show.show.venue %}<br>{{ live_show.show.venue }}{% endif %}</span>
+          {% if live_show.show.tickets %}<span class="show-link"><span aria-hidden="true"><-- &emsp;</span><u>TICKETS</u><span aria-hidden="true"> &emsp;--></span></span>{% endif %}
+        </span>
+        {% if show_logo %}<img class="show-logo" src="{{ show_logo | prepend: site.url }}" alt="">{% endif %}
       </a>
     </div>
   </section>

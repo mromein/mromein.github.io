@@ -116,6 +116,8 @@ $rail-bp: 900px;
   width: 100%;
   max-width: 320px;
   height: auto;
+  // Desktop: fill the reading measure so the photo's edges sit on the grid
+  @media (min-width: $rail-bp) { max-width: $measure; }
 }
 
 .links {
@@ -136,6 +138,28 @@ $rail-bp: 900px;
   span { display: block; }
   .show-link span { display: inline; }
 
+  // Logo beside the text (from show.logo, falling back to the issue preview)
+  &.has-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    @media (min-width: 560px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+  }
+  .show-text { flex: 1 1 auto; min-width: 0; }
+  .show-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 150px;
+    height: auto;
+    order: -1;
+    @media (min-width: 560px) { width: 200px; order: 0; }
+  }
+
   .show-title {
     font-size: 26px;
     line-height: 1.25;
@@ -150,6 +174,7 @@ $rail-bp: 900px;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover { background: white; color: black; }
+    &:hover .show-logo { filter: invert(1); }
   }
 }
 

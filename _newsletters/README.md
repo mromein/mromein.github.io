@@ -27,6 +27,7 @@ show:                       # adds a COMING UP / ON NOW row until last_date pass
   first_date: 2026-12-03
   last_date: 2026-12-13
   tickets: https://milkmanzero.com
+  logo: /assets/images/newsletter/milkman-zero-logo.png   # optional; falls back to preview
 ```
 
 Two edits to the pasted HTML:
