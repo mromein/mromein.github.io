@@ -110,10 +110,14 @@ $rule: #333;
 // Foot -----------------------------------------------------------------------
 
 .project-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   text-align: center;
   text-transform: uppercase;
   margin: 96px auto 96px;
-  @media (min-width: $rail-bp) { margin: 128px auto 128px; }
+  @media (min-width: $rail-bp) { margin: 128px auto 128px; gap: 32px; }
 
   a {
     display: inline-block;

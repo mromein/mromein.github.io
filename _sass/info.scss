@@ -188,11 +188,10 @@ $rail-bp: 900px;
   margin: 24px 0 0 !important;
 }
 
-.signup-copy {
-  margin: 48px 0 12px !important;
-  // No issue archived yet: the copy is the first thing in the row
-  &:first-child { margin-top: 0 !important; }
-}
+// The form sits ahead of the latest issue; keep air between them.
+.signup-first { margin-bottom: 40px; }
+
+.signup-copy { margin: 0 0 12px !important; }
 
 .newsletter-wrap {
   max-width: $measure;
