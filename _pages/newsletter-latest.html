@@ -1,0 +1,19 @@
+---
+layout: null
+permalink: /newsletter/latest
+sitemap: false
+---
+{% assign latest = site.newsletters | sort: "date" | last -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ latest.title }}</title>
+  <link rel="canonical" href="{{ latest.url | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ latest.url | absolute_url }}">
+  <script>window.location.replace("{{ latest.url | absolute_url }}");</script>
+</head>
+<body>
+  <p>Redirecting to the latest newsletter: <a href="{{ latest.url | absolute_url }}">{{ latest.title }}</a></p>
+</body>
+</html>
